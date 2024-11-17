@@ -8,41 +8,64 @@ import org.slf4j.LoggerFactory;
 
 public class ConfigManager {
 
-    private static  final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
-    private static final ConfigIO configIO = ConfigIO.getInstance();
-    private UserConfig config;
+    private static final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
 
-    // Private constructor to prevent instantiation from outside
-    private ConfigManager() {
+    // The configuration object (volatile ensures visibility across threads)
+    private volatile UserConfig config;
+
+    // Dependency for config I/O operations, injected via constructor
+    private final ConfigIO configIO;
+
+    // Private constructor to allow dependency injection and prevent direct instantiation
+    private ConfigManager(ConfigIO configIO) {
+        this.configIO = configIO;
     }
 
-
-    // Static inner helper class responsible for holding the singleton instance
+    // Static inner class for lazy-loaded singleton
     private static class ConfigManagerHolder {
-        private static final ConfigManager INSTANCE = new ConfigManager();
+        private static final ConfigManager INSTANCE = new ConfigManager(ConfigIO.getInstance());
     }
 
-    // Public method to provide access to the singleton instance
+    // Public method to get the singleton instance
     public static ConfigManager getInstance() {
         return ConfigManagerHolder.INSTANCE;
     }
 
-    // Instance method to get configuration, initializes if needed
+    /**
+     * Retrieves the configuration. Initializes lazily if not already loaded.
+     *
+     * @return UserConfig The user configuration object.
+     * @throws ConfigNotFoundException if configuration is missing.
+     */
     public UserConfig getConfig() throws ConfigNotFoundException {
-        if (config == null) {
-            logger.info("Loading user config from file");
-            config = configIO.loadConfig();
+        if (this.config == null) { // First check (without locking)
+            synchronized (this) {
+                if (this.config == null) { // Second check (with locking)
+                    logger.info("Loading user config from file...");
+                    UserConfig loadedConfig = configIO.loadConfig();
+                    if (loadedConfig == null) {
+                        throw new ConfigNotFoundException("User Configs are not defined");
+                    }
+                    this.config = loadedConfig;
+                }
+            }
         }
-        if (config == null) {
-            throw new ConfigNotFoundException("User Configs are not defined");
-        }
-        logger.info("User config found");
-        return config;
+        logger.info("User config successfully loaded.");
+        return this.config;
     }
 
-    // Instance method to set configuration and save it
+    /**
+     * Updates the user configuration and saves it to the persistent storage.
+     *
+     * @param userConfig The new user configuration.
+     */
     public void setUserConfig(UserConfig userConfig) {
-        config = userConfig;
-        configIO.saveConfig(userConfig);
+        synchronized (this) { // Ensure thread safety for write operations
+            config = userConfig;
+            logger.info("Saving user config to file...");
+            configIO.saveConfig(userConfig);
+            logger.info("User config successfully saved.");
+        }
     }
 }
+
