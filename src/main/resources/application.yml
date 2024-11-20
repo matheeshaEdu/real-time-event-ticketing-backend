@@ -2,12 +2,8 @@ server:
   port: 8080
 
 spring:
-  shell:
-    interactive:
-      enabled: true
-    script:
-      enabled: false
-
+  application:
+      name: e-ticket
   datasource:
     url: jdbc:mysql://localhost:3306/e_ticket?createDatabaseIfNotExist=true&useTimezone=true&serverTimezone=UTC
     username: root
@@ -24,13 +20,10 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
 
-userConfig:
-  configFilePath: userConfig.json
-
 
 logging:
   file:
-    name: logs/application.log
+    name: src/main/resources/logs/application.log
   pattern:
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"  # Customize log format
     console: ""                 # Disable console logging by setting it to an empty string

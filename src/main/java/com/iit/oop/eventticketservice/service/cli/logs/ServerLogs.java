@@ -1,11 +1,11 @@
 package com.iit.oop.eventticketservice.service.cli.logs;
 
 import com.iit.oop.eventticketservice.service.cli.ShellProcess;
-import com.iit.oop.eventticketservice.util.logger.ShellLogger;
-import org.jline.terminal.Terminal;
+import com.iit.oop.eventticketservice.util.Global;
+import com.iit.oop.eventticketservice.util.shell.ShellLogger;
+import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
@@ -13,119 +13,101 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Shell process to tail the server log file
+ * Shell process to tail the server log file.
  */
 @Component
 public class ServerLogs implements ShellProcess {
     private static final Logger log = LoggerFactory.getLogger(ServerLogs.class);
-
+    private final ShellScanner scanner = ShellScanner.getInstance();
     private final ShellLogger shellLogger;
-    private Thread logReaderThread;
+    private volatile boolean running; // Volatile to ensure visibility across threads
+    private final Object lock = new Object(); // Synchronization lock
 
-    @Value("${logging.file.name}")
-    private String logPath;
-
-    public ServerLogs(Terminal terminal) {
-        this.shellLogger = new ShellLogger(terminal);
+    public ServerLogs() {
+        // Get ShellLogger instance
+        this.shellLogger= ShellLogger.getInstance();
     }
 
     @Override
     public void start() {
-        startLogReader();
-        waitForUserInputToStop();
-    }
+        running = true;
+        Thread logReaderThread = new Thread(this::readLog, "LogReaderThread");
+        Thread userInputListenerThread = new Thread(this::listenForUserInput, "UserInputListenerThread");
 
-    /**
-     * Starts the log reader thread and manages its lifecycle.
-     */
-    private void startLogReader() {
-        logReaderThread = new Thread(this::readLog);
-        logReaderThread.setDaemon(true); // Allows JVM to exit if main thread ends
+        userInputListenerThread.start();
         logReaderThread.start();
+
+        // Wait for threads to terminate
+        try {
+            logReaderThread.join();
+            userInputListenerThread.join();
+        } catch (InterruptedException e) {
+            log.error("Error while waiting for threads to terminate", e);
+            Thread.currentThread().interrupt();
+        }
     }
 
-    /**
-     * Reads the log file and outputs its content line by line.
-     */
     private void readLog() {
         Process process = null;
         try (BufferedReader reader = createLogReader()) {
             process = startLogTailProcess();
             String line;
 
-            while ((line = reader.readLine()) != null) {
-                if (Thread.currentThread().isInterrupted()) {
-                    break;
+            while (running) {
+                if (reader.ready() && (line = reader.readLine()) != null) {
+                    shellLogger.info(line);
+                } else {
+                    Thread.sleep(100); // Avoid busy-waiting
                 }
-                shellLogger.info(line);
             }
-        } catch (IOException e) {
-            log.error("Error reading log file", e);
+        } catch (IOException | InterruptedException e) {
+            if (!running) {
+                log.info("LogReaderThread interrupted during shutdown");
+            } else {
+                log.error("Error in LogReaderThread", e);
+            }
         } finally {
             if (process != null) {
-                process.destroy(); // Ensure the process is terminated
+                process.destroy();
+                log.info("Log tail process terminated.");
             }
         }
     }
 
-    /**
-     * Stops the log reader when the user presses 'q'.
-     */
-    private void waitForUserInputToStop() {
+    private void listenForUserInput() {
         shellLogger.usageInfo("Press 'q' to stop tailing the log and return to the shell prompt.");
-        try {
-            while (true) {
-                int key = System.in.read();
-                if (key == 'q') { // Stop on user pressing 'q'
-                    stopLogReader();
-                    break;
+            while (running) {
+                String input = "";
+                try {
+                    input = scanner.scanString();
+                    if (input.equals("q")) {
+                        break;
+                    }
+                } catch (IllegalArgumentException e) {
+                    shellLogger.error(e.getMessage());
                 }
             }
-        } catch (IOException e) {
-            log.error("Error while waiting for user input to stop: {}", e.getMessage());
-        }
+            stop();
     }
 
-    /**
-     * Stops the log reader thread safely.
-     */
-    private void stopLogReader() {
-        if (logReaderThread != null && logReaderThread.isAlive()) {
-            logReaderThread.interrupt(); // Signal the thread to stop
-            try {
-                logReaderThread.join(1000); // Wait for up to 2 seconds
-                if (logReaderThread.isAlive()) {
-                    log.warn("Log reader thread did not terminate in time. Forcing shutdown...");
-                }
-            } catch (InterruptedException e) {
-                log.error("Error while stopping log reader thread", e);
-                Thread.currentThread().interrupt(); // Restore interrupted status
-            }
-        }
-    }
-
-    /**
-     * Creates a BufferedReader to read the log output.
-     *
-     * @return BufferedReader instance
-     * @throws IOException if an error occurs during reader creation
-     */
     private BufferedReader createLogReader() throws IOException {
         return new BufferedReader(new InputStreamReader(startLogTailProcess().getInputStream()));
     }
 
-    /**
-     * Starts the 'tail' process for the log file.
-     *
-     * @return the started Process
-     * @throws IOException if an error occurs while starting the process
-     */
     private Process startLogTailProcess() throws IOException {
-        ProcessBuilder processBuilder = new ProcessBuilder("tail", "-f", logPath);
+        ProcessBuilder processBuilder = new ProcessBuilder("tail", "-f", Global.LOG_PATH);
         return processBuilder.start();
     }
+
+    /**
+     * Gracefully stops all running threads and resources.
+     */
+    public void stop() {
+        synchronized (lock) {
+            if (running) {
+                running = false;
+                log.info("Stopping log reader and user input listener...");
+            }
+        }
+    }
 }
-
-
-
-

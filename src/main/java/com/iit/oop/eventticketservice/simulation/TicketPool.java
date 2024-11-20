@@ -43,7 +43,7 @@ public class TicketPool {
             if (queue.size() < maxSize) {
                 queue.add(ticket);
             } else {
-                log.debug("TicketPool is full. Cannot add more tickets.");
+                log.info("TicketPool is full. Cannot add more tickets.");
             }
         } finally {
             lock.unlock();
@@ -60,7 +60,7 @@ public class TicketPool {
         lock.lock();
         try {
             if (queue.isEmpty()) {
-                log.debug("TicketPool is empty. No tickets to retrieve.");
+                log.info("TicketPool is empty. No tickets to retrieve.");
                 return null;
             }
             return queue.poll();

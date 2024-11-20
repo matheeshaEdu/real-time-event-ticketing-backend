@@ -2,23 +2,14 @@ package com.iit.oop.eventticketservice.service.cli.config;
 
 import com.iit.oop.eventticketservice.model.UserConfig;
 import com.iit.oop.eventticketservice.service.cli.ShellProcess;
-import com.iit.oop.eventticketservice.service.cli.input.Scan;
+import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 import com.iit.oop.eventticketservice.service.config.ConfigManager;
-import com.iit.oop.eventticketservice.util.logger.ShellLogger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 
-@Component
 public class SetUserConfig implements ShellProcess {
-    private static final ConfigManager configManager = ConfigManager.getInstance();
-    private final ShellLogger shellLogger;
-    private final Scan scan;
-
-    @Autowired
-    public SetUserConfig(ShellLogger shellLogger, Scan scan) {
-        this.scan = scan;
-        this.shellLogger = shellLogger;
-    }
+    private final ConfigManager configManager = ConfigManager.getInstance();
+    private final ShellLogger shellLogger = ShellLogger.getInstance();
+    private final ShellScanner scan = ShellScanner.getInstance();
 
     public void start() {
         setConfig();

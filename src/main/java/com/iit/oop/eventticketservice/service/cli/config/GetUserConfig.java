@@ -4,22 +4,17 @@ import com.iit.oop.eventticketservice.model.UserConfig;
 import com.iit.oop.eventticketservice.exception.ConfigNotFoundException;
 import com.iit.oop.eventticketservice.service.cli.ShellProcess;
 import com.iit.oop.eventticketservice.service.config.ConfigManager;
-import com.iit.oop.eventticketservice.util.logger.ShellLogger;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GetUserConfig implements ShellProcess {
-    private static final ConfigManager configManager = ConfigManager.getInstance();
-    private final ShellLogger shellLogger;
-
-    @Autowired
-    public GetUserConfig(ShellLogger shellLogger) {
-        this.shellLogger = shellLogger;
-    }
+    private final ConfigManager configManager = ConfigManager.getInstance();
+    private final ShellLogger shellLogger = ShellLogger.getInstance();
 
     public void start() {
         UserConfig conf;
+        shellLogger.info(Thread.currentThread().getName());
         try {
             conf = configManager.getConfig();
         } catch (ConfigNotFoundException e) {

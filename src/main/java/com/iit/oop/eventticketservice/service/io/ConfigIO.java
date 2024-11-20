@@ -4,17 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.iit.oop.eventticketservice.model.UserConfig;
 import com.iit.oop.eventticketservice.service.config.ConfigSerializeManager;
+import com.iit.oop.eventticketservice.util.Global;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-@Component
+
 public class ConfigIO {
-    @Value("${userConfig.configFilePath}")
-    private String configFilePath;
     private static final Logger logger = LoggerFactory.getLogger(ConfigIO.class);
     private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -37,7 +34,7 @@ public class ConfigIO {
         // write the JSON string to the file
         FileIO fileIO = new FileIO();
         try{
-            fileIO.writeToFile(json, configFilePath, false);
+            fileIO.writeToFile(json, Global.CONFIG_PATH, false);
             logger.info("Config saved successfully");
         } catch (IOException e) {
             logger.error("Error saving config", e);
@@ -49,7 +46,7 @@ public class ConfigIO {
         FileIO fileIO = new FileIO();
         String json = null;
         try {
-            json = fileIO.readFromFile(configFilePath);
+            json = fileIO.readFromFile(Global.CONFIG_PATH);
             logger.info("Config loaded successfully");
         } catch (IOException e) {
             logger.error("Error loading config", e);
