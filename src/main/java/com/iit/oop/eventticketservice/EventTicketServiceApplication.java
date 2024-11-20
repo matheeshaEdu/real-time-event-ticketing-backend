@@ -1,9 +1,6 @@
 package com.iit.oop.eventticketservice;
 
-import com.iit.oop.eventticketservice.service.cli.config.GetUserConfig;
-import com.iit.oop.eventticketservice.service.cli.config.SetUserConfig;
-import com.iit.oop.eventticketservice.service.cli.logs.ServerLogs;
-import com.iit.oop.eventticketservice.service.cli.menu.ShellHandler;
+import com.iit.oop.eventticketservice.cli.menu.ShellHandler;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

@@ -55,7 +55,7 @@ public class Ticket {
         return vendor;
     }
 
-    public void setVendorId(Vendor vendor) {
+    public void setVendor(Vendor vendor) {
         this.vendor = vendor;
     }
 

@@ -1,6 +1,6 @@
-package com.iit.oop.eventticketservice.service.cli.logs;
+package com.iit.oop.eventticketservice.cli.logs;
 
-import com.iit.oop.eventticketservice.service.cli.ShellProcess;
+import com.iit.oop.eventticketservice.cli.ShellProcess;
 import com.iit.oop.eventticketservice.util.Global;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import com.iit.oop.eventticketservice.util.shell.ShellScanner;

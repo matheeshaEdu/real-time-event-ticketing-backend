@@ -1,9 +1,9 @@
-package com.iit.oop.eventticketservice.service.cli.menu;
+package com.iit.oop.eventticketservice.cli.menu;
 
-import com.iit.oop.eventticketservice.service.cli.ShellProcess;
-import com.iit.oop.eventticketservice.service.cli.config.GetUserConfig;
-import com.iit.oop.eventticketservice.service.cli.config.SetUserConfig;
-import com.iit.oop.eventticketservice.service.cli.logs.ServerLogs;
+import com.iit.oop.eventticketservice.cli.ShellProcess;
+import com.iit.oop.eventticketservice.cli.config.GetUserConfig;
+import com.iit.oop.eventticketservice.cli.config.SetUserConfig;
+import com.iit.oop.eventticketservice.cli.logs.ServerLogs;
 import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import org.springframework.boot.CommandLineRunner;

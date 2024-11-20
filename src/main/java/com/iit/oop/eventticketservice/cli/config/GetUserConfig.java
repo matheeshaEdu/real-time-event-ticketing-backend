@@ -1,8 +1,8 @@
-package com.iit.oop.eventticketservice.service.cli.config;
+package com.iit.oop.eventticketservice.cli.config;
 
 import com.iit.oop.eventticketservice.model.UserConfig;
 import com.iit.oop.eventticketservice.exception.ConfigNotFoundException;
-import com.iit.oop.eventticketservice.service.cli.ShellProcess;
+import com.iit.oop.eventticketservice.cli.ShellProcess;
 import com.iit.oop.eventticketservice.service.config.ConfigManager;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import org.springframework.stereotype.Component;

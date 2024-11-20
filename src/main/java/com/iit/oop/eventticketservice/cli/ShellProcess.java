@@ -1,4 +1,4 @@
-package com.iit.oop.eventticketservice.service.cli;
+package com.iit.oop.eventticketservice.cli;
 
 public interface ShellProcess{
     void start();
