@@ -9,61 +9,88 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.Condition;
 
+
+/**
+ * A thread-safe TicketPool using Singleton pattern.
+ * Manages a bounded pool of tickets with concurrent access.
+ */
 public class TicketPool {
     private static final Logger log = LoggerFactory.getLogger(TicketPool.class);
-    private final Queue<Ticket> queue = new ConcurrentLinkedQueue<>();
+
+    private final Queue<Ticket> queue;
     private final int maxSize;
-    private final Lock lock = new ReentrantLock();
+    private final Lock lock;
+    private final Condition notFull;
+    private final Condition notEmpty;
 
     // Private constructor for Singleton
     private TicketPool(int maxSize) {
+        this.queue = new ConcurrentLinkedQueue<>();
         this.maxSize = maxSize;
+        this.lock = new ReentrantLock();
+        this.notFull = lock.newCondition();
+        this.notEmpty = lock.newCondition();
     }
 
-    // Lazy-loaded Singleton using a nested static class
+    // Lazy-loaded Singleton using nested static class
     private static class SingletonHelper {
         private static final TicketPool INSTANCE = new TicketPool(
                 ConfigManager.getInstance().getConfig().getMaxTicketCapacity()
         );
     }
 
-    // Public accessor for the Singleton instance
+    /**
+     * Gets the singleton instance of TicketPool.
+     *
+     * @return the singleton TicketPool instance
+     */
     public static TicketPool getInstance() {
         return SingletonHelper.INSTANCE;
     }
 
     /**
-     * Adds a ticket to the pool if there's capacity.
-     * Uses a lock to ensure thread safety.
+     * Adds a ticket to the pool. Blocks if the pool is full.
+     *
+     * @param ticket the ticket to add
      */
     public void addTicket(Ticket ticket) {
         lock.lock();
         try {
-            if (queue.size() < maxSize) {
-                queue.add(ticket);
-            } else {
-                log.info("TicketPool is full. Cannot add more tickets.");
+            while (queue.size() >= maxSize) {
+                log.info("Ticket pool is full. Waiting to add ticket.");
+                notFull.await();
             }
+            queue.add(ticket);
+            notEmpty.signal(); // Signal that the pool is no longer empty
+        } catch (InterruptedException e) {
+            log.error("Thread interrupted while adding a ticket: {}", e.getMessage());
+            Thread.currentThread().interrupt();
         } finally {
             lock.unlock();
         }
     }
 
     /**
-     * Retrieves and removes a ticket from the pool.
-     * Uses a lock to ensure thread safety.
+     * Retrieves and removes a ticket from the pool. Blocks if the pool is empty.
      *
-     * @return a Ticket if available, or null if the pool is empty.
+     * @return the retrieved ticket
      */
     public Ticket getTicket() {
         lock.lock();
         try {
-            if (queue.isEmpty()) {
-                log.info("TicketPool is empty. No tickets to retrieve.");
-                return null;
+            while (queue.isEmpty()) {
+                log.info("Ticket pool is empty. Waiting to retrieve ticket.");
+                notEmpty.await();
             }
-            return queue.poll();
+            Ticket ticket = queue.poll();
+            notFull.signal(); // Signal that the pool is no longer full
+            return ticket;
+        } catch (InterruptedException e) {
+            log.error("Thread interrupted while retrieving a ticket: {}", e.getMessage());
+            Thread.currentThread().interrupt();
+            return null;
         } finally {
             lock.unlock();
         }
@@ -72,7 +99,7 @@ public class TicketPool {
     /**
      * Checks if the pool is empty.
      *
-     * @return true if empty, false otherwise.
+     * @return true if empty, false otherwise
      */
     public boolean isEmpty() {
         lock.lock();
@@ -86,7 +113,7 @@ public class TicketPool {
     /**
      * Gets the current size of the pool.
      *
-     * @return the number of tickets currently in the pool.
+     * @return the number of tickets currently in the pool
      */
     public int size() {
         lock.lock();
@@ -97,3 +124,4 @@ public class TicketPool {
         }
     }
 }
+

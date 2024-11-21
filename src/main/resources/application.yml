@@ -18,13 +18,5 @@ spring:
         format_sql: false
         show_sql: false
     database: mysql
-    database-platform: org.hibernate.dialect.MySQLDialect
-
-
-logging:
-  file:
-    name: src/main/resources/logs/application.log
-  pattern:
-    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"  # Customize log format
-    console: ""                 # Disable console logging by setting it to an empty string
+    database-platform: org.hibernate.dialect.MySQLDialect               # Disable console logging by setting it to an empty string
 

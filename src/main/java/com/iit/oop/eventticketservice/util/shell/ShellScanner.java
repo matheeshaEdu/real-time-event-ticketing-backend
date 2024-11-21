@@ -59,10 +59,6 @@ public class ShellScanner implements ShellClosable {
         return input;
     }
 
-    public Scanner getScanner(){
-        return scanner;
-    }
-
     public void close() {
         scanner.close();
     }

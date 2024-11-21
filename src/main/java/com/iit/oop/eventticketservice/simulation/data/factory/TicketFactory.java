@@ -1,6 +1,5 @@
 package com.iit.oop.eventticketservice.simulation.data.factory;
 
-import com.iit.oop.eventticketservice.model.Customer;
 import com.iit.oop.eventticketservice.model.Ticket;
 import com.iit.oop.eventticketservice.model.Vendor;
 import com.iit.oop.eventticketservice.service.ticket.TicketService;
@@ -10,13 +9,14 @@ import com.iit.oop.eventticketservice.util.Global;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 @Component
-public class TicketFactory {
+public class TicketFactory implements DataFactory<Ticket> {
     private final TicketService ticketService;
-    private List<Ticket> tickets;
+    private List<Ticket> tickets = new ArrayList<>();
     private final DataGenerator dataGenerator = new DataGenerator();
     private final DataStore dataStore = DataStore.getInstance();
     private final VendorFactory vendorFactory;
@@ -27,18 +27,22 @@ public class TicketFactory {
         this.vendorFactory = vendorFactory;
     }
 
-    public List<Ticket> get() {
-        if(tickets == null){
+    @Override
+    public List<Ticket> populate() {
+        if(tickets.isEmpty()){
             List<Ticket> existingTickets = dataStore.getTickets();
             if (!existingTickets.isEmpty()) {
-                tickets = existingTickets;
-                return existingTickets;
+                tickets = new ArrayList<>(existingTickets);
+                return tickets;
             }
-            tickets = ticketService.getTicketsLimited();
-            if (tickets.isEmpty()) {
-                List<Vendor> vendors = vendorFactory.get();
+            tickets = new ArrayList<>(ticketService.getTicketsLimited());
+            if (tickets.isEmpty() || tickets.size() < Global.SIMULATION_TICKETS) {
+                List<Vendor> vendors = vendorFactory.populate();
                 Random random = new Random();
-                for (int i = 0; i < Global.SIMULATION_CUSTOMERS; i++) {
+                // fill the rest if not enough
+                int ticketCount = Global.SIMULATION_TICKETS - tickets.size();
+                // generate tickets
+                for (int i = 0; i < ticketCount; i++) {
                     Vendor randomVendor = vendors.get(random.nextInt(vendors.size()));
                     Ticket customer = dataGenerator.makeTicket(randomVendor);
                     ticketService.saveTicket(customer);

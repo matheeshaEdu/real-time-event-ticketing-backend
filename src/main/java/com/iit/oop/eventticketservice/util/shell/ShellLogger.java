@@ -31,7 +31,7 @@ public class ShellLogger implements ShellClosable {
     }
 
     public void usageInfo(String message) {
-        logWithoutLabel(message);
+        logWithoutLabel(message, LogLevel.USAGE);
     }
 
     public void warn(String message) {
@@ -46,12 +46,44 @@ public class ShellLogger implements ShellClosable {
         log(message, LogLevel.DEBUG);
     }
 
+    public void trace(String message) {
+        log(message, LogLevel.TRACE);
+    }
+
+    public void success(String message) {
+        log(message, LogLevel.SUCCESS);
+    }
+
+    public void failure(String message) {
+        logWithoutLabel(message, LogLevel.FAILURE);
+    }
+
+    public void fatal(String message) {
+        log(message, LogLevel.FATAL);
+    }
+
+    public void notice(String message) {
+        log(message, LogLevel.NOTICE);
+    }
+
+    public void critical(String message) {
+        log(message, LogLevel.CRITICAL);
+    }
+
+    public void alert(String message) {
+        log(message, LogLevel.ALERT);
+    }
+
+    public void verbose(String message) {
+        logWithoutLabel(message, LogLevel.VERBOSE);
+    }
+
     private void log(String message, LogLevel level) {
             write(level.format(message));
     }
 
-    private void logWithoutLabel(String message) {
-        write(LogLevel.USAGE_INFO.defaultFormatter(message));
+    private void logWithoutLabel(String message, LogLevel level) {
+        write(level.defaultFormatter(message));
     }
 
     private synchronized void write(String message) {
@@ -62,12 +94,20 @@ public class ShellLogger implements ShellClosable {
     /**
      * Log levels with color-coding for console output.
      */
-    public enum LogLevel {
-        INFO("\u001B[32m", "INFO"),         // Green
-        USAGE_INFO("\u001B[1;36m", "USAGE"), // Bold Cyan
-        WARN("\u001B[33m", "WARN"),         // Yellow
-        ERROR("\u001B[31m", "ERROR"),       // Red
-        DEBUG("\u001B[34m", "DEBUG");      // Blue
+    private enum LogLevel {
+        INFO("\u001B[92m", "INFO"),              // Light Green
+        USAGE("\u001B[33m", "USAGE"),            // Soft Yellow
+        WARN("\u001B[38;5;214m", "WARN"),        // Amber
+        ERROR("\u001B[38;5;1m", "ERROR"),        // Dark Red
+        DEBUG("\u001B[38;5;32m", "DEBUG"),       // Steel Blue
+        TRACE("\u001B[38;5;5m", "TRACE"),        // Purple
+        SUCCESS("\u001B[38;5;2m", "SUCCESS"),    // Emerald Green
+        FAILURE("\u001B[38;5;9m", "FAILURE"),    // Crimson Red
+        FATAL("\u001B[97;48;5;52m", "FATAL"),    // Bright White with Dark Red Background
+        NOTICE("\u001B[38;5;99m", "NOTICE"),    // Light Purple
+        CRITICAL("\u001B[38;5;220m", "CRITICAL"),// Golden Yellow
+        ALERT("\u001B[38;5;178m", "ALERT"),      // Deep Yellow
+        VERBOSE("\u001B[38;5;24m", "VERBOSE");   // Dark Slate Blue  //  Blue
 
         private final String colorCode;
         private final String label;

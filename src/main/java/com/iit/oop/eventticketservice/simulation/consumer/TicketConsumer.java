@@ -29,7 +29,12 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer, R
      */
     @Override
     public Ticket consume() {
-        return ticketPool.getTicket();
+        Ticket ticket = ticketPool.getTicket();
+        if (ticket == null) {
+            log.warn("No ticket retrieved for customer {} due to interruption.", customer.getName());
+            return null;
+        }
+        return ticket;
     }
 
     /**
@@ -43,9 +48,12 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer, R
                 // Generate a random delay between 0 and PRODUCE_TIME
                 int interval = timer.getRandomDelay(Global.CONSUME_TIME);
                 delayFor(interval);
-                // Produce a ticket
-                consume();
-                log.info("Customer {} | consumed ticket: {}", customer.getName(), ticketPool.getTicket());
+                // consume a ticket
+                Ticket ticket = consume();
+                if(ticket == null) {
+                    continue;
+                }
+                log.info("Customer {} | consumed ticket: {}", customer.getName(), ticket.getName());
                 // Calculate the remaining time to wait
                 long end = System.currentTimeMillis();
                 long remainingWait = Math.max(0, Global.CONSUME_TIME - (end - start));

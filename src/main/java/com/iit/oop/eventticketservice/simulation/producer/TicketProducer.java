@@ -30,7 +30,6 @@ public class TicketProducer extends AbstractTicketHandler implements Producer, R
     @Override
     public void produce() {
         ticketPool.addTicket(ticket);
-        log.info("Vendor {} | added ticket: {}", vendor.getName(), ticket);
     }
 
     /**

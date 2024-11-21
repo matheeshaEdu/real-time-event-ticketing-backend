@@ -4,20 +4,37 @@ import com.iit.oop.eventticketservice.model.Customer;
 import com.iit.oop.eventticketservice.model.Ticket;
 import com.iit.oop.eventticketservice.model.Vendor;
 import com.iit.oop.eventticketservice.simulation.consumer.TicketConsumer;
+import com.iit.oop.eventticketservice.simulation.data.DataStore;
 import com.iit.oop.eventticketservice.simulation.producer.TicketProducer;
 import com.iit.oop.eventticketservice.util.Global;
+import com.iit.oop.eventticketservice.util.shell.ShellLogger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * ParticipantHandler is responsible for starting and stopping the simulation.
  */
 public class ParticipantHandler {
+    private static final Logger log = LoggerFactory.getLogger(ParticipantHandler.class);
+    private static final int MILLI_SECONDS_PER_SECOND = 1000;
+    private static final int SECONDS_PER_MINUTE = 60;
     private final List<Thread> producerThreadPool = new ArrayList<>();
     private final List<Thread> consumerThreadPool = new ArrayList<>();
+    private final DataStore dataStore = DataStore.getInstance();
+    private final Random random = new Random();
+    private final ShellLogger shellLogger = ShellLogger.getInstance();
 
     public void startSimulation(int sellingRate, int buyingRate) {
+        // check if the simulation is already running
+        if (!producerThreadPool.isEmpty() || !consumerThreadPool.isEmpty()) {
+            log.error("Simulation is already running. Please stop the simulation before starting a new one.");
+            shellLogger.failure("Simulation is already running. Please stop the simulation before starting a new one.");
+            return;
+        }
         int producerCount = getProducerThreadCount(sellingRate);
         int consumerCount = getConsumerThreadCount(buyingRate);
         startProducers(producerCount);
@@ -32,8 +49,8 @@ public class ParticipantHandler {
      */
     private int getProducerThreadCount(int ratePerMinute) {
         // convert rate per minute to rate per milli-seconds
-        int ratePerMilliSeconds = ratePerMinute / 60 * 1000;
-        return (int) Math.ceil((double) ratePerMilliSeconds / Global.PRODUCE_TIME);
+        double ratePerMilliSeconds = (double) ratePerMinute / (SECONDS_PER_MINUTE * MILLI_SECONDS_PER_SECOND);
+        return (int) Math.ceil(ratePerMilliSeconds * Global.PRODUCE_TIME);
     }
 
     /**
@@ -44,8 +61,8 @@ public class ParticipantHandler {
      */
     private int getConsumerThreadCount(int ratePerMinute) {
         // convert rate per minute to rate per milli-seconds
-        int ratePerMilliSeconds = ratePerMinute / 60 * 1000;
-        return (int) Math.ceil((double) ratePerMilliSeconds / Global.CONSUME_TIME);
+        double ratePerMilliSeconds = (double) ratePerMinute / (SECONDS_PER_MINUTE * MILLI_SECONDS_PER_SECOND);
+        return (int) Math.ceil(ratePerMilliSeconds * Global.CONSUME_TIME);
     }
 
     /**
@@ -54,8 +71,14 @@ public class ParticipantHandler {
      * @param threads the number of consumer threads to start
      */
     private void startConsumers(int threads) {
+        log.info("Starting {} consumer threads...", threads);
+        shellLogger.alert("Starting " + threads + " consumer threads...");
+        List<Customer> customers = dataStore.getCustomers();
         for (int i = 0; i < threads; i++) {
-            TicketConsumer consumer = new TicketConsumer(new Customer());
+            // get a random customer
+            Customer randomCustomer = customers.get(random.nextInt(customers.size()));
+            // create a consumer thread
+            TicketConsumer consumer = new TicketConsumer(randomCustomer);
             Thread consumerThread = new Thread(consumer, "Consumer-" + i);
             consumerThreadPool.add(consumerThread);
             consumerThread.start();
@@ -68,8 +91,16 @@ public class ParticipantHandler {
      * @param threads the number of producer threads to start
      */
     private void startProducers(int threads) {
+        log.info("Starting {} producer threads...", threads);
+        shellLogger.alert("Starting " + threads + " producer threads...");
+        List<Vendor> vendors = dataStore.getVendors();
+        List<Ticket> tickets = dataStore.getTickets();
         for (int i = 0; i < threads; i++) {
-            TicketProducer producer = new TicketProducer(new Vendor(), new Ticket());
+            // get a random vendor and ticket
+            Vendor randomVendor = vendors.get(random.nextInt(vendors.size()));
+            Ticket randomTicket = tickets.get(random.nextInt(tickets.size()));
+            // create a producer thread
+            TicketProducer producer = new TicketProducer(randomVendor, randomTicket);
             Thread producerThread = new Thread(producer, "Producer-" + i);
             producerThreadPool.add(producerThread);
             producerThread.start();
@@ -80,6 +111,13 @@ public class ParticipantHandler {
      * Stop all producer and consumer threads.
      */
     public void stopAll() {
+        // check if the simulation is not running
+        if (producerThreadPool.isEmpty() && consumerThreadPool.isEmpty()) {
+            log.error("Simulation is not running. Please start the simulation before stopping it.");
+            shellLogger.failure("Simulation is not running. Please start the simulation before stopping it.");
+            return;
+        }
+        log.info("Stopping all producer consumer threads...");
         producerThreadPool.forEach(Thread::interrupt);
         consumerThreadPool.forEach(Thread::interrupt);
         // try to shut down the threads gracefully
@@ -97,5 +135,6 @@ public class ParticipantHandler {
                 Thread.currentThread().interrupt();
             }
         });
+        shellLogger.success("All producer consumer threads stopped successfully.");
     }
 }

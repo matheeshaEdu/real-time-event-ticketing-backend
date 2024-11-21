@@ -1,17 +1,17 @@
-package com.iit.oop.eventticketservice.cli.config;
+package com.iit.oop.eventticketservice.cli.shellprocess.config;
 
+import com.iit.oop.eventticketservice.cli.shellprocess.ShellProcess;
 import com.iit.oop.eventticketservice.model.UserConfig;
-import com.iit.oop.eventticketservice.cli.ShellProcess;
 import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 import com.iit.oop.eventticketservice.service.config.ConfigManager;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 
-public class SetUserConfig implements ShellProcess {
+public class SetConfigProcess implements ShellProcess {
     private final ConfigManager configManager = ConfigManager.getInstance();
     private final ShellLogger shellLogger = ShellLogger.getInstance();
     private final ShellScanner scan = ShellScanner.getInstance();
 
-    public void start() {
+    public void execute() {
         setConfig();
     }
 

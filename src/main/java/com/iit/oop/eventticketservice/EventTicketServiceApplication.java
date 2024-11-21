@@ -1,6 +1,9 @@
 package com.iit.oop.eventticketservice;
 
-import com.iit.oop.eventticketservice.cli.menu.ShellHandler;
+import com.iit.oop.eventticketservice.cli.ShellHandler;
+import com.iit.oop.eventticketservice.cli.ShellManager;
+import com.iit.oop.eventticketservice.util.shell.ShellLogger;
+import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -10,18 +13,15 @@ public class EventTicketServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EventTicketServiceApplication.class, args);
 
-		// start the shell in a new thread
-		Thread shellThread = new Thread(() -> {
-			// create a new shell handler
-			ShellHandler shellHandler = new ShellHandler();
-			// run the shell handler
-            try {
-                shellHandler.run();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        });
-		shellThread.start();
+        // Initialize and start the ShellManager
+        ShellManager shellManager = new ShellManager(new ShellHandler());
+        shellManager.start();
+
+        // Add shutdown hooks for resource cleanup
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            shellManager.stop();
+            ShellLogger.getInstance().close();
+        }));
 	}
 
 }

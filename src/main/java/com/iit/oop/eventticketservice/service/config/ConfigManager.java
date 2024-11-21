@@ -44,7 +44,7 @@ public class ConfigManager {
                     logger.info("Loading user config from file...");
                     UserConfig loadedConfig = configIO.loadConfig();
                     if (loadedConfig == null) {
-                        throw new ConfigNotFoundException("User Configs are not defined");
+                        throw new ConfigNotFoundException("User Configs are not defined. Please set the user configs.");
                     }
                     this.config = loadedConfig;
                 }
