@@ -18,5 +18,5 @@ spring:
         format_sql: false
         show_sql: false
     database: mysql
-    database-platform: org.hibernate.dialect.MySQLDialect               # Disable console logging by setting it to an empty string
+    database-platform: org.hibernate.dialect.MySQLDialect
 

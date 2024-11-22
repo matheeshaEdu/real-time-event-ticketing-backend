@@ -1,7 +1,7 @@
-package com.iit.oop.eventticketservice.service.validator.integer;
+package com.iit.oop.eventticketservice.util.validator.integer;
 
-import com.iit.oop.eventticketservice.service.validator.AbstractValidator;
-import com.iit.oop.eventticketservice.service.validator.ValidationResult;
+import com.iit.oop.eventticketservice.util.validator.AbstractValidator;
+import com.iit.oop.eventticketservice.util.validator.ValidationResult;
 
 public class IntegerValidator extends AbstractValidator<Integer> {
     @Override

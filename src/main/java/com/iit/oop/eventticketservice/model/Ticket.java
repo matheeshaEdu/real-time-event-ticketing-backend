@@ -10,16 +10,14 @@ public class Ticket {
     private Integer id;
     private String name;
     private Integer price;
-    private Integer quantity;
     @ManyToOne
     @JoinColumn(name = "vendor_id", nullable = false)
     private Vendor vendor;
 
-    public Ticket(Integer id, String name, Integer price, Integer quantity, Vendor vendor) {
+    public Ticket(Integer id, String name, Integer price, Vendor vendor) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.quantity = quantity;
         this.vendor = vendor;
     }
 
@@ -41,14 +39,6 @@ public class Ticket {
 
     public void setPrice(Integer price) {
         this.price = price;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     public Vendor getVendor() {

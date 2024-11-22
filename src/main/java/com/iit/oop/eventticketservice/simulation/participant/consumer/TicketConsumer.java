@@ -1,25 +1,45 @@
-package com.iit.oop.eventticketservice.simulation.consumer;
+package com.iit.oop.eventticketservice.simulation.participant.consumer;
 
+import com.iit.oop.eventticketservice.event.observer.DatabaseSinker;
+import com.iit.oop.eventticketservice.event.subject.DomainEventPublisher;
+import com.iit.oop.eventticketservice.event.subject.Subject;
 import com.iit.oop.eventticketservice.model.Customer;
 import com.iit.oop.eventticketservice.model.Ticket;
-import com.iit.oop.eventticketservice.simulation.AbstractTicketHandler;
+import com.iit.oop.eventticketservice.model.Transaction;
+import com.iit.oop.eventticketservice.simulation.participant.AbstractTicketHandler;
 import com.iit.oop.eventticketservice.simulation.TicketPool;
 import com.iit.oop.eventticketservice.simulation.Timer;
 import com.iit.oop.eventticketservice.util.Global;
+import com.iit.oop.eventticketservice.util.spring.ApplicationContextHolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 /**
  * A TicketConsumer is a Runnable that consumes tickets at a random interval.
  */
 public class TicketConsumer extends AbstractTicketHandler implements Consumer, Runnable {
-    private static final TicketPool ticketPool = TicketPool.getInstance();
     private static final Logger log = LoggerFactory.getLogger(TicketConsumer.class);
+    private final TicketPool ticketPool;
     private final Customer customer;
-    private final Timer timer = new Timer();
+    private final Timer timer;
+    private final Subject<Transaction> subject;
 
-    public TicketConsumer(Customer customer) {
+    public TicketConsumer(Timer timer,TicketPool ticketPool, Customer customer) {
+        this.ticketPool = ticketPool;
         this.customer = customer;
+        this.timer = timer;
+        this.subject = new DomainEventPublisher<>();
+
+        initObservers();
+    }
+
+    /**
+     * Initialize the observers.
+     */
+    public void initObservers() {
+        DatabaseSinker databaseSinker = ApplicationContextHolder.getBean(DatabaseSinker.class);
+        this.subject.addObserver(databaseSinker);
     }
 
     /**
@@ -34,6 +54,7 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer, R
             log.warn("No ticket retrieved for customer {} due to interruption.", customer.getName());
             return null;
         }
+        publishTransactionEvent(ticket);
         return ticket;
     }
 
@@ -63,5 +84,10 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer, R
                 Thread.currentThread().interrupt();
             }
         }
+    }
+
+    public void publishTransactionEvent(Ticket ticket) {
+        Transaction transaction = new Transaction(customer, ticket, 1, ticket.getPrice());
+        subject.notifyObservers(transaction);
     }
 }

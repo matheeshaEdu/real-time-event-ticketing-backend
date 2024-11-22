@@ -2,7 +2,6 @@ package com.iit.oop.eventticketservice.cli;
 
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import com.iit.oop.eventticketservice.util.shell.ShellScanner;
-;
 
 public class ShellManager {
 
@@ -37,7 +36,7 @@ public class ShellManager {
         if (shellThread != null && shellThread.isAlive()) {
             shellThread.interrupt();
             try {
-                shellThread.join(); // Wait for the thread to terminate
+                shellThread.join(1000); // Wait for the thread to terminate
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt(); // Restore interrupt status
                 ShellLogger.getInstance().error("Shell thread interrupted during shutdown.");

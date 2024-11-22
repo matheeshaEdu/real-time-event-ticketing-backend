@@ -1,4 +1,4 @@
-package com.iit.oop.eventticketservice.service.validator;
+package com.iit.oop.eventticketservice.util.validator;
 
 public class ValidationResult<T> {
     private final T value;

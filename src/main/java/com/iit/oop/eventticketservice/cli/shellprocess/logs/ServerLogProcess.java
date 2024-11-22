@@ -55,7 +55,7 @@ public class ServerLogProcess implements ShellProcess {
             reader.seek(filePointer);
             while (running) {
                 filePointer = readNewLines(reader, filePointer);
-                Thread.sleep(500); // Poll every second
+                Thread.sleep(500); // Poll every half a second
             }
         } catch (IOException e) {
             log.error("Error while reading the log file: {}", e.getMessage(), e);

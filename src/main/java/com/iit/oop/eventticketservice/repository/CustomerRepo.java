@@ -1,7 +1,6 @@
 package com.iit.oop.eventticketservice.repository;
 
 import com.iit.oop.eventticketservice.model.Customer;
-import com.iit.oop.eventticketservice.model.Vendor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

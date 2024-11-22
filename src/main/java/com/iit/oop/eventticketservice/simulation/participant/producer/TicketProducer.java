@@ -1,8 +1,11 @@
-package com.iit.oop.eventticketservice.simulation.producer;
+package com.iit.oop.eventticketservice.simulation.participant.producer;
 
+import com.iit.oop.eventticketservice.event.observer.TicketThresholdMonitor;
+import com.iit.oop.eventticketservice.event.subject.DomainEventPublisher;
+import com.iit.oop.eventticketservice.event.subject.Subject;
 import com.iit.oop.eventticketservice.model.Ticket;
 import com.iit.oop.eventticketservice.model.Vendor;
-import com.iit.oop.eventticketservice.simulation.AbstractTicketHandler;
+import com.iit.oop.eventticketservice.simulation.participant.AbstractTicketHandler;
 import com.iit.oop.eventticketservice.simulation.TicketPool;
 import com.iit.oop.eventticketservice.simulation.Timer;
 import com.iit.oop.eventticketservice.util.Global;
@@ -13,15 +16,29 @@ import org.slf4j.LoggerFactory;
  * A TicketProducer is a Runnable that produces tickets at a random interval.
  */
 public class TicketProducer extends AbstractTicketHandler implements Producer, Runnable {
-    private static final TicketPool ticketPool = TicketPool.getInstance();
     private static final Logger log = LoggerFactory.getLogger(TicketProducer.class);
-    private final Timer timer = new Timer();
+    private final TicketPool ticketPool;
+    private final Timer timer;
     private final Vendor vendor;
     private final Ticket ticket;
+    private final Subject<Integer> subject;
 
-    public TicketProducer(Vendor vendor, Ticket ticket) {
+    public TicketProducer(Timer timer, TicketPool ticketPool, Vendor vendor, Ticket ticket) {
+        this.timer = timer;
+        this.ticketPool = ticketPool;
         this.vendor = vendor;
         this.ticket = ticket;
+        this.subject = new DomainEventPublisher<>();
+
+        initObservers();
+    }
+
+    /**
+     * Initialize the observers.
+     */
+    public void initObservers() {
+        TicketThresholdMonitor ticketThresholdMonitor = new TicketThresholdMonitor();
+        this.subject.addObserver(ticketThresholdMonitor);
     }
 
     /**
@@ -30,6 +47,7 @@ public class TicketProducer extends AbstractTicketHandler implements Producer, R
     @Override
     public void produce() {
         ticketPool.addTicket(ticket);
+        subject.notifyObservers(1);
     }
 
     /**

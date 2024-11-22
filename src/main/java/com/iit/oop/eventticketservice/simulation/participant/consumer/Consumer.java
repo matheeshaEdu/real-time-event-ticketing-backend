@@ -1,4 +1,4 @@
-package com.iit.oop.eventticketservice.simulation.consumer;
+package com.iit.oop.eventticketservice.simulation.participant.consumer;
 
 import com.iit.oop.eventticketservice.model.Ticket;
 

@@ -1,8 +1,8 @@
 package com.iit.oop.eventticketservice.util.shell;
 
-import com.iit.oop.eventticketservice.service.validator.ValidationResult;
-import com.iit.oop.eventticketservice.service.validator.Validator;
-import com.iit.oop.eventticketservice.service.validator.integer.IntegerValidator;
+import com.iit.oop.eventticketservice.util.validator.ValidationResult;
+import com.iit.oop.eventticketservice.util.validator.Validator;
+import com.iit.oop.eventticketservice.util.validator.integer.IntegerValidator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,23 +41,32 @@ public class ShellScanner implements ShellClosable {
         }
     }
 
-    public String scanString() throws IllegalArgumentException  {
-        if (!scanner.hasNextLine()) {
-            log.error("No line found in input");
-            throw new IllegalArgumentException("No line found in input");
-        }
+    public synchronized String scanString() throws IllegalArgumentException {
+        try {
+            if (!scanner.hasNextLine()) {
+                log.error("No line found in input");
+                throw new IllegalArgumentException("No line found in input. Please provide valid input.");
+            }
 
-        String input = scanner.nextLine().trim();
-        if (input.isEmpty()) {
-            log.error("Input cannot be empty");
-            throw new IllegalArgumentException("Input cannot be empty");
+            String input = scanner.nextLine().trim();
+            if (input.isEmpty()) {
+                log.error("Input cannot be empty");
+                throw new IllegalArgumentException("Input cannot be empty.");
+            }
+
+            if (!input.matches("[a-zA-Z0-9 ]+")) {
+                log.error("Input contains invalid characters: {}", input);
+                throw new IllegalArgumentException("Input contains invalid characters. Only alphanumeric and spaces are allowed.");
+            }
+
+            return input;
+        } catch (IllegalStateException e) {
+            String errorMessage = "Scanner is unavailable for reading input. Error: " + e.getMessage();
+            log.error(errorMessage, e);
+            throw new IllegalStateException(errorMessage, e);
         }
-        if (!input.matches("[a-zA-Z0-9 ]+")) {
-            log.error("Input contains invalid characters: {}", input);
-            throw new IllegalArgumentException("Input contains invalid characters");
-        }
-        return input;
     }
+
 
     public void close() {
         scanner.close();

@@ -24,7 +24,6 @@ public class DataGenerator {
         Ticket ticket = new Ticket();
         ticket.setPrice(faker.number().numberBetween(100, 1000));
         ticket.setName(faker.book().title());
-        ticket.setQuantity(1);
         ticket.setVendor(vendor);
         return ticket;
     }

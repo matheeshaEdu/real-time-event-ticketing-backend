@@ -1,4 +1,4 @@
-package com.iit.oop.eventticketservice.service.io;
+package com.iit.oop.eventticketservice.util.io;
 
 import java.io.*;
 

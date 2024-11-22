@@ -1,4 +1,4 @@
-package com.iit.oop.eventticketservice.simulation;
+package com.iit.oop.eventticketservice.simulation.participant;
 
 public abstract class AbstractTicketHandler {
     /**

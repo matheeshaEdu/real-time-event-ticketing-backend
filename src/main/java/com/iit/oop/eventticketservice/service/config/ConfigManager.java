@@ -2,7 +2,7 @@ package com.iit.oop.eventticketservice.service.config;
 
 import com.iit.oop.eventticketservice.model.UserConfig;
 import com.iit.oop.eventticketservice.exception.ConfigNotFoundException;
-import com.iit.oop.eventticketservice.service.io.ConfigIO;
+import com.iit.oop.eventticketservice.util.io.ConfigIO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

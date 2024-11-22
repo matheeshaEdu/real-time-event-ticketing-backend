@@ -1,10 +1,10 @@
 package com.iit.oop.eventticketservice.model;
 
 public class UserConfig{
-    private Integer totalTickets;
-    private Integer ticketReleaseRate;
-    private Integer customerRetrievalRate;
-    private Integer maxTicketCapacity;
+    private int totalTickets;
+    private int ticketReleaseRate;
+    private int customerRetrievalRate;
+    private int maxTicketCapacity;
 
     public UserConfig(Integer totalTickets, Integer ticketReleaseRate, Integer customerRetrievalRate, Integer maxTicketCapacity) {
         this.totalTickets = totalTickets;

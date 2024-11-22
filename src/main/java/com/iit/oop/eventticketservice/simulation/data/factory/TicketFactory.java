@@ -20,6 +20,7 @@ public class TicketFactory implements DataFactory<Ticket> {
     private final DataGenerator dataGenerator = new DataGenerator();
     private final DataStore dataStore = DataStore.getInstance();
     private final VendorFactory vendorFactory;
+    Random random = new Random();
 
     @Autowired
     public TicketFactory(TicketService ticketService, VendorFactory vendorFactory) {
@@ -38,7 +39,6 @@ public class TicketFactory implements DataFactory<Ticket> {
             tickets = new ArrayList<>(ticketService.getTicketsLimited());
             if (tickets.isEmpty() || tickets.size() < Global.SIMULATION_TICKETS) {
                 List<Vendor> vendors = vendorFactory.populate();
-                Random random = new Random();
                 // fill the rest if not enough
                 int ticketCount = Global.SIMULATION_TICKETS - tickets.size();
                 // generate tickets
