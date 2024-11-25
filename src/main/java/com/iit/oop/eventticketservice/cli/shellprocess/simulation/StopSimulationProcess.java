@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class StopSimulationProcess implements ShellProcess {
-        private final Simulator simulator;
+    private final Simulator simulator;
 
-        @Autowired
-        public StopSimulationProcess(Simulator simulator) {
-            this.simulator = simulator;
-        }
+    @Autowired
+    public StopSimulationProcess(Simulator simulator) {
+        this.simulator = simulator;
+    }
 
-        @Override
-        public void execute() {
-            simulator.stopSimulation();
+    @Override
+    public void execute() {
+        simulator.stop();
     }
 }

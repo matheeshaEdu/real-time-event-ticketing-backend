@@ -4,34 +4,31 @@ import com.iit.oop.eventticketservice.cli.shellprocess.ShellProcess;
 import com.iit.oop.eventticketservice.cli.shellprocess.config.GetConfigProcess;
 import com.iit.oop.eventticketservice.cli.shellprocess.config.SetConfigProcess;
 import com.iit.oop.eventticketservice.cli.shellprocess.logs.ServerLogProcess;
-import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
 
-@Component
 public class ShellHandler implements CommandLineRunner {
     private final ShellLogger shellLogger = ShellLogger.getInstance();
     private final ShellScanner scanner = ShellScanner.getInstance();
     private final ShellProcess serverLogs;
     private final ShellProcess userConfig;
     private final ShellProcess setConfig;
+    private final ShellProcess simulationProcess;
+    private final ShellProcess stopSimulationProcess;
 
-    @Autowired
-    private ShellProcess simulationProcess;
-    @Autowired
-    private ShellProcess stopSimulationProcess;
-
-    public ShellHandler() {
+    public ShellHandler(ShellProcess simulationProcess, ShellProcess stopSimulationProcess) {
         this.serverLogs = new ServerLogProcess();
         this.userConfig = new GetConfigProcess();
         this.setConfig = new SetConfigProcess();
+        this.simulationProcess = simulationProcess;
+        this.stopSimulationProcess = stopSimulationProcess;
     }
 
-    private void handleSelection(int selection){
-        switch (selection){
+
+    private void handleSelection(int selection) {
+        switch (selection) {
             case 1:
                 serverLogs.execute();
                 break;

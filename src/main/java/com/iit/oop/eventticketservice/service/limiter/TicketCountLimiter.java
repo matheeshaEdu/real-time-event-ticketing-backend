@@ -5,7 +5,7 @@ import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TicketCountLimiter implements Runnable{
+public class TicketCountLimiter implements Runnable {
     private static final Logger log = LoggerFactory.getLogger(TicketCountLimiter.class);
     private final TicketCounter ticketCounter = TicketCounter.getInstance();
     private final ShellLogger logger = ShellLogger.getInstance();
@@ -33,7 +33,7 @@ public class TicketCountLimiter implements Runnable{
         }
     }
 
-    private void stopSimulation(){
+    private void stopSimulation() {
         logger.fatal("Ticket count has reached the total ticket limit. Stopping the simulation...");
         this.participantHandler.stopAll();
     }

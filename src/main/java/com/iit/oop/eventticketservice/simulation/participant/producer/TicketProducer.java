@@ -1,21 +1,23 @@
 package com.iit.oop.eventticketservice.simulation.participant.producer;
 
-import com.iit.oop.eventticketservice.event.observer.TicketThresholdMonitor;
+import com.iit.oop.eventticketservice.event.observer.DomainEventObserver;
 import com.iit.oop.eventticketservice.event.subject.DomainEventPublisher;
 import com.iit.oop.eventticketservice.event.subject.Subject;
 import com.iit.oop.eventticketservice.model.Ticket;
 import com.iit.oop.eventticketservice.model.Vendor;
-import com.iit.oop.eventticketservice.simulation.participant.AbstractTicketHandler;
 import com.iit.oop.eventticketservice.simulation.TicketPool;
 import com.iit.oop.eventticketservice.simulation.Timer;
+import com.iit.oop.eventticketservice.simulation.participant.AbstractTicketHandler;
 import com.iit.oop.eventticketservice.util.Global;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 /**
  * A TicketProducer is a Runnable that produces tickets at a random interval.
  */
-public class TicketProducer extends AbstractTicketHandler implements Producer, Runnable {
+public class TicketProducer extends AbstractTicketHandler implements Producer {
     private static final Logger log = LoggerFactory.getLogger(TicketProducer.class);
     private final TicketPool ticketPool;
     private final Timer timer;
@@ -29,17 +31,18 @@ public class TicketProducer extends AbstractTicketHandler implements Producer, R
         this.vendor = vendor;
         this.ticket = ticket;
         this.subject = new DomainEventPublisher<>();
-
-        initObservers();
     }
 
     /**
      * Initialize the observers.
      */
-    public void initObservers() {
-        TicketThresholdMonitor ticketThresholdMonitor = new TicketThresholdMonitor();
-        this.subject.addObserver(ticketThresholdMonitor);
+    @Override
+    public void setObservers(List<DomainEventObserver<Integer>> observers) {
+        for (DomainEventObserver<Integer> observer : observers) {
+            subject.addObserver(observer);
+        }
     }
+
 
     /**
      * Produce a ticket and add it to the pool.

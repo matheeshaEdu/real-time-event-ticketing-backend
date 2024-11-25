@@ -1,7 +1,7 @@
 package com.iit.oop.eventticketservice.controller.config;
 
 import com.iit.oop.eventticketservice.dto.response.ResponseMessageDto;
-import com.iit.oop.eventticketservice.model.UserConfig;
+import com.iit.oop.eventticketservice.model.TicketConfig;
 import com.iit.oop.eventticketservice.service.config.UserConfigService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,9 +33,9 @@ public class UserConfigController {
     }
 
     @PostMapping("/set")
-    public ResponseEntity<Object> setConfig(@RequestBody UserConfig userConfig) {
+    public ResponseEntity<Object> setConfig(@RequestBody TicketConfig ticketConfig) {
         try {
-            userConfigService.setConfig(userConfig);
+            userConfigService.setConfig(ticketConfig);
             log.info("User config updated successfully");
             return ResponseEntity.ok("User config updated successfully");
         } catch (Exception e) {

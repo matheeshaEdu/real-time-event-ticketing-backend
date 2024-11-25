@@ -6,16 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DatabaseSinker implements DomainEventObserver<Transaction> {
+public class DatabaseSinkObserver implements DomainEventObserver<Transaction> {
     private final TransactionService transactionService;
 
     @Autowired
-    public DatabaseSinker(TransactionService transactionService) {
+    public DatabaseSinkObserver(TransactionService transactionService) {
         this.transactionService = transactionService;
     }
 
     @Override
     public void onDomainEvent(Transaction domainObject) {
+        // Update the database with the new transaction
+        // run in a separate thread to avoid blocking the current thread
+        new Thread(() -> updateDatabase(domainObject)).start();
+    }
+
+    private void updateDatabase(Transaction domainObject) {
         transactionService.saveTransaction(domainObject);
     }
 }

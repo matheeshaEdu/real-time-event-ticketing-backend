@@ -37,6 +37,6 @@ public class Vendor {
 
     @Override
     public String toString() {
-        return "vendor: "+this.name;
+        return "vendor: " + this.name;
     }
 }

@@ -14,18 +14,21 @@ import java.util.List;
 @Component
 public class CustomerFactory implements DataFactory<Customer> {
     private final CustomerService customerService;
-    private List<Customer> customers = new ArrayList<>();
-    private final DataGenerator dataGenerator = new DataGenerator();
-    private final DataStore dataStore = DataStore.getInstance();
+    private final DataGenerator dataGenerator;
+    private final DataStore dataStore;
+    private List<Customer> customers;
 
     @Autowired
     public CustomerFactory(CustomerService customerService) {
         this.customerService = customerService;
+        this.customers = new ArrayList<>();
+        this.dataGenerator = new DataGenerator();
+        this.dataStore = DataStore.getInstance();
     }
 
     @Override
     public List<Customer> populate() {
-        if(customers.isEmpty()){
+        if (customers.isEmpty()) {
             List<Customer> existingCustomers = dataStore.getCustomers();
             if (!existingCustomers.isEmpty()) {
                 customers = new ArrayList<>(existingCustomers);

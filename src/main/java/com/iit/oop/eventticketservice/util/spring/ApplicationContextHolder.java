@@ -1,5 +1,6 @@
 package com.iit.oop.eventticketservice.util.spring;
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -9,20 +10,26 @@ public class ApplicationContextHolder {
 
     private static ApplicationContext context;
 
-    // Setter method called by Spring
+    private final ApplicationContext applicationContext;
+
     @Autowired
     public ApplicationContextHolder(ApplicationContext applicationContext) {
-        ApplicationContextHolder.context = applicationContext;
+        this.applicationContext = applicationContext;
     }
 
-    // Static method to get the context
     public static ApplicationContext getApplicationContext() {
+        if (context == null) {
+            throw new IllegalStateException("ApplicationContext is not initialized yet.");
+        }
         return context;
     }
 
-    // Static method to get a bean
     public static <T> T getBean(Class<T> beanClass) {
-        return context.getBean(beanClass);
+        return getApplicationContext().getBean(beanClass);
+    }
+
+    @PostConstruct
+    public void init() {
+        ApplicationContextHolder.context = this.applicationContext;
     }
 }
-

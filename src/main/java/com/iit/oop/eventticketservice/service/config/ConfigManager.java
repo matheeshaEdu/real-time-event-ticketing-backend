@@ -1,34 +1,43 @@
 package com.iit.oop.eventticketservice.service.config;
 
-import com.iit.oop.eventticketservice.model.UserConfig;
+import com.iit.oop.eventticketservice.event.observer.DomainEventObserver;
+import com.iit.oop.eventticketservice.event.subject.DomainEventPublisher;
+import com.iit.oop.eventticketservice.event.subject.Subject;
 import com.iit.oop.eventticketservice.exception.ConfigNotFoundException;
+import com.iit.oop.eventticketservice.model.TicketConfig;
 import com.iit.oop.eventticketservice.util.io.ConfigIO;
+import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class ConfigManager {
 
     private static final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
+    private final ShellLogger shellLogger = ShellLogger.getInstance();
 
-    // The configuration object (volatile ensures visibility across threads)
-    private volatile UserConfig config;
-
-    // Dependency for config I/O operations, injected via constructor
+    private final AtomicReference<TicketConfig> config; // Thread-safe reference to user configuration
     private final ConfigIO configIO;
+    private final Subject<TicketConfig> subject;
 
     // Private constructor to allow dependency injection and prevent direct instantiation
     private ConfigManager(ConfigIO configIO) {
         this.configIO = configIO;
-    }
-
-    // Static inner class for lazy-loaded singleton
-    private static class ConfigManagerHolder {
-        private static final ConfigManager INSTANCE = new ConfigManager(ConfigIO.getInstance());
+        this.subject = new DomainEventPublisher<>();
+        this.config = new AtomicReference<>();
     }
 
     // Public method to get the singleton instance
     public static ConfigManager getInstance() {
         return ConfigManagerHolder.INSTANCE;
+    }
+
+    public void setObservers(List<DomainEventObserver<TicketConfig>> observers) {
+        for (DomainEventObserver<TicketConfig> observer : observers) {
+            subject.addObserver(observer);
+        }
     }
 
     /**
@@ -37,35 +46,59 @@ public class ConfigManager {
      * @return UserConfig The user configuration object.
      * @throws ConfigNotFoundException if configuration is missing.
      */
-    public UserConfig getConfig() throws ConfigNotFoundException {
-        if (this.config == null) { // First check (without locking)
+    public TicketConfig getConfig() throws ConfigNotFoundException {
+        if (this.config.get() == null) { // First check (without locking)
             synchronized (this) {
-                if (this.config == null) { // Second check (with locking)
+                if (this.config.get() == null) { // Second check (with locking)
                     logger.info("Loading user config from file...");
-                    UserConfig loadedConfig = configIO.loadConfig();
+                    TicketConfig loadedConfig = configIO.loadConfig();
                     if (loadedConfig == null) {
                         throw new ConfigNotFoundException("User Configs are not defined. Please set the user configs.");
                     }
-                    this.config = loadedConfig;
+                    this.config.set(loadedConfig);
                 }
             }
         }
-        logger.info("User config successfully loaded.");
-        return this.config;
+        return this.config.get();
     }
 
     /**
      * Updates the user configuration and saves it to the persistent storage.
      *
-     * @param userConfig The new user configuration.
+     * @param config The new user configuration.
      */
-    public void setUserConfig(UserConfig userConfig) {
-        synchronized (this) { // Ensure thread safety for write operations
-            config = userConfig;
+    public void setUserConfig(TicketConfig config) {
+        synchronized (this) {// Ensure thread safety for write operations
+            TicketConfig currentConfig = this.config.get();
+            if (currentConfig != null) {
+                if (currentConfig.equals(config)) {
+                    var msg = "User config is already up-to-date. No need to save.";
+                    logger.info(msg);
+                    shellLogger.alert(msg);
+                    return;
+                }
+                var msg = "Updating user config...";
+                logger.info(msg);
+                shellLogger.info(msg);
+
+                this.config.set(config);
+                subject.notifyObservers(this.config.get());
+                return;
+            }
+
+            this.config.set(config);
             logger.info("Saving user config to file...");
-            configIO.saveConfig(userConfig);
-            logger.info("User config successfully saved.");
+            configIO.saveConfig(config);
+
+            var msg = "User config successfully saved...";
+            logger.info(msg);
+            shellLogger.success(msg);
         }
+    }
+
+    // Static inner class for lazy-loaded singleton
+    private static class ConfigManagerHolder {
+        private static final ConfigManager INSTANCE = new ConfigManager(ConfigIO.getInstance());
     }
 }
 

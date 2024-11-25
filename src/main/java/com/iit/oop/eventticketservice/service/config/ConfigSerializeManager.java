@@ -1,7 +1,7 @@
 package com.iit.oop.eventticketservice.service.config;
 
 import com.google.gson.Gson;
-import com.iit.oop.eventticketservice.model.UserConfig;
+import com.iit.oop.eventticketservice.model.TicketConfig;
 
 public class ConfigSerializeManager {
     private final Gson gson;
@@ -10,11 +10,11 @@ public class ConfigSerializeManager {
         this.gson = gson;
     }
 
-    public String serialize(UserConfig object) {
+    public String serialize(TicketConfig object) {
         return gson.toJson(object);
     }
 
-    public UserConfig deserialize(String json) {
-        return gson.fromJson(json, UserConfig.class);
+    public TicketConfig deserialize(String json) {
+        return gson.fromJson(json, TicketConfig.class);
     }
 }

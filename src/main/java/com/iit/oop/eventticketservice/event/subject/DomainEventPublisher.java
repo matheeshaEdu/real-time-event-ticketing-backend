@@ -20,8 +20,7 @@ public class DomainEventPublisher<T> implements Subject<T> {
     @Override
     public void notifyObservers(T domainObject) {
         for (DomainEventObserver<T> observer : observers) {
-            // run the observer on a new thread
-            new Thread(() -> observer.onDomainEvent(domainObject)).start();
+            observer.onDomainEvent(domainObject);
         }
     }
 }

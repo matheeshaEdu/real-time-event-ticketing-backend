@@ -2,7 +2,7 @@ package com.iit.oop.eventticketservice.util.io;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.iit.oop.eventticketservice.model.UserConfig;
+import com.iit.oop.eventticketservice.model.TicketConfig;
 import com.iit.oop.eventticketservice.service.config.ConfigSerializeManager;
 import com.iit.oop.eventticketservice.util.Global;
 import org.slf4j.Logger;
@@ -18,22 +18,18 @@ public class ConfigIO {
     private ConfigIO() {
     }
 
-    private static class ConfigIOHolder {
-        private static final ConfigIO INSTANCE = new ConfigIO();
-    }
-
     public static ConfigIO getInstance() {
         return ConfigIOHolder.INSTANCE;
     }
 
-    public void saveConfig(UserConfig config) {
+    public void saveConfig(TicketConfig config) {
         // serialize the object to JSON
         ConfigSerializeManager configSerializeManager = new ConfigSerializeManager(gson);
         String json = configSerializeManager.serialize(config);
 
         // write the JSON string to the file
         FileIO fileIO = new FileIO();
-        try{
+        try {
             fileIO.writeToFile(json, Global.CONFIG_PATH, false);
             logger.info("Config saved successfully");
         } catch (IOException e) {
@@ -41,7 +37,7 @@ public class ConfigIO {
         }
     }
 
-    public UserConfig loadConfig() {
+    public TicketConfig loadConfig() {
         // read the JSON string from the file
         FileIO fileIO = new FileIO();
         String json = null;
@@ -55,5 +51,9 @@ public class ConfigIO {
         // deserialize the JSON string to an object
         ConfigSerializeManager configSerializeManager = new ConfigSerializeManager(gson);
         return configSerializeManager.deserialize(json);
+    }
+
+    private static class ConfigIOHolder {
+        private static final ConfigIO INSTANCE = new ConfigIO();
     }
 }

@@ -2,7 +2,7 @@ package com.iit.oop.eventticketservice.event.observer;
 
 import com.iit.oop.eventticketservice.service.limiter.TicketCounter;
 
-public class TicketThresholdMonitor implements DomainEventObserver<Integer> {
+public class TicketThresholdObserver implements DomainEventObserver<Integer> {
     private final TicketCounter ticketCounter = TicketCounter.getInstance();
 
     @Override

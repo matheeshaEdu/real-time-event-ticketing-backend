@@ -13,10 +13,6 @@ public class ShellLogger implements ShellClosable {
     private ShellLogger() {
     }
 
-    private static final class ShellLoggerHolder {
-        private static final ShellLogger instance = new ShellLogger();
-    }
-
     /**
      * Returns the singleton instance of ShellLogger.
      *
@@ -79,7 +75,7 @@ public class ShellLogger implements ShellClosable {
     }
 
     private void log(String message, LogLevel level) {
-            write(level.format(message));
+        write(level.format(message));
     }
 
     private void logWithoutLabel(String message, LogLevel level) {
@@ -89,6 +85,10 @@ public class ShellLogger implements ShellClosable {
     private synchronized void write(String message) {
         writer.println(message);
         writer.flush();
+    }
+
+    public void close() {
+        writer.close();
     }
 
     /**
@@ -121,14 +121,14 @@ public class ShellLogger implements ShellClosable {
             return String.format("%s[%s] %s\u001B[0m", colorCode, label, message); // Reset color
         }
 
-        public String defaultFormatter(String message){
+        public String defaultFormatter(String message) {
             return String.format("%s %s\u001B[0m", colorCode, message);
         }
 
     }
 
-    public void close() {
-            writer.close();
+    private static final class ShellLoggerHolder {
+        private static final ShellLogger instance = new ShellLogger();
     }
 
 }

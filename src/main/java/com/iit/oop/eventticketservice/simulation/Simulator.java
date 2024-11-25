@@ -1,6 +1,7 @@
 package com.iit.oop.eventticketservice.simulation;
 
 import com.iit.oop.eventticketservice.exception.ConfigNotFoundException;
+import com.iit.oop.eventticketservice.model.TicketConfig;
 import com.iit.oop.eventticketservice.service.config.ConfigManager;
 import com.iit.oop.eventticketservice.service.limiter.TicketCountLimiter;
 import com.iit.oop.eventticketservice.simulation.data.DataInit;
@@ -17,31 +18,30 @@ import org.springframework.stereotype.Component;
 @Component
 public class Simulator {
     private static final Logger log = LoggerFactory.getLogger(Simulator.class);
-    private final DataInit dataInit;
-    private final ParticipantHandler participantHandler = new ParticipantHandler();
-    private final ConfigManager configManager = ConfigManager.getInstance();
+    private final ParticipantHandler participantHandler;
     private final ShellLogger shellLogger = ShellLogger.getInstance();
 
     @Autowired
     public Simulator(DataInit dataInit) {
-        this.dataInit = dataInit;
+        dataInit.init();
+        this.participantHandler = new ParticipantHandler();
     }
 
     /**
      * Simulate vendor and customer interactions
      */
     public void simulate() {
+        TicketConfig config = ConfigManager.getInstance().getConfig();
         int buyingRate;
         int sellingRate;
         try {
-             buyingRate = configManager.getConfig().getCustomerRetrievalRate();
-             sellingRate = configManager.getConfig().getTicketReleaseRate();
+            buyingRate = config.getCustomerRetrievalRate();
+            sellingRate = config.getTicketReleaseRate();
         } catch (ConfigNotFoundException e) {
             log.error("Error while retrieving configuration: {}", e.getMessage());
             shellLogger.fatal("Could not start simulation | Error while retrieving configuration: " + e.getMessage());
             return;
         }
-        dataInit.init();
         startTicketLimiter();
         participantHandler.startSimulation(sellingRate, buyingRate);
     }
@@ -53,7 +53,11 @@ public class Simulator {
         ticketCountLimiter.start();
     }
 
-    public void stopSimulation() {
+    public void stop() {
         participantHandler.stopAll();
+    }
+
+    public boolean isRunning() {
+        return participantHandler.isRunning();
     }
 }

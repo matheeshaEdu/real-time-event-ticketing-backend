@@ -37,6 +37,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "customer: "+this.name;
+        return "customer: " + this.name;
     }
 }

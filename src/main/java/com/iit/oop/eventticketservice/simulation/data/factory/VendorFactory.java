@@ -14,9 +14,9 @@ import java.util.List;
 @Component
 public class VendorFactory implements DataFactory<Vendor> {
     private final VendorService vendorService;
-    private List<Vendor> vendors = new ArrayList<>();
     private final DataGenerator dataGenerator = new DataGenerator();
     private final DataStore dataStore = DataStore.getInstance();
+    private List<Vendor> vendors = new ArrayList<>();
 
     @Autowired
     public VendorFactory(VendorService vendorService) {
@@ -25,7 +25,7 @@ public class VendorFactory implements DataFactory<Vendor> {
 
     @Override
     public List<Vendor> populate() {
-        if(vendors.isEmpty()){
+        if (vendors.isEmpty()) {
             // get existing vendors
             List<Vendor> existingVendors = dataStore.getVendors();
             if (!existingVendors.isEmpty()) {

@@ -1,12 +1,12 @@
 package com.iit.oop.eventticketservice.simulation.participant;
 
+import com.iit.oop.eventticketservice.event.ObserverInitializer;
 import com.iit.oop.eventticketservice.model.Customer;
 import com.iit.oop.eventticketservice.model.Ticket;
-import com.iit.oop.eventticketservice.model.Vendor;
 import com.iit.oop.eventticketservice.simulation.TicketPool;
 import com.iit.oop.eventticketservice.simulation.Timer;
-import com.iit.oop.eventticketservice.simulation.participant.consumer.TicketConsumer;
 import com.iit.oop.eventticketservice.simulation.data.DataStore;
+import com.iit.oop.eventticketservice.simulation.participant.consumer.TicketConsumer;
 import com.iit.oop.eventticketservice.simulation.participant.producer.TicketProducer;
 import com.iit.oop.eventticketservice.util.Global;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
@@ -22,20 +22,25 @@ import java.util.Random;
  */
 public class ParticipantHandler {
     private static final Logger log = LoggerFactory.getLogger(ParticipantHandler.class);
-    private final DataStore dataStore = DataStore.getInstance();
-    private final ShellLogger shellLogger = ShellLogger.getInstance();
+    private static final int MILLI_SECONDS_PER_SECOND = 1000;
+    private static final int SECONDS_PER_MINUTE = 60;
+    private final DataStore dataStore;
+    private final ShellLogger shellLogger;
+    private final ObserverInitializer observerInitializer;
     private final List<Thread> producerThreadPool;
     private final List<Thread> consumerThreadPool;
     private final Random random;
     private volatile boolean running;
 
-    private static final int MILLI_SECONDS_PER_SECOND = 1000;
-    private static final int SECONDS_PER_MINUTE = 60;
-
     public ParticipantHandler() {
         this.producerThreadPool = new ArrayList<>();
         this.consumerThreadPool = new ArrayList<>();
         this.random = new Random();
+        this.observerInitializer = ObserverInitializer.getInstance();
+        this.shellLogger = ShellLogger.getInstance();
+        this.dataStore = DataStore.getInstance();
+        this.running = false;
+
     }
 
     public void startSimulation(int sellingRate, int buyingRate) {
@@ -88,6 +93,7 @@ public class ParticipantHandler {
         // init consumer dependencies
         TicketPool ticketPool = TicketPool.getInstance();
         Timer timer = new Timer();
+
         for (int i = 0; i < threads; i++) {
             // get a random customer
             Customer randomCustomer = customers.get(random.nextInt(customers.size()));
@@ -95,6 +101,9 @@ public class ParticipantHandler {
             TicketConsumer consumer = new TicketConsumer(
                     timer, ticketPool, randomCustomer
             );
+            // set observers
+            consumer.setObservers(List.of(observerInitializer.getDatabaseSinkObserver()));
+            // start the consumer thread
             Thread consumerThread = new Thread(consumer, "Consumer-" + i);
             consumerThreadPool.add(consumerThread);
             consumerThread.start();
@@ -109,20 +118,21 @@ public class ParticipantHandler {
     private void startProducers(int threads) {
         log.info("Starting {} producer threads...", threads);
         shellLogger.alert("Starting " + threads + " producer threads...");
-        List<Vendor> vendors = dataStore.getVendors();
         List<Ticket> tickets = dataStore.getTickets();
         // init producer dependencies
         Timer timer = new Timer();
         TicketPool ticketPool = TicketPool.getInstance();
-        // start producer threads
+
         for (int i = 0; i < threads; i++) {
             // get a random vendor and ticket
-            Vendor randomVendor = vendors.get(random.nextInt(vendors.size()));
             Ticket randomTicket = tickets.get(random.nextInt(tickets.size()));
             // create a producer thread
             TicketProducer producer = new TicketProducer(
-                    timer, ticketPool, randomVendor, randomTicket
+                    timer, ticketPool, randomTicket.getVendor(), randomTicket
             );
+            // set observers
+            producer.setObservers(List.of(observerInitializer.getTicketThresholdObserver()));
+            // start the producer thread
             Thread producerThread = new Thread(producer, "Producer-" + i);
             producerThreadPool.add(producerThread);
             producerThread.start();
@@ -162,5 +172,9 @@ public class ParticipantHandler {
         running = false;
         shellLogger.success("All producer consumer threads stopped successfully.");
 
+    }
+
+    public boolean isRunning() {
+        return running;
     }
 }

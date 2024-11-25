@@ -10,18 +10,13 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class DataStore {
+    private final ReadWriteLock lock = new ReentrantReadWriteLock();
     private List<Vendor> vendors = new ArrayList<>();
     private List<Ticket> tickets = new ArrayList<>();
     private List<Customer> customers = new ArrayList<>();
-    private final ReadWriteLock lock = new ReentrantReadWriteLock();
 
     // Private constructor to prevent instantiation
     private DataStore() {
-    }
-
-    // Singleton instance holder
-    private static class SingletonHolder {
-        private static final DataStore INSTANCE = new DataStore(); // Default size 10
     }
 
     // Public method to get the singleton instance
@@ -92,5 +87,10 @@ public class DataStore {
         } finally {
             lock.writeLock().unlock();
         }
+    }
+
+    // Singleton instance holder
+    private static class SingletonHolder {
+        private static final DataStore INSTANCE = new DataStore(); // Default size 10
     }
 }

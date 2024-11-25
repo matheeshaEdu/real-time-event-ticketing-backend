@@ -16,21 +16,22 @@ import java.util.Random;
 @Component
 public class TicketFactory implements DataFactory<Ticket> {
     private final TicketService ticketService;
-    private List<Ticket> tickets = new ArrayList<>();
     private final DataGenerator dataGenerator = new DataGenerator();
     private final DataStore dataStore = DataStore.getInstance();
     private final VendorFactory vendorFactory;
-    Random random = new Random();
+    Random random;
+    private List<Ticket> tickets = new ArrayList<>();
 
     @Autowired
     public TicketFactory(TicketService ticketService, VendorFactory vendorFactory) {
         this.ticketService = ticketService;
         this.vendorFactory = vendorFactory;
+        this.random = new Random();
     }
 
     @Override
     public List<Ticket> populate() {
-        if(tickets.isEmpty()){
+        if (tickets.isEmpty()) {
             List<Ticket> existingTickets = dataStore.getTickets();
             if (!existingTickets.isEmpty()) {
                 tickets = new ArrayList<>(existingTickets);

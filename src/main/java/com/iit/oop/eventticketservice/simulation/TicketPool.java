@@ -1,15 +1,16 @@
 package com.iit.oop.eventticketservice.simulation;
 
 import com.iit.oop.eventticketservice.model.Ticket;
+import com.iit.oop.eventticketservice.model.TicketConfig;
 import com.iit.oop.eventticketservice.service.config.ConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-import java.util.concurrent.locks.Condition;
 
 
 /**
@@ -20,15 +21,15 @@ public class TicketPool {
     private static final Logger log = LoggerFactory.getLogger(TicketPool.class);
 
     private final Queue<Ticket> queue;
-    private final int maxSize;
+    private TicketConfig config;
     private final Lock lock;
     private final Condition notFull;
     private final Condition notEmpty;
 
     // Private constructor for Singleton
-    private TicketPool(int maxSize) {
+    private TicketPool(TicketConfig config) {
         this.queue = new ConcurrentLinkedQueue<>();
-        this.maxSize = maxSize;
+        this.config = config;
         this.lock = new ReentrantLock();
         this.notFull = lock.newCondition();
         this.notEmpty = lock.newCondition();
@@ -37,7 +38,7 @@ public class TicketPool {
     // Lazy-loaded Singleton using nested static class
     private static class SingletonHelper {
         private static final TicketPool INSTANCE = new TicketPool(
-                ConfigManager.getInstance().getConfig().getMaxTicketCapacity()
+                ConfigManager.getInstance().getConfig()
         );
     }
 
@@ -58,7 +59,7 @@ public class TicketPool {
     public void addTicket(Ticket ticket) {
         lock.lock();
         try {
-            while (queue.size() >= maxSize) {
+            while (queue.size() >= config.getMaxTicketCapacity()) {
                 log.info("Ticket pool is full. Waiting to add ticket.");
                 notFull.await();
             }
@@ -122,6 +123,20 @@ public class TicketPool {
         } finally {
             lock.unlock();
         }
+    }
+
+    public void reset(TicketConfig config) {
+        lock.lock();
+        try {
+            queue.clear();
+            setConfig(config);
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    private void setConfig(TicketConfig config) {
+        this.config = config;
     }
 }
 

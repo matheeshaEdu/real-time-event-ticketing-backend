@@ -5,8 +5,8 @@ import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 
 public class ShellManager {
 
-    private Thread shellThread;
     private final ShellHandler shellHandler;
+    private Thread shellThread;
 
     public ShellManager(ShellHandler shellHandler) {
         this.shellHandler = shellHandler;
@@ -20,7 +20,7 @@ public class ShellManager {
             try {
                 shellHandler.run();
             } catch (Exception e) {
-                ShellLogger.getInstance().error("Error running shell: " + e.getMessage());
+                ShellLogger.getInstance().error("Error running shell: " + e);
                 Thread.currentThread().interrupt(); // Restore the interrupt status
             }
         });

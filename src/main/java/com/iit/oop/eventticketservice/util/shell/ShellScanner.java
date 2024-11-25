@@ -17,10 +17,6 @@ public class ShellScanner implements ShellClosable {
         // Prevent instantiation
     }
 
-    private static class ScanHolder {
-        private static final ShellScanner INSTANCE = new ShellScanner();
-    }
-
     public static ShellScanner getInstance() {
         return ScanHolder.INSTANCE;
     }
@@ -67,8 +63,11 @@ public class ShellScanner implements ShellClosable {
         }
     }
 
-
     public void close() {
         scanner.close();
+    }
+
+    private static class ScanHolder {
+        private static final ShellScanner INSTANCE = new ShellScanner();
     }
 }
