@@ -50,7 +50,7 @@ public class ConfigObserver implements DomainEventObserver<TicketConfig> {
         }
     }
 
-    private void resetTicketPool(TicketConfig config){
+    private void resetTicketPool(TicketConfig config) {
         TicketPool.getInstance().reset(config);
     }
 

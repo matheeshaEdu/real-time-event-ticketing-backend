@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.iit.oop</groupId>
-    <artifactId>EventTIcketService</artifactId>
+    <artifactId>Ticket-Management-Server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>EventTIcketService</name>
     <description>EventTIcketService</description>

@@ -1,7 +1,7 @@
 package com.iit.oop.eventticketservice.simulation.participant.producer;
 
-import com.iit.oop.eventticketservice.event.Observerable;
+import com.iit.oop.eventticketservice.event.Observable;
 
-public interface Producer extends Runnable, Observerable<Integer> {
+public interface Producer extends Runnable, Observable<Integer> {
     void produce();
 }

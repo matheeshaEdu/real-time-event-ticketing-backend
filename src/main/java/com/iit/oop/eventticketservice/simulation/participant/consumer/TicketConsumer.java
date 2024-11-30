@@ -55,7 +55,7 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer {
             log.warn("No ticket retrieved for customer {} due to interruption.", customer.getName());
             return null;
         }
-        publishTransactionEvent(ticket);
+        notifyTransactionObservers(ticket);
         return ticket;
     }
 
@@ -87,7 +87,12 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer {
         }
     }
 
-    private void publishTransactionEvent(Ticket ticket) {
+    /**
+     * Notify the transaction observers.
+     *
+     * @param ticket the ticket to notify
+     */
+    private void notifyTransactionObservers(Ticket ticket) {
         Transaction transaction = new Transaction(customer, ticket, 1, ticket.getPrice());
         subject.notifyObservers(transaction);
     }

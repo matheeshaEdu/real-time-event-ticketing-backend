@@ -19,6 +19,16 @@ import java.util.List;
 @Service
 public class StartupService {
 
+    @EventListener(ApplicationReadyEvent.class)
+    public void onApplicationReady() {
+        ShellProcess simulationProcess = ApplicationContextHolder.getBean(SimulationProcess.class);
+        ShellProcess stopSimulationProcess = ApplicationContextHolder.getBean(StopSimulationProcess.class);
+        // Initialize and start the ShellManager
+        ShellManager shellManager = startShell(simulationProcess, stopSimulationProcess);
+        setObservers();
+        cleanUp(shellManager);
+    }
+
     private static ShellManager startShell(ShellProcess simulationProcess, ShellProcess stopSimulationProcess) {
         ShellManager shellManager = new ShellManager(new ShellHandler(
                 simulationProcess, stopSimulationProcess));
@@ -41,15 +51,5 @@ public class StartupService {
                         ObserverInitializer.getInstance().getConfigObserver()
                 )
         );
-    }
-
-    @EventListener(ApplicationReadyEvent.class)
-    public void onApplicationReady() {
-        ShellProcess simulationProcess = ApplicationContextHolder.getBean(SimulationProcess.class);
-        ShellProcess stopSimulationProcess = ApplicationContextHolder.getBean(StopSimulationProcess.class);
-        // Initialize and start the ShellManager
-        ShellManager shellManager = startShell(simulationProcess, stopSimulationProcess);
-        setObservers();
-        cleanUp(shellManager);
     }
 }

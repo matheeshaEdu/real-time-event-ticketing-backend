@@ -21,25 +21,18 @@ public class TicketPool {
     private static final Logger log = LoggerFactory.getLogger(TicketPool.class);
 
     private final Queue<Ticket> queue;
-    private TicketConfig config;
     private final Lock lock;
     private final Condition notFull;
     private final Condition notEmpty;
+    private TicketConfig config;
 
     // Private constructor for Singleton
     private TicketPool(TicketConfig config) {
         this.queue = new ConcurrentLinkedQueue<>();
         this.config = config;
-        this.lock = new ReentrantLock();
+        this.lock = new ReentrantLock(true); // Fair lock
         this.notFull = lock.newCondition();
         this.notEmpty = lock.newCondition();
-    }
-
-    // Lazy-loaded Singleton using nested static class
-    private static class SingletonHelper {
-        private static final TicketPool INSTANCE = new TicketPool(
-                ConfigManager.getInstance().getConfig()
-        );
     }
 
     /**
@@ -137,6 +130,13 @@ public class TicketPool {
 
     private void setConfig(TicketConfig config) {
         this.config = config;
+    }
+
+    // Lazy-loaded Singleton using nested static class
+    private static class SingletonHelper {
+        private static final TicketPool INSTANCE = new TicketPool(
+                ConfigManager.getInstance().getConfig()
+        );
     }
 }
 

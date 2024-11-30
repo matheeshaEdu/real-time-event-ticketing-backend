@@ -12,6 +12,7 @@ public final class Global {
     public static final int SIMULATION_CUSTOMERS = 10;
     public static final String LOG_PATH = "src/main/resources/logs/application.log";
     public static final String CONFIG_PATH = "src/main/resources/config/userConfig.json";
+
     // Prevent instantiation
     private Global() {
         throw new UnsupportedOperationException("This is a utility class and cannot be instantiated");

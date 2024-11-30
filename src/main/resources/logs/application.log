@@ -2339,3 +2339,323 @@ Caused by: java.lang.IllegalStateException: ApplicationContext is not initialize
 2024-11-24 17:19:15 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-11-24 17:19:15 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2024-11-24 17:19:15 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-11-25 17:35:50 [main] INFO  c.i.o.e.EventTicketServiceApplication - Starting EventTicketServiceApplication using Java 21.0.2 with PID 410024 (/home/matheesha/Documents/EventTIcketService/target/classes started by matheesha in /home/matheesha/Documents/EventTIcketService)
+2024-11-25 17:35:50 [main] INFO  c.i.o.e.EventTicketServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-25 17:35:51 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-25 17:35:52 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 64 ms. Found 4 JPA repository interfaces.
+2024-11-25 17:35:52 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-25 17:35:52 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-25 17:35:52 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-25 17:35:52 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-25 17:35:52 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-25 17:35:52 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2092 ms
+2024-11-25 17:35:53 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-25 17:35:53 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-25 17:35:53 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-25 17:35:53 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-25 17:35:53 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-25 17:35:54 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ab502f6
+2024-11-25 17:35:54 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-25 17:35:54 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-25 17:35:55 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-25 17:35:55 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-25 17:35:56 [main] INFO  c.i.o.e.service.config.ConfigManager - Loading user config from file...
+2024-11-25 17:35:56 [main] INFO  c.i.o.e.util.io.ConfigIO - Config loaded successfully
+2024-11-25 17:35:56 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-25 17:35:57 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2024-11-25 17:35:57 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-11-25 17:35:57 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-25 17:35:57 [main] INFO  c.i.o.e.EventTicketServiceApplication - Started EventTicketServiceApplication in 7.795 seconds (process running for 9.154)
+2024-11-25 17:35:57 [RMI TCP Connection(1)-192.168.8.168] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-25 17:35:57 [RMI TCP Connection(1)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-25 17:35:57 [RMI TCP Connection(1)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2024-11-25 17:36:23 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-25 17:36:23 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-11-25 17:36:23 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-11-25 17:36:27 [main] INFO  c.i.o.e.EventTicketServiceApplication - Starting EventTicketServiceApplication using Java 21.0.2 with PID 410184 (/home/matheesha/Documents/EventTIcketService/target/classes started by matheesha in /home/matheesha/Documents/EventTIcketService)
+2024-11-25 17:36:27 [main] INFO  c.i.o.e.EventTicketServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-25 17:36:28 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-25 17:36:28 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55 ms. Found 4 JPA repository interfaces.
+2024-11-25 17:36:29 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-25 17:36:29 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-25 17:36:29 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-25 17:36:29 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-25 17:36:29 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-25 17:36:29 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1996 ms
+2024-11-25 17:36:29 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-25 17:36:29 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-25 17:36:29 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-25 17:36:30 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-25 17:36:30 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-25 17:36:30 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@d1d85d0
+2024-11-25 17:36:30 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-25 17:36:30 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-25 17:36:31 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-25 17:36:31 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-25 17:36:31 [main] INFO  c.i.o.e.service.config.ConfigManager - Loading user config from file...
+2024-11-25 17:36:31 [main] INFO  c.i.o.e.util.io.ConfigIO - Config loaded successfully
+2024-11-25 17:36:31 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-25 17:36:32 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2024-11-25 17:36:32 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-11-25 17:36:32 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-25 17:36:32 [main] INFO  c.i.o.e.EventTicketServiceApplication - Started EventTicketServiceApplication in 6.406 seconds (process running for 7.44)
+2024-11-25 17:36:33 [RMI TCP Connection(3)-192.168.8.168] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-25 17:36:33 [RMI TCP Connection(3)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-25 17:36:33 [RMI TCP Connection(3)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2024-11-25 17:36:36 [ShellThread] ERROR c.i.o.e.s.p.ParticipantHandler - Simulation is not running. Please start the simulation before stopping it.
+2024-11-25 17:36:54 [ShellThread] INFO  c.i.o.e.s.p.ParticipantHandler - Starting 10 producer threads...
+2024-11-25 17:36:54 [ShellThread] INFO  c.i.o.e.s.p.ParticipantHandler - Starting 8 consumer threads...
+2024-11-25 17:36:56 [Consumer-1] INFO  c.i.o.e.simulation.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-11-25 17:37:01 [Producer-7] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:37:01 [Consumer-1] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Mao Mante | consumed ticket: His Dark Materials
+2024-11-25 17:37:06 [Producer-8] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:37:09 [Producer-3] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:37:11 [Consumer-3] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Justina Skiles | consumed ticket: The Sun Also Rises
+2024-11-25 17:37:12 [Consumer-0] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Miss Thaddeus Satterfield | consumed ticket: The Sun Also Rises
+2024-11-25 17:37:12 [Consumer-7] INFO  c.i.o.e.simulation.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-11-25 17:37:15 [Producer-2] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:37:15 [Consumer-7] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Consuelo Batz V | consumed ticket: His Dark Materials
+2024-11-25 17:37:19 [Producer-6] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Rosenbaum Group | produced ticket: Ticket{id=3, name='Now Sleeps the Crimson Petal', price=512}
+2024-11-25 17:37:29 [Producer-9] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:37:31 [Producer-5] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:37:33 [Producer-1] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:37:35 [Consumer-2] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Agueda Boyer | consumed ticket: Now Sleeps the Crimson Petal
+2024-11-25 17:37:35 [Consumer-6] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Mao Mante | consumed ticket: The Sun Also Rises
+2024-11-25 17:37:40 [Consumer-4] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Miss Thaddeus Satterfield | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:37:43 [Consumer-5] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Ben Stiedemann | consumed ticket: His Dark Materials
+2024-11-25 17:37:45 [Producer-0] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:37:47 [Consumer-6] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Mao Mante | consumed ticket: His Dark Materials
+2024-11-25 17:37:50 [Consumer-3] INFO  c.i.o.e.simulation.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-11-25 17:37:53 [Producer-4] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:37:53 [Consumer-3] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Justina Skiles | consumed ticket: The Sun Also Rises
+2024-11-25 17:37:55 [Producer-0] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:37:55 [Producer-8] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:37:55 [Producer-9] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:38:01 [Consumer-5] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Ben Stiedemann | consumed ticket: His Dark Materials
+2024-11-25 17:38:03 [Consumer-0] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Miss Thaddeus Satterfield | consumed ticket: The Sun Also Rises
+2024-11-25 17:38:07 [Consumer-4] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Miss Thaddeus Satterfield | consumed ticket: The Sun Also Rises
+2024-11-25 17:38:09 [Producer-1] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:38:14 [Consumer-2] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Agueda Boyer | consumed ticket: His Dark Materials
+2024-11-25 17:38:18 [Producer-2] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:38:22 [Producer-4] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:38:26 [Consumer-7] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Consuelo Batz V | consumed ticket: His Dark Materials
+2024-11-25 17:38:31 [Consumer-1] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Mao Mante | consumed ticket: The Sun Also Rises
+2024-11-25 17:38:32 [Producer-6] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Rosenbaum Group | produced ticket: Ticket{id=3, name='Now Sleeps the Crimson Petal', price=512}
+2024-11-25 17:38:46 [Producer-3] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:38:46 [Producer-7] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:38:46 [Consumer-4] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Miss Thaddeus Satterfield | consumed ticket: Now Sleeps the Crimson Petal
+2024-11-25 17:38:46 [Consumer-7] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Consuelo Batz V | consumed ticket: The Sun Also Rises
+2024-11-25 17:38:50 [Producer-5] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:38:55 [Consumer-0] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Miss Thaddeus Satterfield | consumed ticket: His Dark Materials
+2024-11-25 17:39:01 [Producer-7] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:39:02 [Producer-6] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Rosenbaum Group | produced ticket: Ticket{id=3, name='Now Sleeps the Crimson Petal', price=512}
+2024-11-25 17:39:04 [Producer-4] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:39:06 [Consumer-3] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Justina Skiles | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:39:07 [Producer-5] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:39:07 [Consumer-2] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Agueda Boyer | consumed ticket: His Dark Materials
+2024-11-25 17:39:11 [Producer-8] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:39:12 [Consumer-5] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Ben Stiedemann | consumed ticket: Now Sleeps the Crimson Petal
+2024-11-25 17:39:18 [Consumer-6] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Mao Mante | consumed ticket: The Sun Also Rises
+2024-11-25 17:39:22 [Consumer-1] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Mao Mante | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:39:24 [Producer-3] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:39:26 [Producer-9] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:39:38 [Consumer-2] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Agueda Boyer | consumed ticket: The Sun Also Rises
+2024-11-25 17:39:39 [Producer-1] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:39:42 [ShellThread] ERROR c.i.o.e.c.s.logs.ServerLogProcess - Error while waiting for threads to terminate
+java.lang.InterruptedException: null
+	at java.base/java.lang.Object.wait0(Native Method)
+	at java.base/java.lang.Object.wait(Object.java:366)
+	at java.base/java.lang.Thread.join(Thread.java:2078)
+	at java.base/java.lang.Thread.join(Thread.java:2154)
+	at com.iit.oop.eventticketservice.cli.shellprocess.logs.ServerLogProcess.execute(ServerLogProcess.java:41)
+	at com.iit.oop.eventticketservice.cli.ShellHandler.handleSelection(ShellHandler.java:33)
+	at com.iit.oop.eventticketservice.cli.ShellHandler.processInput(ShellHandler.java:96)
+	at com.iit.oop.eventticketservice.cli.ShellHandler.run(ShellHandler.java:80)
+	at com.iit.oop.eventticketservice.cli.ShellManager.lambda$start$0(ShellManager.java:21)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-11-25 17:39:42 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-25 17:39:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-11-25 17:39:42 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-11-25 17:43:40 [main] INFO  c.i.o.e.EventTicketServiceApplication - Starting EventTicketServiceApplication using Java 21.0.2 with PID 410759 (/home/matheesha/Documents/EventTIcketService/target/classes started by matheesha in /home/matheesha/Documents/EventTIcketService)
+2024-11-25 17:43:40 [main] INFO  c.i.o.e.EventTicketServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-25 17:43:41 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-25 17:43:41 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 61 ms. Found 4 JPA repository interfaces.
+2024-11-25 17:43:42 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-25 17:43:42 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-25 17:43:42 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-25 17:43:42 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-25 17:43:42 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-25 17:43:42 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1919 ms
+2024-11-25 17:43:42 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-25 17:43:42 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-25 17:43:42 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-25 17:43:42 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-25 17:43:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-25 17:43:43 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@115a7e51
+2024-11-25 17:43:43 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-25 17:43:43 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-25 17:43:44 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-25 17:43:44 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-25 17:43:44 [main] INFO  c.i.o.e.service.config.ConfigManager - Loading user config from file...
+2024-11-25 17:43:44 [main] INFO  c.i.o.e.util.io.ConfigIO - Config loaded successfully
+2024-11-25 17:43:44 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-25 17:43:45 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2024-11-25 17:43:45 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-11-25 17:43:45 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-25 17:43:45 [main] INFO  c.i.o.e.EventTicketServiceApplication - Started EventTicketServiceApplication in 6.139 seconds (process running for 7.133)
+2024-11-25 17:43:46 [RMI TCP Connection(1)-192.168.8.168] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-25 17:43:46 [RMI TCP Connection(1)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-25 17:43:46 [RMI TCP Connection(1)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 7 ms
+2024-11-25 17:43:52 [ShellThread] INFO  c.i.o.e.s.p.ParticipantHandler - Starting 10 producer threads...
+2024-11-25 17:43:52 [ShellThread] INFO  c.i.o.e.s.p.ParticipantHandler - Starting 8 consumer threads...
+2024-11-25 17:43:58 [Consumer-7] INFO  c.i.o.e.simulation.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-11-25 17:44:02 [Producer-3] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:44:02 [Consumer-7] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Clare Kunde | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:44:03 [Producer-5] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:44:07 [Producer-6] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:44:13 [Producer-2] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:44:16 [Consumer-1] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Justina Skiles | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:44:17 [Producer-7] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:44:17 [Consumer-0] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Consuelo Batz V | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:44:17 [Consumer-6] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Ben Stiedemann | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:44:20 [Producer-8] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:44:20 [Consumer-4] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Bailey Predovic | consumed ticket: The Sun Also Rises
+2024-11-25 17:44:22 [Consumer-5] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Clare Kunde | consumed ticket: The Sun Also Rises
+2024-11-25 17:44:24 [Consumer-2] INFO  c.i.o.e.simulation.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-11-25 17:44:26 [Consumer-3] INFO  c.i.o.e.simulation.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-11-25 17:44:33 [Producer-4] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Green and Sons | produced ticket: Ticket{id=4, name='The Skull Beneath the Skin', price=459}
+2024-11-25 17:44:33 [Consumer-2] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Miss Thaddeus Satterfield | consumed ticket: The Skull Beneath the Skin
+2024-11-25 17:44:43 [Producer-0] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:44:43 [Consumer-3] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Ben Stiedemann | consumed ticket: His Dark Materials
+2024-11-25 17:44:47 [Producer-9] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:44:49 [Producer-1] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:44:53 [Producer-2] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:44:57 [Consumer-0] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Consuelo Batz V | consumed ticket: The Sun Also Rises
+2024-11-25 17:44:58 [Producer-8] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:45:04 [Consumer-7] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Clare Kunde | consumed ticket: His Dark Materials
+2024-11-25 17:45:07 [Consumer-1] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Justina Skiles | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:45:10 [Producer-5] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:45:10 [Producer-9] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:45:10 [Consumer-6] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Ben Stiedemann | consumed ticket: The Sun Also Rises
+2024-11-25 17:45:12 [Producer-1] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:45:12 [Consumer-2] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Miss Thaddeus Satterfield | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:45:13 [Consumer-5] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Clare Kunde | consumed ticket: The Sun Also Rises
+2024-11-25 17:45:24 [Producer-0] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:45:28 [Consumer-4] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Bailey Predovic | consumed ticket: His Dark Materials
+2024-11-25 17:45:32 [Consumer-3] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Ben Stiedemann | consumed ticket: His Dark Materials
+2024-11-25 17:45:39 [Producer-6] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:45:40 [Producer-4] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Green and Sons | produced ticket: Ticket{id=4, name='The Skull Beneath the Skin', price=459}
+2024-11-25 17:45:47 [Consumer-4] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Bailey Predovic | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:45:48 [Producer-7] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:45:51 [Producer-3] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:45:52 [Consumer-6] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Ben Stiedemann | consumed ticket: The Skull Beneath the Skin
+2024-11-25 17:45:53 [Consumer-0] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Consuelo Batz V | consumed ticket: The Sun Also Rises
+2024-11-25 17:45:56 [Producer-3] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:45:59 [Consumer-5] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Clare Kunde | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:46:00 [Producer-6] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:46:03 [Producer-1] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Kreiger LLC | produced ticket: Ticket{id=5, name='His Dark Materials', price=185}
+2024-11-25 17:46:03 [Producer-4] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Green and Sons | produced ticket: Ticket{id=4, name='The Skull Beneath the Skin', price=459}
+2024-11-25 17:46:11 [Consumer-7] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Clare Kunde | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:46:14 [Producer-7] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:46:14 [Producer-8] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:46:20 [Consumer-1] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Justina Skiles | consumed ticket: Rosemary Sutcliff
+2024-11-25 17:46:21 [Consumer-2] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Miss Thaddeus Satterfield | consumed ticket: His Dark Materials
+2024-11-25 17:46:22 [Consumer-3] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Ben Stiedemann | consumed ticket: The Skull Beneath the Skin
+2024-11-25 17:46:23 [Consumer-0] INFO  c.i.o.e.s.p.consumer.TicketConsumer - Customer Consuelo Batz V | consumed ticket: The Sun Also Rises
+2024-11-25 17:46:36 [Producer-2] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:46:36 [Producer-5] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=2, name='Rosemary Sutcliff', price=419}
+2024-11-25 17:46:42 [Producer-9] INFO  c.i.o.e.s.p.producer.TicketProducer - Vendor Mohr LLC | produced ticket: Ticket{id=1, name='The Sun Also Rises', price=680}
+2024-11-25 17:46:43 [ShellThread] ERROR c.i.o.e.c.s.logs.ServerLogProcess - Error while waiting for threads to terminate
+java.lang.InterruptedException: null
+	at java.base/java.lang.Object.wait0(Native Method)
+	at java.base/java.lang.Object.wait(Object.java:366)
+	at java.base/java.lang.Thread.join(Thread.java:2078)
+	at java.base/java.lang.Thread.join(Thread.java:2154)
+	at com.iit.oop.eventticketservice.cli.shellprocess.logs.ServerLogProcess.execute(ServerLogProcess.java:41)
+	at com.iit.oop.eventticketservice.cli.ShellHandler.handleSelection(ShellHandler.java:33)
+	at com.iit.oop.eventticketservice.cli.ShellHandler.processInput(ShellHandler.java:96)
+	at com.iit.oop.eventticketservice.cli.ShellHandler.run(ShellHandler.java:80)
+	at com.iit.oop.eventticketservice.cli.ShellManager.lambda$start$0(ShellManager.java:21)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-11-25 17:46:43 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-25 17:46:43 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-11-25 17:46:43 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-11-26 07:26:04 [main] INFO  c.i.o.e.EventTicketServiceApplication - Starting EventTicketServiceApplication using Java 21.0.2 with PID 454375 (/home/matheesha/Documents/Ticket-Management-Server/target/classes started by matheesha in /home/matheesha/Documents/Ticket-Management-Server)
+2024-11-26 07:26:04 [main] INFO  c.i.o.e.EventTicketServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-26 07:26:06 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-26 07:26:06 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 63 ms. Found 4 JPA repository interfaces.
+2024-11-26 07:26:07 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-26 07:26:07 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-26 07:26:07 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-26 07:26:07 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-26 07:26:07 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-26 07:26:07 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2223 ms
+2024-11-26 07:26:07 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-26 07:26:07 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-26 07:26:07 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-26 07:26:07 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-26 07:26:07 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-26 07:26:08 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@73dd0f23
+2024-11-26 07:26:08 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-26 07:26:08 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-26 07:26:09 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-26 07:26:09 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-26 07:26:09 [main] INFO  c.i.o.e.service.config.ConfigManager - Loading user config from file...
+2024-11-26 07:26:09 [main] INFO  c.i.o.e.util.io.ConfigIO - Config loaded successfully
+2024-11-26 07:26:10 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-26 07:26:11 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2024-11-26 07:26:11 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-11-26 07:26:11 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-26 07:26:11 [main] INFO  c.i.o.e.EventTicketServiceApplication - Started EventTicketServiceApplication in 7.191 seconds (process running for 8.54)
+2024-11-26 07:26:11 [RMI TCP Connection(3)-192.168.8.168] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-26 07:26:11 [RMI TCP Connection(3)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-26 07:26:11 [RMI TCP Connection(3)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2024-11-26 07:26:40 [UserInputListenerThread] INFO  c.i.o.e.c.s.logs.ServerLogProcess - Stopping log reader and user input listener...
+2024-11-26 07:27:07 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-26 07:27:07 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-11-26 07:27:07 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-11-26 08:10:37 [main] INFO  c.i.o.e.EventTicketServiceApplication - Starting EventTicketServiceApplication using Java 21.0.2 with PID 5809 (/home/matheesha/Documents/Ticket-Management-Server/target/classes started by matheesha in /home/matheesha/Documents/Ticket-Management-Server)
+2024-11-26 08:10:37 [main] INFO  c.i.o.e.EventTicketServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-26 08:10:38 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-26 08:10:38 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 57 ms. Found 4 JPA repository interfaces.
+2024-11-26 08:10:39 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-26 08:10:39 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-26 08:10:39 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-26 08:10:39 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-26 08:10:39 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-26 08:10:39 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2027 ms
+2024-11-26 08:10:39 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-26 08:10:39 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-26 08:10:39 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-26 08:10:39 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-26 08:10:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-26 08:10:40 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@38d4488c
+2024-11-26 08:10:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-26 08:10:40 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-26 08:10:41 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-26 08:10:41 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-26 08:10:41 [main] INFO  c.i.o.e.service.config.ConfigManager - Loading user config from file...
+2024-11-26 08:10:41 [main] INFO  c.i.o.e.util.io.ConfigIO - Config loaded successfully
+2024-11-26 08:10:41 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-26 08:10:42 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2024-11-26 08:10:42 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-11-26 08:10:42 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-26 08:10:42 [main] INFO  c.i.o.e.EventTicketServiceApplication - Started EventTicketServiceApplication in 6.655 seconds (process running for 8.029)
+2024-11-26 08:10:43 [RMI TCP Connection(2)-192.168.8.168] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-26 08:10:43 [RMI TCP Connection(2)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-26 08:10:43 [RMI TCP Connection(2)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2024-11-26 08:11:27 [ShellThread] ERROR c.i.o.e.c.s.logs.ServerLogProcess - Error while waiting for threads to terminate
+java.lang.InterruptedException: null
+	at java.base/java.lang.Object.wait0(Native Method)
+	at java.base/java.lang.Object.wait(Object.java:366)
+	at java.base/java.lang.Thread.join(Thread.java:2078)
+	at java.base/java.lang.Thread.join(Thread.java:2154)
+	at com.iit.oop.eventticketservice.cli.shellprocess.logs.ServerLogProcess.execute(ServerLogProcess.java:41)
+	at com.iit.oop.eventticketservice.cli.ShellHandler.handleSelection(ShellHandler.java:33)
+	at com.iit.oop.eventticketservice.cli.ShellHandler.processInput(ShellHandler.java:96)
+	at com.iit.oop.eventticketservice.cli.ShellHandler.run(ShellHandler.java:80)
+	at com.iit.oop.eventticketservice.cli.ShellManager.lambda$start$0(ShellManager.java:21)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-11-26 08:11:27 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-26 08:11:27 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-11-26 08:11:27 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

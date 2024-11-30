@@ -22,8 +22,6 @@ import java.util.Random;
  */
 public class ParticipantHandler {
     private static final Logger log = LoggerFactory.getLogger(ParticipantHandler.class);
-    private static final int MILLI_SECONDS_PER_SECOND = 1000;
-    private static final int SECONDS_PER_MINUTE = 60;
     private final DataStore dataStore;
     private final ShellLogger shellLogger;
     private final ObserverInitializer observerInitializer;
@@ -31,6 +29,9 @@ public class ParticipantHandler {
     private final List<Thread> consumerThreadPool;
     private final Random random;
     private volatile boolean running;
+
+    private static final int MILLI_SECONDS_PER_SECOND = 1000;
+    private static final int SECONDS_PER_MINUTE = 60;
 
     public ParticipantHandler() {
         this.producerThreadPool = new ArrayList<>();

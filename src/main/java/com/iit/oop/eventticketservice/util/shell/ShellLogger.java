@@ -1,6 +1,8 @@
 package com.iit.oop.eventticketservice.util.shell;
 
 import java.io.PrintWriter;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * A thread-safe shell logger with configurable log levels and output mechanisms.
@@ -8,6 +10,7 @@ import java.io.PrintWriter;
 public class ShellLogger implements ShellClosable {
 
     private final PrintWriter writer = new PrintWriter(System.out);
+    private final Lock lock = new ReentrantLock(true); // Fair lock
 
     // Private constructor for Singleton
     private ShellLogger() {
@@ -83,8 +86,13 @@ public class ShellLogger implements ShellClosable {
     }
 
     private synchronized void write(String message) {
-        writer.println(message);
-        writer.flush();
+        lock.lock();
+        try {
+            writer.println(message);
+            writer.flush();
+        } finally {
+            lock.unlock();
+        }
     }
 
     public void close() {
@@ -95,19 +103,19 @@ public class ShellLogger implements ShellClosable {
      * Log levels with color-coding for console output.
      */
     private enum LogLevel {
-        INFO("\u001B[92m", "INFO"),              // Light Green
-        USAGE("\u001B[33m", "USAGE"),            // Soft Yellow
-        WARN("\u001B[38;5;214m", "WARN"),        // Amber
-        ERROR("\u001B[38;5;1m", "ERROR"),        // Dark Red
-        DEBUG("\u001B[38;5;32m", "DEBUG"),       // Steel Blue
-        TRACE("\u001B[38;5;5m", "TRACE"),        // Purple
-        SUCCESS("\u001B[38;5;2m", "SUCCESS"),    // Emerald Green
-        FAILURE("\u001B[38;5;9m", "FAILURE"),    // Crimson Red
-        FATAL("\u001B[97;48;5;52m", "FATAL"),    // Bright White with Dark Red Background
-        NOTICE("\u001B[38;5;99m", "NOTICE"),    // Light Purple
-        CRITICAL("\u001B[38;5;220m", "CRITICAL"),// Golden Yellow
-        ALERT("\u001B[38;5;178m", "ALERT"),      // Deep Yellow
-        VERBOSE("\u001B[38;5;24m", "VERBOSE");   // Dark Slate Blue  //  Blue
+        INFO("\u001B[92m", "INFO"),               // Light Green
+        USAGE("\u001B[33m", "USAGE"),             // Soft Yellow
+        WARN("\u001B[38;5;214m", "WARN"),         // Amber
+        ERROR("\u001B[38;5;1m", "ERROR"),         // Dark Red
+        DEBUG("\u001B[38;5;32m", "DEBUG"),        // Steel Blue
+        TRACE("\u001B[38;5;5m", "TRACE"),         // Purple
+        SUCCESS("\u001B[38;5;2m", "SUCCESS"),     // Emerald Green
+        FAILURE("\u001B[38;5;9m", "FAILURE"),     // Crimson Red
+        FATAL("\u001B[97;48;5;52m", "FATAL"),     // Bright White with Dark Red Background
+        NOTICE("\u001B[38;5;99m", "NOTICE"),      // Light Purple
+        CRITICAL("\u001B[38;5;220m", "CRITICAL"), // Golden Yellow
+        ALERT("\u001B[38;5;178m", "ALERT"),       // Deep Yellow
+        VERBOSE("\u001B[96m", "VERBOSE");         // Light Cyan
 
         private final String colorCode;
         private final String label;

@@ -7,17 +7,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class TicketCounter {
     private final AtomicInteger ticketCount; // Thread-safe ticket counter
-    private  TicketConfig config;
+    private TicketConfig config;
 
     private TicketCounter(TicketConfig config) {
         this.ticketCount = new AtomicInteger(0);
         this.config = config;
-    }
-
-    private static class SingletonHolder {
-        private static final TicketCounter INSTANCE = new TicketCounter(
-                ConfigManager.getInstance().getConfig()
-        );
     }
 
     public static TicketCounter getInstance() {
@@ -39,5 +33,11 @@ public class TicketCounter {
 
     private void setConfig(TicketConfig config) {
         this.config = config;
+    }
+
+    private static class SingletonHolder {
+        private static final TicketCounter INSTANCE = new TicketCounter(
+                ConfigManager.getInstance().getConfig()
+        );
     }
 }

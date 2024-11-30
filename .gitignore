@@ -31,3 +31,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Logs ###
+*.log
+
+### apllication.yml ###
+# contains the application configuration including the database connection details
+application.yml

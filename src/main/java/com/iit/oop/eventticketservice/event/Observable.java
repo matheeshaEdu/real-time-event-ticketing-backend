@@ -4,6 +4,6 @@ import com.iit.oop.eventticketservice.event.observer.DomainEventObserver;
 
 import java.util.List;
 
-public interface Observerable<T> {
+public interface Observable<T> {
     void setObservers(List<DomainEventObserver<T>> observers);
 }
