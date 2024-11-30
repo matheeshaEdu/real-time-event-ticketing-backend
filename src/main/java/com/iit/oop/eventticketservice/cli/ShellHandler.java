@@ -4,29 +4,57 @@ import com.iit.oop.eventticketservice.cli.shellprocess.ShellProcess;
 import com.iit.oop.eventticketservice.cli.shellprocess.config.GetConfigProcess;
 import com.iit.oop.eventticketservice.cli.shellprocess.config.SetConfigProcess;
 import com.iit.oop.eventticketservice.cli.shellprocess.logs.ServerLogProcess;
+import com.iit.oop.eventticketservice.service.config.ConfigManager;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 import org.springframework.boot.CommandLineRunner;
 
 
+/**
+ * Handles the shell input and executes the appropriate shell process.
+ */
 public class ShellHandler implements CommandLineRunner {
-    private final ShellLogger shellLogger = ShellLogger.getInstance();
-    private final ShellScanner scanner = ShellScanner.getInstance();
     private final ShellProcess serverLogs;
     private final ShellProcess userConfig;
     private final ShellProcess setConfig;
     private final ShellProcess simulationProcess;
     private final ShellProcess stopSimulationProcess;
+    // Shell utilities
+    private final ShellLogger shellLogger = ShellLogger.getInstance();
+    private final ShellScanner scanner = ShellScanner.getInstance();
 
+    /**
+     * Constructor for the ShellHandler class.
+     *
+     * @param simulationProcess      The process to run the simulation.
+     * @param stopSimulationProcess  The process to stop the simulation.
+     */
     public ShellHandler(ShellProcess simulationProcess, ShellProcess stopSimulationProcess) {
-        this.serverLogs = new ServerLogProcess();
-        this.userConfig = new GetConfigProcess();
-        this.setConfig = new SetConfigProcess();
+        ConfigManager configManager = ConfigManager.getInstance();
+        // Initialize shell processes
+        this.serverLogs = new ServerLogProcess(
+                scanner,
+                shellLogger
+        );
+        this.userConfig = new GetConfigProcess(
+                configManager,
+                shellLogger
+        );
+        this.setConfig = new SetConfigProcess(
+                configManager,
+                shellLogger,
+                scanner
+        );
         this.simulationProcess = simulationProcess;
         this.stopSimulationProcess = stopSimulationProcess;
     }
 
 
+    /**
+     * Handles the user selection and executes the appropriate shell process.
+     *
+     * @param selection The user selection.
+     */
     private void handleSelection(int selection) {
         switch (selection) {
             case 1:
@@ -52,6 +80,11 @@ public class ShellHandler implements CommandLineRunner {
         }
     }
 
+    /**
+     * Runs the interactive CLI.
+     *
+     * @param args The command line arguments.
+     */
     @Override
     public void run(String... args) {
         shellLogger.usageInfo("Interactive CLI started. Type 'exit' to quit.");
@@ -82,6 +115,12 @@ public class ShellHandler implements CommandLineRunner {
         shellLogger.usageInfo("CLI session ended.");
     }
 
+    /**
+     * Handles the exit command.
+     *
+     * @param input The user input.
+     * @return True if the exit command was entered, false otherwise.
+     */
     private boolean handleExitCommand(String input) {
         if ("exit".equalsIgnoreCase(input)) {
             shellLogger.usageInfo("Exiting CLI...");
@@ -90,6 +129,11 @@ public class ShellHandler implements CommandLineRunner {
         return false; // Continue running
     }
 
+    /**
+     * Processes the user input.
+     *
+     * @param input The user input.
+     */
     private void processInput(String input) {
         try {
             int selection = Integer.parseInt(input);

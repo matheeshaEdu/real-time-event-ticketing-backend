@@ -1,4 +1,4 @@
-package com.iit.oop.eventticketservice.service.startup;
+package com.iit.oop.eventticketservice.configurations;
 
 import com.iit.oop.eventticketservice.cli.ShellHandler;
 import com.iit.oop.eventticketservice.cli.ShellManager;
@@ -15,9 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
-public class StartupService {
+public class StartupConfig {
 
     @EventListener(ApplicationReadyEvent.class)
     public void onApplicationReady() {

@@ -7,23 +7,27 @@ import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 
 public class SetConfigProcess implements ShellProcess {
-    private final ConfigManager configManager = ConfigManager.getInstance();
-    private final ShellLogger shellLogger = ShellLogger.getInstance();
-    private final ShellScanner scan = ShellScanner.getInstance();
+    private final ConfigManager configManager;
+    private final ShellLogger shellLogger ;
+    private final ShellScanner scan;
+
+    public SetConfigProcess(ConfigManager configManager, ShellLogger shellLogger, ShellScanner scan) {
+        this.configManager = configManager;
+        this.shellLogger = shellLogger;
+        this.scan = scan;
+    }
 
     public void execute() {
         setConfig();
     }
 
     private void setConfig() {
-        int totalTickets = getConfigValue("total tickets");
-        int ticketReleaseRate = getConfigValue("ticket release rate");
-        int customerRetrievalRate = getConfigValue("customer retrieval rate");
-        int maxTicketCapacity = getConfigValue("max ticket capacity");
-
-        // set the user configuration
         TicketConfig ticketConfig = new TicketConfig(
-                totalTickets, ticketReleaseRate, customerRetrievalRate, maxTicketCapacity);
+                getConfigValue("total tickets"),
+                getConfigValue("ticket release rate"),
+                getConfigValue("customer retrieval rate"),
+                getConfigValue("max ticket capacity")
+        );
         configManager.setUserConfig(ticketConfig);
     }
 

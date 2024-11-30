@@ -2659,3 +2659,75 @@ java.lang.InterruptedException: null
 2024-11-26 08:11:27 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-11-26 08:11:27 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2024-11-26 08:11:27 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-11-30 15:00:53 [main] INFO  c.i.o.e.EventTicketServiceApplication - Starting EventTicketServiceApplication using Java 21.0.2 with PID 70098 (/home/matheesha/Documents/Ticket-Management-Server/target/classes started by matheesha in /home/matheesha/Documents/Ticket-Management-Server)
+2024-11-30 15:00:53 [main] INFO  c.i.o.e.EventTicketServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-30 15:00:55 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-30 15:00:55 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 68 ms. Found 4 JPA repository interfaces.
+2024-11-30 15:00:55 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-30 15:00:55 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-30 15:00:55 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-30 15:00:55 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-30 15:00:56 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-30 15:00:56 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2212 ms
+2024-11-30 15:00:56 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-30 15:00:56 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-30 15:00:56 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-30 15:00:56 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-30 15:00:56 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-30 15:00:57 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4ca907af
+2024-11-30 15:00:57 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-30 15:00:57 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-30 15:00:58 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-30 15:00:58 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30 15:00:58 [main] INFO  c.i.o.e.service.config.ConfigManager - Loading user config from file...
+2024-11-30 15:00:58 [main] INFO  c.i.o.e.util.io.ConfigIO - Config loaded successfully
+2024-11-30 15:00:59 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-30 15:01:00 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2024-11-30 15:01:00 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-11-30 15:01:00 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-30 15:01:00 [main] INFO  c.i.o.e.EventTicketServiceApplication - Started EventTicketServiceApplication in 7.581 seconds (process running for 8.997)
+2024-11-30 15:01:01 [RMI TCP Connection(1)-192.168.8.168] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-30 15:01:01 [RMI TCP Connection(1)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-30 15:01:01 [RMI TCP Connection(1)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2024-11-30 15:09:22 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30 15:09:22 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-11-30 15:09:22 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-11-30 15:12:18 [main] INFO  c.i.o.e.EventTicketServiceApplication - Starting EventTicketServiceApplication using Java 21.0.2 with PID 72095 (/home/matheesha/Documents/Ticket-Management-Server/target/classes started by matheesha in /home/matheesha/Documents/Ticket-Management-Server)
+2024-11-30 15:12:18 [main] INFO  c.i.o.e.EventTicketServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-30 15:12:20 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-30 15:12:20 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 55 ms. Found 4 JPA repository interfaces.
+2024-11-30 15:12:21 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-30 15:12:21 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2529 ms
+2024-11-30 15:12:21 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-30 15:12:22 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-30 15:12:22 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-30 15:12:29 [main] INFO  c.i.o.e.EventTicketServiceApplication - Starting EventTicketServiceApplication using Java 21.0.2 with PID 72195 (/home/matheesha/Documents/Ticket-Management-Server/target/classes started by matheesha in /home/matheesha/Documents/Ticket-Management-Server)
+2024-11-30 15:12:29 [main] INFO  c.i.o.e.EventTicketServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-11-30 15:12:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-30 15:12:31 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 88 ms. Found 4 JPA repository interfaces.
+2024-11-30 15:12:32 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-11-30 15:12:33 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-11-30 15:12:33 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-11-30 15:12:33 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-11-30 15:12:33 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-11-30 15:12:33 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3685 ms
+2024-11-30 15:12:33 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-30 15:12:33 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-30 15:12:33 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-11-30 15:12:34 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-30 15:12:34 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-11-30 15:12:34 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7d43f1c9
+2024-11-30 15:12:34 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-11-30 15:12:35 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-30 15:12:36 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-30 15:12:36 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-30 15:12:37 [main] INFO  c.i.o.e.service.config.ConfigManager - Loading user config from file...
+2024-11-30 15:12:37 [main] INFO  c.i.o.e.util.io.ConfigIO - Config loaded successfully
+2024-11-30 15:12:37 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-30 15:12:39 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2024-11-30 15:12:39 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-11-30 15:12:39 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-11-30 15:12:39 [main] INFO  c.i.o.e.EventTicketServiceApplication - Started EventTicketServiceApplication in 11.235 seconds (process running for 12.638)
+2024-11-30 15:12:40 [RMI TCP Connection(1)-192.168.8.168] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-30 15:12:40 [RMI TCP Connection(1)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-11-30 15:12:40 [RMI TCP Connection(1)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms

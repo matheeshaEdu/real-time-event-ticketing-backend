@@ -14,17 +14,16 @@ import java.io.RandomAccessFile;
 /**
  * Shell process to tail the server log file.
  */
-@Component
 public class ServerLogProcess implements ShellProcess {
     private static final Logger log = LoggerFactory.getLogger(ServerLogProcess.class);
-    private final ShellScanner scanner = ShellScanner.getInstance();
+    private final ShellScanner scanner;
     private final ShellLogger shellLogger;
     private final Object lock = new Object(); // Synchronization lock
     private volatile boolean running; // Volatile to ensure visibility across threads
 
-    public ServerLogProcess() {
-        // Get ShellLogger instance
-        this.shellLogger = ShellLogger.getInstance();
+    public ServerLogProcess(ShellScanner scanner, ShellLogger shellLogger) {
+        this.scanner = scanner;
+        this.shellLogger = shellLogger;
     }
 
     @Override

@@ -6,7 +6,7 @@ import com.iit.oop.eventticketservice.event.subject.Subject;
 import com.iit.oop.eventticketservice.exception.ConfigNotFoundException;
 import com.iit.oop.eventticketservice.model.TicketConfig;
 import com.iit.oop.eventticketservice.util.io.ConfigIO;
-import com.iit.oop.eventticketservice.util.shell.ShellLogger;
+import com.iit.oop.eventticketservice.util.log.DualLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,8 +16,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class ConfigManager {
 
     private static final Logger logger = LoggerFactory.getLogger(ConfigManager.class);
-    private final ShellLogger shellLogger = ShellLogger.getInstance();
-
+    private final DualLogger dualLogger;
     private final AtomicReference<TicketConfig> config; // Thread-safe reference to user configuration
     private final ConfigIO configIO;
     private final Subject<TicketConfig> subject;
@@ -27,6 +26,7 @@ public class ConfigManager {
         this.configIO = configIO;
         this.subject = new DomainEventPublisher<>();
         this.config = new AtomicReference<>();
+        this.dualLogger = new DualLogger(logger);
     }
 
     // Public method to get the singleton instance
@@ -72,15 +72,10 @@ public class ConfigManager {
             TicketConfig currentConfig = this.config.get();
             if (currentConfig != null) {
                 if (currentConfig.equals(config)) {
-                    var msg = "User config is already up-to-date. No need to save.";
-                    logger.info(msg);
-                    shellLogger.alert(msg);
+                    dualLogger.logAndInfo("User config is already up-to-date. No need to save.");
                     return;
                 }
-                var msg = "Updating user config...";
-                logger.info(msg);
-                shellLogger.info(msg);
-
+                dualLogger.logAndAlert("Updating user config...");
                 this.config.set(config);
                 subject.notifyObservers(this.config.get());
                 return;
@@ -89,10 +84,7 @@ public class ConfigManager {
             this.config.set(config);
             logger.info("Saving user config to file...");
             configIO.saveConfig(config);
-
-            var msg = "User config successfully saved...";
-            logger.info(msg);
-            shellLogger.success(msg);
+            dualLogger.logAndSuccess( "User config successfully saved...");
         }
     }
 

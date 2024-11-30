@@ -7,8 +7,13 @@ import com.iit.oop.eventticketservice.service.config.ConfigManager;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 
 public class GetConfigProcess implements ShellProcess {
-    private final ConfigManager configManager = ConfigManager.getInstance();
-    private final ShellLogger shellLogger = ShellLogger.getInstance();
+    private final ConfigManager configManager;
+    private final ShellLogger shellLogger ;
+
+    public GetConfigProcess(ConfigManager configManager, ShellLogger shellLogger) {
+        this.configManager = configManager;
+        this.shellLogger = shellLogger;
+    }
 
     public void execute() {
         TicketConfig conf;
