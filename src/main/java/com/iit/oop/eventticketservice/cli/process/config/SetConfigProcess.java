@@ -1,12 +1,12 @@
-package com.iit.oop.eventticketservice.cli.shellprocess.config;
+package com.iit.oop.eventticketservice.cli.process.config;
 
-import com.iit.oop.eventticketservice.cli.shellprocess.ShellProcess;
+import com.iit.oop.eventticketservice.cli.process.Process;
 import com.iit.oop.eventticketservice.model.TicketConfig;
 import com.iit.oop.eventticketservice.service.config.ConfigManager;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 
-public class SetConfigProcess implements ShellProcess {
+public class SetConfigProcess implements Process {
     private final ConfigManager configManager;
     private final ShellLogger shellLogger ;
     private final ShellScanner scan;

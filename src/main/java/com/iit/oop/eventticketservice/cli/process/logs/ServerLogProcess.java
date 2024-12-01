@@ -1,12 +1,11 @@
-package com.iit.oop.eventticketservice.cli.shellprocess.logs;
+package com.iit.oop.eventticketservice.cli.process.logs;
 
-import com.iit.oop.eventticketservice.cli.shellprocess.ShellProcess;
+import com.iit.oop.eventticketservice.cli.process.Process;
 import com.iit.oop.eventticketservice.util.Global;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import com.iit.oop.eventticketservice.util.shell.ShellScanner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -14,7 +13,7 @@ import java.io.RandomAccessFile;
 /**
  * Shell process to tail the server log file.
  */
-public class ServerLogProcess implements ShellProcess {
+public class ServerLogProcess implements Process {
     private static final Logger log = LoggerFactory.getLogger(ServerLogProcess.class);
     private final ShellScanner scanner;
     private final ShellLogger shellLogger;

@@ -1,12 +1,12 @@
-package com.iit.oop.eventticketservice.cli.shellprocess.config;
+package com.iit.oop.eventticketservice.cli.process.config;
 
-import com.iit.oop.eventticketservice.cli.shellprocess.ShellProcess;
+import com.iit.oop.eventticketservice.cli.process.Process;
 import com.iit.oop.eventticketservice.exception.ConfigNotFoundException;
 import com.iit.oop.eventticketservice.model.TicketConfig;
 import com.iit.oop.eventticketservice.service.config.ConfigManager;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 
-public class GetConfigProcess implements ShellProcess {
+public class GetConfigProcess implements Process {
     private final ConfigManager configManager;
     private final ShellLogger shellLogger ;
 

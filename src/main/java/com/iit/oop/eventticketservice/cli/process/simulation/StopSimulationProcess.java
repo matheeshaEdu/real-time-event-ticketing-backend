@@ -1,21 +1,21 @@
-package com.iit.oop.eventticketservice.cli.shellprocess.simulation;
+package com.iit.oop.eventticketservice.cli.process.simulation;
 
-import com.iit.oop.eventticketservice.cli.shellprocess.ShellProcess;
+import com.iit.oop.eventticketservice.cli.process.Process;
 import com.iit.oop.eventticketservice.simulation.Simulator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SimulationProcess implements ShellProcess {
+public class StopSimulationProcess implements Process {
     private final Simulator simulator;
 
     @Autowired
-    public SimulationProcess(Simulator simulator) {
+    public StopSimulationProcess(Simulator simulator) {
         this.simulator = simulator;
     }
 
     @Override
     public void execute() {
-        simulator.simulate();
+        simulator.stop();
     }
 }

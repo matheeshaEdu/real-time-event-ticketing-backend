@@ -3,6 +3,8 @@ package com.iit.oop.eventticketservice.simulation.participant;
 import com.iit.oop.eventticketservice.event.ObserverInitializer;
 import com.iit.oop.eventticketservice.model.Customer;
 import com.iit.oop.eventticketservice.model.Ticket;
+import com.iit.oop.eventticketservice.model.TicketConfig;
+import com.iit.oop.eventticketservice.service.limiter.TicketCounter;
 import com.iit.oop.eventticketservice.simulation.TicketPool;
 import com.iit.oop.eventticketservice.simulation.Timer;
 import com.iit.oop.eventticketservice.simulation.data.DataStore;
@@ -24,6 +26,7 @@ public class ParticipantHandler {
     private static final Logger log = LoggerFactory.getLogger(ParticipantHandler.class);
     private final DataStore dataStore;
     private final ShellLogger shellLogger;
+    private final TicketCounter ticketCounter;
     private final ObserverInitializer observerInitializer;
     private final List<Thread> producerThreadPool;
     private final List<Thread> consumerThreadPool;
@@ -33,12 +36,13 @@ public class ParticipantHandler {
     private static final int MILLI_SECONDS_PER_SECOND = 1000;
     private static final int SECONDS_PER_MINUTE = 60;
 
-    public ParticipantHandler() {
+    public ParticipantHandler(ShellLogger shellLogger, TicketCounter ticketCounter) {
+        this.shellLogger = shellLogger;
+        this.ticketCounter = ticketCounter;
         this.producerThreadPool = new ArrayList<>();
         this.consumerThreadPool = new ArrayList<>();
         this.random = new Random();
         this.observerInitializer = ObserverInitializer.getInstance();
-        this.shellLogger = ShellLogger.getInstance();
         this.dataStore = DataStore.getInstance();
         this.running = false;
 
@@ -171,11 +175,16 @@ public class ParticipantHandler {
         producerThreadPool.clear();
         consumerThreadPool.clear();
         running = false;
+        resetTicketCounter();
         shellLogger.success("All producer consumer threads stopped successfully.");
 
     }
 
     public boolean isRunning() {
         return running;
+    }
+
+    private void resetTicketCounter() {
+        ticketCounter.reset();
     }
 }

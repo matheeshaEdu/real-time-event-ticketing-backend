@@ -37,7 +37,7 @@ public class UserConfigController {
         try {
             userConfigService.setConfig(ticketConfig);
             log.info("User config updated successfully");
-            return ResponseEntity.ok("User config updated successfully");
+            return ResponseEntity.ok(new ResponseMessageDto("200 OK", "User config updated successfully"));
         } catch (Exception e) {
             log.error("Error setting user config", e);
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(

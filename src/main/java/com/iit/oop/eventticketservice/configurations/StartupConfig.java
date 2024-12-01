@@ -2,9 +2,9 @@ package com.iit.oop.eventticketservice.configurations;
 
 import com.iit.oop.eventticketservice.cli.ShellHandler;
 import com.iit.oop.eventticketservice.cli.ShellManager;
-import com.iit.oop.eventticketservice.cli.shellprocess.ShellProcess;
-import com.iit.oop.eventticketservice.cli.shellprocess.simulation.SimulationProcess;
-import com.iit.oop.eventticketservice.cli.shellprocess.simulation.StopSimulationProcess;
+import com.iit.oop.eventticketservice.cli.process.Process;
+import com.iit.oop.eventticketservice.cli.process.simulation.SimulationProcess;
+import com.iit.oop.eventticketservice.cli.process.simulation.StopSimulationProcess;
 import com.iit.oop.eventticketservice.event.ObserverInitializer;
 import com.iit.oop.eventticketservice.service.config.ConfigManager;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
@@ -20,15 +20,15 @@ public class StartupConfig {
 
     @EventListener(ApplicationReadyEvent.class)
     public void onApplicationReady() {
-        ShellProcess simulationProcess = ApplicationContextHolder.getBean(SimulationProcess.class);
-        ShellProcess stopSimulationProcess = ApplicationContextHolder.getBean(StopSimulationProcess.class);
+        Process simulationProcess = ApplicationContextHolder.getBean(SimulationProcess.class);
+        Process stopSimulationProcess = ApplicationContextHolder.getBean(StopSimulationProcess.class);
         // Initialize and start the ShellManager
         ShellManager shellManager = startShell(simulationProcess, stopSimulationProcess);
         setObservers();
         cleanUp(shellManager);
     }
 
-    private static ShellManager startShell(ShellProcess simulationProcess, ShellProcess stopSimulationProcess) {
+    private static ShellManager startShell(Process simulationProcess, Process stopSimulationProcess) {
         ShellManager shellManager = new ShellManager(new ShellHandler(
                 simulationProcess, stopSimulationProcess));
         shellManager.start();

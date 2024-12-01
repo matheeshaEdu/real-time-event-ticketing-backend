@@ -1,9 +1,9 @@
 package com.iit.oop.eventticketservice.cli;
 
-import com.iit.oop.eventticketservice.cli.shellprocess.ShellProcess;
-import com.iit.oop.eventticketservice.cli.shellprocess.config.GetConfigProcess;
-import com.iit.oop.eventticketservice.cli.shellprocess.config.SetConfigProcess;
-import com.iit.oop.eventticketservice.cli.shellprocess.logs.ServerLogProcess;
+import com.iit.oop.eventticketservice.cli.process.Process;
+import com.iit.oop.eventticketservice.cli.process.config.GetConfigProcess;
+import com.iit.oop.eventticketservice.cli.process.config.SetConfigProcess;
+import com.iit.oop.eventticketservice.cli.process.logs.ServerLogProcess;
 import com.iit.oop.eventticketservice.service.config.ConfigManager;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import com.iit.oop.eventticketservice.util.shell.ShellScanner;
@@ -14,11 +14,11 @@ import org.springframework.boot.CommandLineRunner;
  * Handles the shell input and executes the appropriate shell process.
  */
 public class ShellHandler implements CommandLineRunner {
-    private final ShellProcess serverLogs;
-    private final ShellProcess userConfig;
-    private final ShellProcess setConfig;
-    private final ShellProcess simulationProcess;
-    private final ShellProcess stopSimulationProcess;
+    private final Process serverLogs;
+    private final Process userConfig;
+    private final Process setConfig;
+    private final Process simulationProcess;
+    private final Process stopSimulationProcess;
     // Shell utilities
     private final ShellLogger shellLogger = ShellLogger.getInstance();
     private final ShellScanner scanner = ShellScanner.getInstance();
@@ -29,7 +29,7 @@ public class ShellHandler implements CommandLineRunner {
      * @param simulationProcess      The process to run the simulation.
      * @param stopSimulationProcess  The process to stop the simulation.
      */
-    public ShellHandler(ShellProcess simulationProcess, ShellProcess stopSimulationProcess) {
+    public ShellHandler(Process simulationProcess, Process stopSimulationProcess) {
         ConfigManager configManager = ConfigManager.getInstance();
         // Initialize shell processes
         this.serverLogs = new ServerLogProcess(

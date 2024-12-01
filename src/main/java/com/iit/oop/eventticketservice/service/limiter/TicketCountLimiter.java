@@ -7,12 +7,14 @@ import org.slf4j.LoggerFactory;
 
 public class TicketCountLimiter implements Runnable {
     private static final Logger log = LoggerFactory.getLogger(TicketCountLimiter.class);
-    private final TicketCounter ticketCounter = TicketCounter.getInstance();
-    private final ShellLogger logger = ShellLogger.getInstance();
+    private final TicketCounter ticketCounter;
+    private final ShellLogger logger;
     private final ParticipantHandler participantHandler;
 
-    public TicketCountLimiter(ParticipantHandler participantHandler) {
+    public TicketCountLimiter(ParticipantHandler participantHandler,TicketCounter ticketCounter, ShellLogger logger) {
         this.participantHandler = participantHandler;
+        this.ticketCounter = ticketCounter;
+        this.logger = logger;
     }
 
     @Override

@@ -31,6 +31,10 @@ public class TicketCounter {
         ticketCount.set(0);
     }
 
+    public void reset() {
+        ticketCount.set(0);
+    }
+
     private void setConfig(TicketConfig config) {
         this.config = config;
     }
