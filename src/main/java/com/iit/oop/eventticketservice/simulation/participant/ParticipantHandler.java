@@ -3,7 +3,6 @@ package com.iit.oop.eventticketservice.simulation.participant;
 import com.iit.oop.eventticketservice.event.ObserverInitializer;
 import com.iit.oop.eventticketservice.model.Customer;
 import com.iit.oop.eventticketservice.model.Ticket;
-import com.iit.oop.eventticketservice.model.TicketConfig;
 import com.iit.oop.eventticketservice.service.limiter.TicketCounter;
 import com.iit.oop.eventticketservice.simulation.TicketPool;
 import com.iit.oop.eventticketservice.simulation.Timer;
@@ -11,6 +10,7 @@ import com.iit.oop.eventticketservice.simulation.data.DataStore;
 import com.iit.oop.eventticketservice.simulation.participant.consumer.TicketConsumer;
 import com.iit.oop.eventticketservice.simulation.participant.producer.TicketProducer;
 import com.iit.oop.eventticketservice.util.Global;
+import com.iit.oop.eventticketservice.util.log.DualLogger;
 import com.iit.oop.eventticketservice.util.shell.ShellLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +25,9 @@ import java.util.Random;
 public class ParticipantHandler {
     private static final Logger log = LoggerFactory.getLogger(ParticipantHandler.class);
     private final DataStore dataStore;
-    private final ShellLogger shellLogger;
     private final TicketCounter ticketCounter;
+    private final TicketPool ticketPool;
+    private final DualLogger dualLogger;
     private final ObserverInitializer observerInitializer;
     private final List<Thread> producerThreadPool;
     private final List<Thread> consumerThreadPool;
@@ -36,23 +37,29 @@ public class ParticipantHandler {
     private static final int MILLI_SECONDS_PER_SECOND = 1000;
     private static final int SECONDS_PER_MINUTE = 60;
 
-    public ParticipantHandler(ShellLogger shellLogger, TicketCounter ticketCounter) {
-        this.shellLogger = shellLogger;
+    public ParticipantHandler(TicketCounter ticketCounter) {
         this.ticketCounter = ticketCounter;
         this.producerThreadPool = new ArrayList<>();
         this.consumerThreadPool = new ArrayList<>();
         this.random = new Random();
+        this.dualLogger = new DualLogger(log);
         this.observerInitializer = ObserverInitializer.getInstance();
         this.dataStore = DataStore.getInstance();
+        this.ticketPool = TicketPool.getInstance();
         this.running = false;
 
     }
 
+    /**
+     * Start the simulation with the given selling and buying rates.
+     *
+     * @param sellingRate the rate at which tickets are released
+     * @param buyingRate  the rate at which customers retrieve tickets
+     */
     public void startSimulation(int sellingRate, int buyingRate) {
         // check if the simulation is already running
         if (running) {
-            log.error("Simulation is already running. Please stop the simulation before starting a new one.");
-            shellLogger.failure("Simulation is already running. Please stop the simulation before starting a new one.");
+            dualLogger.logAndFailure("Simulation is already running. Please stop the simulation before starting a new one.");
             return;
         }
         int producerCount = getProducerThreadCount(sellingRate);
@@ -92,11 +99,9 @@ public class ParticipantHandler {
      * @param threads the number of consumer threads to start
      */
     private void startConsumers(int threads) {
-        log.info("Starting {} consumer threads...", threads);
-        shellLogger.alert("Starting " + threads + " consumer threads...");
+        dualLogger.logAndAlert("Starting " + threads + " consumer threads...");
         List<Customer> customers = dataStore.getCustomers();
         // init consumer dependencies
-        TicketPool ticketPool = TicketPool.getInstance();
         Timer timer = new Timer();
 
         for (int i = 0; i < threads; i++) {
@@ -107,7 +112,9 @@ public class ParticipantHandler {
                     timer, ticketPool, randomCustomer
             );
             // set observers
-            consumer.setObservers(List.of(observerInitializer.getDatabaseSinkObserver()));
+            consumer.setObservers(List.of(
+                    observerInitializer.getTransactionSinkObserver()
+            ));
             // start the consumer thread
             Thread consumerThread = new Thread(consumer, "Consumer-" + i);
             consumerThreadPool.add(consumerThread);
@@ -121,13 +128,10 @@ public class ParticipantHandler {
      * @param threads the number of producer threads to start
      */
     private void startProducers(int threads) {
-        log.info("Starting {} producer threads...", threads);
-        shellLogger.alert("Starting " + threads + " producer threads...");
+        dualLogger.logAndAlert("Starting " + threads + " producer threads...");
         List<Ticket> tickets = dataStore.getTickets();
         // init producer dependencies
         Timer timer = new Timer();
-        TicketPool ticketPool = TicketPool.getInstance();
-
         for (int i = 0; i < threads; i++) {
             // get a random vendor and ticket
             Ticket randomTicket = tickets.get(random.nextInt(tickets.size()));
@@ -136,7 +140,7 @@ public class ParticipantHandler {
                     timer, ticketPool, randomTicket.getVendor(), randomTicket
             );
             // set observers
-            producer.setObservers(List.of(observerInitializer.getTicketThresholdObserver()));
+            producer.setObservers(List.of(observerInitializer.getTicketProducedObserver()));
             // start the producer thread
             Thread producerThread = new Thread(producer, "Producer-" + i);
             producerThreadPool.add(producerThread);
@@ -150,8 +154,7 @@ public class ParticipantHandler {
     public void stopAll() {
         // check if the simulation is not running
         if (!running) {
-            log.error("Simulation is not running. Please start the simulation before stopping it.");
-            shellLogger.failure("Simulation is not running. Please start the simulation before stopping it.");
+            dualLogger.logAndFailure("Simulation is not running. Please start the simulation before stopping it.");
             return;
         }
         log.info("Stopping all producer consumer threads...");
@@ -172,11 +175,12 @@ public class ParticipantHandler {
                 Thread.currentThread().interrupt();
             }
         });
+        ticketPool.reset();
         producerThreadPool.clear();
         consumerThreadPool.clear();
         running = false;
         resetTicketCounter();
-        shellLogger.success("All producer consumer threads stopped successfully.");
+        dualLogger.logAndAlert("All producer consumer threads stopped.");
 
     }
 

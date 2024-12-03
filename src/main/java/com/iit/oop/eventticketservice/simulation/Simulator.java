@@ -29,9 +29,7 @@ public class Simulator {
         dataInit.init();
         this.shellLogger = ShellLogger.getInstance();
         this.ticketCounter = TicketCounter.getInstance();
-        this.participantHandler = new ParticipantHandler(
-                shellLogger, ticketCounter
-        );
+        this.participantHandler = new ParticipantHandler(ticketCounter);
     }
 
     /**

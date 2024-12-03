@@ -24,13 +24,13 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer {
     private final TicketPool ticketPool;
     private final Customer customer;
     private final Timer timer;
-    private final Subject<Transaction> subject;
+    private final Subject<Transaction> transactionSubject;
 
     public TicketConsumer(Timer timer, TicketPool ticketPool, Customer customer) {
         this.ticketPool = ticketPool;
         this.customer = customer;
         this.timer = timer;
-        this.subject = new DomainEventPublisher<>();
+        this.transactionSubject = new DomainEventPublisher<>();
     }
 
     /**
@@ -39,9 +39,11 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer {
     @Override
     public void setObservers(List<DomainEventObserver<Transaction>> observers) {
         for (DomainEventObserver<Transaction> observer : observers) {
-            subject.addObserver(observer);
+            transactionSubject.addObserver(observer);
         }
     }
+
+
 
     /**
      * Consume a ticket from the pool.
@@ -55,7 +57,6 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer {
             log.warn("No ticket retrieved for customer {} due to interruption.", customer.getName());
             return null;
         }
-        notifyTransactionObservers(ticket);
         return ticket;
     }
 
@@ -70,16 +71,18 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer {
                 // Generate a random delay between 0 and PRODUCE_TIME
                 int interval = timer.getRandomDelay(Global.CONSUME_TIME);
                 delayFor(interval);
-                // consume a ticket
+
                 Ticket ticket = consume();
                 if (ticket == null) {
                     continue;
                 }
+                notifyTransactionObservers(ticket);
                 log.info("Customer {} | consumed ticket: {}", customer.getName(), ticket.getName());
+
                 // Calculate the remaining time to wait
                 long end = System.currentTimeMillis();
                 long remainingWait = Math.max(0, Global.CONSUME_TIME - (end - start));
-                // Delay for the remaining time
+
                 delayFor(remainingWait);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -94,6 +97,6 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer {
      */
     private void notifyTransactionObservers(Ticket ticket) {
         Transaction transaction = new Transaction(customer, ticket, 1, ticket.getPrice());
-        subject.notifyObservers(transaction);
+        transactionSubject.notifyObservers(transaction);
     }
 }

@@ -23,7 +23,7 @@ public class TicketProducer extends AbstractTicketHandler implements Producer {
     private final Timer timer;
     private final Vendor vendor;
     private final Ticket ticket;
-    private final Subject<Integer> subject;
+    private final Subject<String> subject;
 
     public TicketProducer(Timer timer, TicketPool ticketPool, Vendor vendor, Ticket ticket) {
         this.timer = timer;
@@ -37,8 +37,8 @@ public class TicketProducer extends AbstractTicketHandler implements Producer {
      * Initialize the observers.
      */
     @Override
-    public void setObservers(List<DomainEventObserver<Integer>> observers) {
-        for (DomainEventObserver<Integer> observer : observers) {
+    public void setObservers(List<DomainEventObserver<String>> observers) {
+        for (DomainEventObserver<String> observer : observers) {
             subject.addObserver(observer);
         }
     }
@@ -50,7 +50,6 @@ public class TicketProducer extends AbstractTicketHandler implements Producer {
     @Override
     public void produce() {
         ticketPool.addTicket(ticket);
-        subject.notifyObservers(1);
     }
 
     /**
@@ -64,13 +63,16 @@ public class TicketProducer extends AbstractTicketHandler implements Producer {
                 // Generate a random delay between 0 and PRODUCE_TIME
                 int interval = timer.getRandomDelay(Global.PRODUCE_TIME);
                 delayFor(interval);
+
                 // Produce a ticket
                 produce();
+                subject.notifyObservers(Global.TICKET_PRODUCED); // Notify observers
                 log.info("Vendor {} | produced ticket: {}", vendor.getName(), ticket);
+
                 // Calculate the remaining time to wait
                 long end = System.currentTimeMillis();
                 long remainingWait = Math.max(0, Global.PRODUCE_TIME - (end - start));
-                // Delay for the remaining time
+
                 delayFor(remainingWait);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();

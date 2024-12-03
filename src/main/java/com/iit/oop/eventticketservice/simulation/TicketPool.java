@@ -128,6 +128,15 @@ public class TicketPool {
         }
     }
 
+    public void reset() {
+        lock.lock();
+        try {
+            queue.clear();
+        } finally {
+            lock.unlock();
+        }
+    }
+
     private void setConfig(TicketConfig config) {
         this.config = config;
     }

@@ -29,7 +29,7 @@ public class DataInit {
     }
 
     /**
-     * Initialize the data
+     * populate the data
      */
     public void init() {
         factories.forEach(dataFactory ->

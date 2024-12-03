@@ -26,4 +26,9 @@ public class DualLogger {
         logger.info(message);
         shellLogger.success(message);
     }
+
+    public void logAndFailure(String message) {
+        logger.error(message);
+        shellLogger.failure(message);
+    }
 }

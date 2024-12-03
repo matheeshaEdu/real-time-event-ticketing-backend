@@ -20,7 +20,7 @@ public class TicketCountLimiter implements Runnable {
     @Override
     public void run() {
         while (!Thread.currentThread().isInterrupted()) {
-            if (!ticketCounter.isBelowLimit()) {
+            if (!ticketCounter.isProducedBelowLimit()) {
                 log.warn("Ticket count has reached the total limit");
                 logger.warn("Ticket count has reached the total limit");
                 stopSimulation();
