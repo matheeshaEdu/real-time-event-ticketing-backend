@@ -33,22 +33,27 @@ public class ConfigObserver implements DomainEventObserver<TicketConfig> {
      */
     @Override
     public void onDomainEvent(TicketConfig domainObject) {
-        stopSimulation();
+        var hadSimulation = stopSimulation();
         // reset ticket counter and ticket pool configuration
         resetTicketCounter(domainObject);
         resetTicketPool(domainObject);
-        startSimulation();
+        if (hadSimulation) {
+            startSimulation();
+        }
     }
 
     /**
      * Stop the current simulation.
+     * @return true if the simulation was stopped, false otherwise
      */
-    private void stopSimulation() {
+    private boolean stopSimulation() {
         if (simulator.isRunning()) {
             dualLogger.logAndInfo("Stopping the current simulation...");
             // stop the current simulation and start a new one
             simulator.stop();
+            return true;
         }
+        return false;
     }
 
     /**
