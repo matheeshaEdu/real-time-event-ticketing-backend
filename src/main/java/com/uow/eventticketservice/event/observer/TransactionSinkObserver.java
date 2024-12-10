@@ -7,6 +7,9 @@ import com.uow.eventticketservice.service.transaction.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Observer for the Transaction domain object.
+ */
 @Component
 public class TransactionSinkObserver implements DomainEventObserver<Transaction> {
     private final TicketCounter ticketCounter = TicketCounter.getInstance();
@@ -19,6 +22,11 @@ public class TransactionSinkObserver implements DomainEventObserver<Transaction>
         this.ticketStatStreamingService = ticketStatStreamingService;
     }
 
+    /**
+     * Update the database with the new transaction and increment the consumed ticket count.
+     *
+     * @param domainObject the Transaction domain object
+     */
     @Override
     public void onDomainEvent(Transaction domainObject) {
         // Update the database with the new transaction
@@ -31,6 +39,11 @@ public class TransactionSinkObserver implements DomainEventObserver<Transaction>
 
     }
 
+    /**
+     * Update the database with the new transaction.
+     *
+     * @param domainObject the Transaction domain object
+     */
     private void updateDatabase(Transaction domainObject) {
         transactionService.saveTransaction(domainObject);
     }

@@ -3,7 +3,7 @@ package com.uow.eventticketservice.util.io;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.uow.eventticketservice.model.TicketConfig;
-import com.uow.eventticketservice.service.config.ConfigSerializeManager;
+import com.uow.eventticketservice.core.config.ConfigSerializeManager;
 import com.uow.eventticketservice.util.Global;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

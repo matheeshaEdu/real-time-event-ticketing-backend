@@ -1,7 +1,8 @@
 package com.uow.eventticketservice.controller.simulation;
 
 import com.uow.eventticketservice.dto.response.ResponseMessageDto;
-import com.uow.eventticketservice.simulation.Simulator;
+import com.uow.eventticketservice.exception.MaxThreadCountExceed;
+import com.uow.eventticketservice.service.simulation.Simulator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +21,21 @@ public class SimulationController {
 
     @GetMapping("/start")
     public ResponseEntity<Object> startSimulation() {
-        simulator.simulate();
-        return ResponseEntity.ok(new ResponseMessageDto("200 OK", "Simulation started"));
+        try {
+            simulator.simulate();
+        } catch (MaxThreadCountExceed e) {
+            return ResponseEntity.badRequest().body(
+                    new ResponseMessageDto("400 Bad Request", e.getMessage()));
+        }
+        return ResponseEntity.ok(
+                new ResponseMessageDto("200 OK", "Simulation started"));
     }
 
     @GetMapping("/stop")
     public ResponseEntity<Object> stopSimulation() {
         simulator.stop();
-        return ResponseEntity.ok(new ResponseMessageDto("200 OK", "Simulation stopped"));
+        return ResponseEntity.ok(
+                new ResponseMessageDto("200 OK", "Simulation stopped"));
     }
 
     @GetMapping("/status")

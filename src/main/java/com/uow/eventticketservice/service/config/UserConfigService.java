@@ -1,5 +1,6 @@
 package com.uow.eventticketservice.service.config;
 
+import com.uow.eventticketservice.core.config.ConfigManager;
 import com.uow.eventticketservice.exception.ConfigNotFoundException;
 import com.uow.eventticketservice.model.TicketConfig;
 import com.uow.eventticketservice.util.validator.ValidationUtil;

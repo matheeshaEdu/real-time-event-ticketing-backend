@@ -7,6 +7,7 @@ public final class Global {
     public static final String TICKET_PRODUCED = "ticketProduced";
     public static final String TICKET_CONSUMED = "ticketConsumed";
     public static final int MAX_RETRIES = 3;
+    public static final int MAX_THREAD_COUNT = 1000;
     public static final long CONSUME_TIME = 50000;
     public static final long PRODUCE_TIME = 60000;
     public static final int SIMULATION_VENDORS = 20;

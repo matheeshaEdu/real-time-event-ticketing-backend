@@ -1,6 +1,6 @@
 package com.uow.eventticketservice.service.limiter;
 
-import com.uow.eventticketservice.simulation.participant.ParticipantHandler;
+import com.uow.eventticketservice.service.simulation.participant.ParticipantHandler;
 import com.uow.eventticketservice.util.shell.ShellLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

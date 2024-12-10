@@ -1,7 +1,7 @@
 package com.uow.eventticketservice.service.limiter;
 
 import com.uow.eventticketservice.model.TicketConfig;
-import com.uow.eventticketservice.service.config.ConfigManager;
+import com.uow.eventticketservice.core.config.ConfigManager;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

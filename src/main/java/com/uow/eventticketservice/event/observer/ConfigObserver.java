@@ -1,26 +1,36 @@
 package com.uow.eventticketservice.event.observer;
 
+import com.uow.eventticketservice.exception.MaxThreadCountExceed;
 import com.uow.eventticketservice.model.TicketConfig;
 import com.uow.eventticketservice.service.limiter.TicketCounter;
-import com.uow.eventticketservice.simulation.Simulator;
-import com.uow.eventticketservice.simulation.TicketPool;
-import com.uow.eventticketservice.util.shell.ShellLogger;
+import com.uow.eventticketservice.service.simulation.Simulator;
+import com.uow.eventticketservice.core.ticket.TicketPool;
+import com.uow.eventticketservice.util.log.DualLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * Observer for the TicketConfig domain object.
+ */
 @Component
 public class ConfigObserver implements DomainEventObserver<TicketConfig> {
     private static final Logger log = LoggerFactory.getLogger(ConfigObserver.class);
-    private final ShellLogger shellLogger = ShellLogger.getInstance();
+    private final DualLogger dualLogger;
     private final Simulator simulator;
 
     @Autowired
     public ConfigObserver(Simulator simulator) {
         this.simulator = simulator;
+        this.dualLogger = new DualLogger(log);
     }
 
+    /**
+     * Reset the ticket counter and ticket pool configuration when the TicketConfig domain object changes.
+     *
+     * @param domainObject the TicketConfig domain object
+     */
     @Override
     public void onDomainEvent(TicketConfig domainObject) {
         stopSimulation();
@@ -30,27 +40,48 @@ public class ConfigObserver implements DomainEventObserver<TicketConfig> {
         startSimulation();
     }
 
+    /**
+     * Stop the current simulation.
+     */
     private void stopSimulation() {
         if (simulator.isRunning()) {
-            var msg = "Ticket configuration change detected. Stopping simulation...";
-            log.info(msg);
-            shellLogger.notice(msg);
+            dualLogger.logAndInfo("Stopping the current simulation...");
             // stop the current simulation and start a new one
             simulator.stop();
-            simulator.simulate();
         }
     }
 
+    /**
+     * Start the simulation.
+     */
     private void startSimulation() {
         if (!simulator.isRunning()) {
-            simulator.simulate();
+            try {
+                simulator.simulate();
+            } catch (MaxThreadCountExceed e) {
+                // if the maximum thread count is exceeded, log the error and
+                // stop the current simulation
+                if (simulator.isRunning()) {
+                    simulator.stop();
+                }
+            }
         }
     }
 
+    /**
+     * Reset the ticket pool configuration.
+     *
+     * @param config the TicketConfig object
+     */
     private void resetTicketPool(TicketConfig config) {
         TicketPool.getInstance().reset(config);
     }
 
+    /**
+     * Reset the ticket counter configuration.
+     *
+     * @param config the TicketConfig object
+     */
     private void resetTicketCounter(TicketConfig config) {
         TicketCounter.getInstance().reset(config);
     }

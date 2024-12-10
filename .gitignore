@@ -33,8 +33,9 @@ build/
 .vscode/
 
 ### Logs ###
-*.log
+# Ignore application.log file
+src/main/resources/logs/application.log
 
 ### apllication.yml ###
 # contains the application configuration including the database connection details
-application.yml
+src/main/resources/application.yml

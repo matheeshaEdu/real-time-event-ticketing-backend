@@ -1,12 +1,12 @@
 package com.uow.eventticketservice.configurations;
 
-import com.uow.eventticketservice.cli.ShellHandler;
-import com.uow.eventticketservice.cli.ShellManager;
-import com.uow.eventticketservice.cli.process.Process;
-import com.uow.eventticketservice.cli.process.simulation.SimulationProcess;
-import com.uow.eventticketservice.cli.process.simulation.StopSimulationProcess;
+import com.uow.eventticketservice.service.cli.ShellHandler;
+import com.uow.eventticketservice.service.cli.ShellManager;
+import com.uow.eventticketservice.service.cli.process.Process;
+import com.uow.eventticketservice.service.cli.process.simulation.SimulationProcess;
+import com.uow.eventticketservice.service.cli.process.simulation.StopSimulationProcess;
 import com.uow.eventticketservice.event.ObserverInitializer;
-import com.uow.eventticketservice.service.config.ConfigManager;
+import com.uow.eventticketservice.core.config.ConfigManager;
 import com.uow.eventticketservice.util.shell.ShellLogger;
 import com.uow.eventticketservice.util.spring.ApplicationContextHolder;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
