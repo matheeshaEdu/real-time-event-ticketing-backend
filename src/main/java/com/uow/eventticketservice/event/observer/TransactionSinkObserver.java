@@ -1,7 +1,7 @@
 package com.uow.eventticketservice.event.observer;
 
 import com.uow.eventticketservice.model.Transaction;
-import com.uow.eventticketservice.service.limiter.TicketCounter;
+import com.uow.eventticketservice.core.ticket.TicketCounter;
 import com.uow.eventticketservice.controller.ticket.TicketStatStreamingController;
 import com.uow.eventticketservice.service.transaction.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;

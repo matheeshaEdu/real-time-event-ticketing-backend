@@ -1,7 +1,7 @@
 package com.uow.eventticketservice.controller.ticket;
 
 import com.uow.eventticketservice.dto.response.TicketStat;
-import com.uow.eventticketservice.service.limiter.TicketCounter;
+import com.uow.eventticketservice.core.ticket.TicketCounter;
 import com.uow.eventticketservice.util.Global;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;

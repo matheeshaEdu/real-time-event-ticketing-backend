@@ -1,6 +1,6 @@
 package com.uow.eventticketservice.configurations;
 
-import com.uow.eventticketservice.service.limiter.TicketCounter;
+import com.uow.eventticketservice.core.ticket.TicketCounter;
 import com.uow.eventticketservice.controller.ticket.TicketStatStreamingController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

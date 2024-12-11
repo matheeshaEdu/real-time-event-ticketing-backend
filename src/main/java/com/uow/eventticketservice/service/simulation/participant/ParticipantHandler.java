@@ -4,7 +4,7 @@ import com.uow.eventticketservice.event.ObserverInitializer;
 import com.uow.eventticketservice.exception.MaxThreadCountExceed;
 import com.uow.eventticketservice.model.Customer;
 import com.uow.eventticketservice.model.Ticket;
-import com.uow.eventticketservice.service.limiter.TicketCounter;
+import com.uow.eventticketservice.core.ticket.TicketCounter;
 import com.uow.eventticketservice.core.ticket.TicketPool;
 import com.uow.eventticketservice.service.simulation.Timer;
 import com.uow.eventticketservice.service.simulation.data.DataStore;

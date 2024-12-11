@@ -1,4 +1,4 @@
-package com.uow.eventticketservice.service.limiter;
+package com.uow.eventticketservice.core.ticket;
 
 import com.uow.eventticketservice.model.TicketConfig;
 import com.uow.eventticketservice.core.config.ConfigManager;

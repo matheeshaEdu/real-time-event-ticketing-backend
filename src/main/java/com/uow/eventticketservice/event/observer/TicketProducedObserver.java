@@ -1,6 +1,6 @@
 package com.uow.eventticketservice.event.observer;
 
-import com.uow.eventticketservice.service.limiter.TicketCounter;
+import com.uow.eventticketservice.core.ticket.TicketCounter;
 import com.uow.eventticketservice.controller.ticket.TicketStatStreamingController;
 import com.uow.eventticketservice.util.Global;
 import org.springframework.beans.factory.annotation.Autowired;

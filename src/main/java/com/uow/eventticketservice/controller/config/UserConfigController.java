@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/userConfig")
+@RequestMapping("/api/v1/ticketConfig")
 public class UserConfigController {
     private static final Logger log = LoggerFactory.getLogger(UserConfigController.class);
     private final UserConfigService userConfigService;

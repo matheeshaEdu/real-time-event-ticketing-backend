@@ -1,10 +1,12 @@
 package com.uow.eventticketservice.service.cli;
 
+import com.uow.eventticketservice.core.config.ConfigManager;
+import com.uow.eventticketservice.core.ticket.TicketCounter;
 import com.uow.eventticketservice.service.cli.process.Process;
 import com.uow.eventticketservice.service.cli.process.config.GetConfigProcess;
 import com.uow.eventticketservice.service.cli.process.config.SetConfigProcess;
 import com.uow.eventticketservice.service.cli.process.logs.ServerLogProcess;
-import com.uow.eventticketservice.core.config.ConfigManager;
+import com.uow.eventticketservice.service.cli.process.simulation.SimulationStats;
 import com.uow.eventticketservice.util.shell.ShellLogger;
 import com.uow.eventticketservice.util.shell.ShellScanner;
 import org.springframework.boot.CommandLineRunner;
@@ -19,6 +21,7 @@ public class ShellHandler implements CommandLineRunner {
     private final Process setConfig;
     private final Process simulationProcess;
     private final Process stopSimulationProcess;
+    private final Process simulationStats;
     // Shell utilities
     private final ShellLogger shellLogger = ShellLogger.getInstance();
     private final ShellScanner scanner = ShellScanner.getInstance();
@@ -26,8 +29,8 @@ public class ShellHandler implements CommandLineRunner {
     /**
      * Constructor for the ShellHandler class.
      *
-     * @param simulationProcess      The process to run the simulation.
-     * @param stopSimulationProcess  The process to stop the simulation.
+     * @param simulationProcess     The process to run the simulation.
+     * @param stopSimulationProcess The process to stop the simulation.
      */
     public ShellHandler(Process simulationProcess, Process stopSimulationProcess) {
         ConfigManager configManager = ConfigManager.getInstance();
@@ -44,6 +47,10 @@ public class ShellHandler implements CommandLineRunner {
                 configManager,
                 shellLogger,
                 scanner
+        );
+        this.simulationStats = new SimulationStats(
+                TicketCounter.getInstance(),
+                shellLogger
         );
         this.simulationProcess = simulationProcess;
         this.stopSimulationProcess = stopSimulationProcess;
@@ -73,6 +80,9 @@ public class ShellHandler implements CommandLineRunner {
                 stopSimulationProcess.execute();
                 break;
             case 6:
+                simulationStats.execute();
+                break;
+            case 7:
                 System.exit(0);
                 break;
             default:
@@ -96,7 +106,8 @@ public class ShellHandler implements CommandLineRunner {
             shellLogger.usageInfo("3. Set user configuration");
             shellLogger.usageInfo("4. Run simulation");
             shellLogger.usageInfo("5. Stop simulation");
-            shellLogger.usageInfo("6. Exit");
+            shellLogger.usageInfo("6. View simulation stats");
+            shellLogger.usageInfo("7. Exit");
             shellLogger.usageInfo("Enter selection: ");
 
             // Read user input

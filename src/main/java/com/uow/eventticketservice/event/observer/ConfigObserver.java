@@ -2,7 +2,7 @@ package com.uow.eventticketservice.event.observer;
 
 import com.uow.eventticketservice.exception.MaxThreadCountExceed;
 import com.uow.eventticketservice.model.TicketConfig;
-import com.uow.eventticketservice.service.limiter.TicketCounter;
+import com.uow.eventticketservice.core.ticket.TicketCounter;
 import com.uow.eventticketservice.service.simulation.Simulator;
 import com.uow.eventticketservice.core.ticket.TicketPool;
 import com.uow.eventticketservice.util.log.DualLogger;
