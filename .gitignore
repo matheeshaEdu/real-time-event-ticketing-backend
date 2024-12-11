@@ -1,4 +1,4 @@
-HELP.md
+README.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Logs ###
+# Ignore application.log file
+src/main/resources/logs/application.log
+
+### apllication.yml ###
+# contains the application configuration including the database connection details
+src/main/resources/application.yml
