@@ -1,49 +1,28 @@
 package com.uow.eventticketservice.service.simulation.participant.consumer;
 
-import com.uow.eventticketservice.event.observer.DomainEventObserver;
-import com.uow.eventticketservice.event.subject.DomainEventPublisher;
-import com.uow.eventticketservice.event.subject.Subject;
 import com.uow.eventticketservice.model.Customer;
 import com.uow.eventticketservice.model.Ticket;
 import com.uow.eventticketservice.model.Transaction;
 import com.uow.eventticketservice.core.ticket.TicketPool;
 import com.uow.eventticketservice.service.simulation.Timer;
-import com.uow.eventticketservice.service.simulation.participant.AbstractTicketHandler;
+import com.uow.eventticketservice.service.simulation.participant.AbstractParticipant;
 import com.uow.eventticketservice.util.Global;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.util.List;
 
 
 /**
  * A TicketConsumer is a Runnable that consumes tickets at a random interval.
  */
-public class TicketConsumer extends AbstractTicketHandler implements Consumer {
-    private static final Logger log = LoggerFactory.getLogger(TicketConsumer.class);
+public class TicketConsumer extends AbstractParticipant<Transaction> implements Consumer {
     private final TicketPool ticketPool;
     private final Customer customer;
     private final Timer timer;
-    private final Subject<Transaction> transactionSubject;
 
     public TicketConsumer(Timer timer, TicketPool ticketPool, Customer customer) {
         this.ticketPool = ticketPool;
         this.customer = customer;
         this.timer = timer;
-        this.transactionSubject = new DomainEventPublisher<>();
     }
-
-    /**
-     * Initialize the observers.
-     */
-    @Override
-    public void setObservers(List<DomainEventObserver<Transaction>> observers) {
-        for (DomainEventObserver<Transaction> observer : observers) {
-            transactionSubject.addObserver(observer);
-        }
-    }
-
-
 
     /**
      * Consume a ticket from the pool.
@@ -76,7 +55,7 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer {
                 if (ticket == null) {
                     continue;
                 }
-                notifyTransactionObservers(ticket);
+                notifyObservers(ticket);
                 log.info("Customer {} | consumed ticket: {}", customer.getName(), ticket.getName());
 
                 // Calculate the remaining time to wait
@@ -95,8 +74,8 @@ public class TicketConsumer extends AbstractTicketHandler implements Consumer {
      *
      * @param ticket the ticket to notify
      */
-    private void notifyTransactionObservers(Ticket ticket) {
+    private void notifyObservers(Ticket ticket) {
         Transaction transaction = new Transaction(customer, ticket, 1, ticket.getPrice());
-        transactionSubject.notifyObservers(transaction);
+        notifyObservers(transaction);
     }
 }

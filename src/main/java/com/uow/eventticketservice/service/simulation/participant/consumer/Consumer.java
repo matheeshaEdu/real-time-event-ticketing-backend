@@ -1,10 +1,9 @@
 package com.uow.eventticketservice.service.simulation.participant.consumer;
 
-import com.uow.eventticketservice.event.Observable;
-import com.uow.eventticketservice.model.Ticket;
+import com.uow.eventticketservice.service.simulation.participant.Participant;
 import com.uow.eventticketservice.model.Transaction;
+import com.uow.eventticketservice.model.Ticket;
 
-public interface Consumer extends Runnable, Observable<Transaction>{
+public interface Consumer extends Participant<Transaction> {
     Ticket consume();
 }
-

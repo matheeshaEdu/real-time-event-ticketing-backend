@@ -8,7 +8,9 @@ import com.uow.eventticketservice.core.ticket.TicketCounter;
 import com.uow.eventticketservice.core.ticket.TicketPool;
 import com.uow.eventticketservice.service.simulation.Timer;
 import com.uow.eventticketservice.service.simulation.data.DataStore;
+import com.uow.eventticketservice.service.simulation.participant.consumer.Consumer;
 import com.uow.eventticketservice.service.simulation.participant.consumer.TicketConsumer;
+import com.uow.eventticketservice.service.simulation.participant.producer.Producer;
 import com.uow.eventticketservice.service.simulation.participant.producer.TicketProducer;
 import com.uow.eventticketservice.util.Global;
 import com.uow.eventticketservice.util.log.DualLogger;
@@ -123,7 +125,7 @@ public class ParticipantHandler {
             // get a random customer
             Customer randomCustomer = customers.get(random.nextInt(customers.size()));
             // create a consumer thread
-            TicketConsumer consumer = new TicketConsumer(
+            Consumer consumer = new TicketConsumer(
                     timer, ticketPool, randomCustomer
             );
             // set observers
@@ -151,7 +153,7 @@ public class ParticipantHandler {
             // get a random vendor and ticket
             Ticket randomTicket = tickets.get(random.nextInt(tickets.size()));
             // create a producer thread
-            TicketProducer producer = new TicketProducer(
+            Producer producer = new TicketProducer(
                     timer, ticketPool, randomTicket.getVendor(), randomTicket
             );
             // set observers

@@ -251,3 +251,453 @@
 2024-12-11 13:59:52 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-12-11 13:59:52 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
 2024-12-11 13:59:52 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-12-11 18:23:37 [main] INFO  c.u.e.EventTicketServiceApplication - Starting EventTicketServiceApplication using Java 21.0.2 with PID 16319 (/home/matheesha/Documents/Ticket-Management-Server/target/classes started by matheesha in /home/matheesha/Documents/Ticket-Management-Server)
+2024-12-11 18:23:38 [main] INFO  c.u.e.EventTicketServiceApplication - No active profile set, falling back to 1 default profile: "default"
+2024-12-11 18:23:39 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-12-11 18:23:39 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 62 ms. Found 4 JPA repository interfaces.
+2024-12-11 18:23:40 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-12-11 18:23:40 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-12-11 18:23:40 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-12-11 18:23:40 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2024-12-11 18:23:40 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-12-11 18:23:40 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2194 ms
+2024-12-11 18:23:40 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-12-11 18:23:40 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-12-11 18:23:40 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-12-11 18:23:40 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-12-11 18:23:40 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-12-11 18:23:41 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4a773f08
+2024-12-11 18:23:41 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-12-11 18:23:41 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-12-11 18:23:42 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-12-11 18:23:42 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-12-11 18:23:42 [main] INFO  c.u.e.core.config.ConfigManager - Loading user config from file...
+2024-12-11 18:23:42 [main] INFO  c.u.e.util.io.ConfigIO - Config loaded successfully
+2024-12-11 18:23:42 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-12-11 18:23:43 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-12-11 18:23:44 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 1 endpoint beneath base path '/actuator'
+2024-12-11 18:23:44 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-12-11 18:23:44 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-12-11 18:23:44 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting...
+2024-12-11 18:23:44 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@521a3128]]
+2024-12-11 18:23:44 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started.
+2024-12-11 18:23:44 [main] INFO  c.u.e.EventTicketServiceApplication - Started EventTicketServiceApplication in 7.548 seconds (process running for 8.727)
+2024-12-11 18:23:45 [RMI TCP Connection(4)-192.168.8.168] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-11 18:23:45 [RMI TCP Connection(4)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-12-11 18:23:45 [RMI TCP Connection(4)-192.168.8.168] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 9 ms
+2024-12-11 18:24:42 [http-nio-8080-exec-2] INFO  c.u.e.s.s.p.ParticipantHandler - Starting 20 producer threads...
+2024-12-11 18:24:42 [http-nio-8080-exec-2] INFO  c.u.e.s.s.p.ParticipantHandler - Starting 15 consumer threads...
+2024-12-11 18:24:43 [Producer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:24:43 [Producer-8] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gaylord Group | produced ticket: Ticket{id=473, name='The Last Temptation', price=617}
+2024-12-11 18:24:43 [Consumer-10] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:24:43 [Consumer-10] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jeffry Kautzer | consumed ticket: The Last Temptation
+2024-12-11 18:24:44 [Consumer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:24:44 [Consumer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:24:44 [MessageBroker-3] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 8, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannel[pool size = 3, active threads = 0, queued tasks = 0, completed tasks = 3], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 62]
+2024-12-11 18:24:46 [Producer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:24:46 [Consumer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:24:46 [Producer-4] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Abshire-Wiegand | produced ticket: Ticket{id=459, name='Edna O'Brien', price=599}
+2024-12-11 18:24:46 [Consumer-1] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Ms. Toney O'Connell | consumed ticket: Edna O'Brien
+2024-12-11 18:24:46 [Consumer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:24:47 [Consumer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:24:48 [Consumer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:24:49 [Producer-10] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:24:49 [Consumer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:24:49 [Producer-10] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Breitenberg, Reilly and Krajcik | produced ticket: Ticket{id=458, name='Beyond the Mexique Bay', price=831}
+2024-12-11 18:24:49 [Consumer-13] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Mauro Senger | consumed ticket: Beyond the Mexique Bay
+2024-12-11 18:24:50 [Producer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:24:50 [Consumer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:24:50 [Producer-12] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gaylord Group | produced ticket: Ticket{id=499, name='The World, the Flesh and the Devil', price=632}
+2024-12-11 18:24:50 [Consumer-11] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Alex Kshlerin III | consumed ticket: The World, the Flesh and the Devil
+2024-12-11 18:24:51 [Producer-17] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:24:51 [Consumer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:24:51 [Consumer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:24:51 [Consumer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:24:51 [Producer-17] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gottlieb LLC | produced ticket: Ticket{id=496, name='Butter In a Lordly Dish', price=118}
+2024-12-11 18:24:51 [Consumer-2] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Dr. Brett Kub | consumed ticket: Butter In a Lordly Dish
+2024-12-11 18:24:52 [Producer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:24:52 [Consumer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:24:52 [Producer-1] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Greenholt, Strosin and Mayer | produced ticket: Ticket{id=485, name='Specimen Days', price=856}
+2024-12-11 18:24:52 [Producer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:24:52 [Consumer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:24:52 [Consumer-3] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Annabell Hane | consumed ticket: Specimen Days
+2024-12-11 18:24:52 [Consumer-4] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Miss Earle Wisoky | consumed ticket: A Passage to India
+2024-12-11 18:24:52 [Producer-9] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Hackett-Kunde | produced ticket: Ticket{id=488, name='A Passage to India', price=206}
+2024-12-11 18:24:53 [Consumer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:24:54 [Producer-16] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:24:54 [Consumer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:24:54 [Producer-16] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Kassulke-Doyle | produced ticket: Ticket{id=468, name='Françoise Sagan', price=925}
+2024-12-11 18:24:54 [Consumer-7] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Sigrid Howe | consumed ticket: Françoise Sagan
+2024-12-11 18:25:00 [Producer-19] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:25:00 [Consumer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:25:00 [Producer-19] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Spinka-Bergstrom | produced ticket: Ticket{id=451, name='An Acceptable Time', price=369}
+2024-12-11 18:25:00 [Consumer-14] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Royce Mohr | consumed ticket: An Acceptable Time
+2024-12-11 18:25:01 [Consumer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:25:02 [Consumer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:25:04 [Consumer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:25:08 [Producer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:25:08 [Consumer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:25:08 [Producer-13] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gulgowski, D'Amore and Hayes | produced ticket: Ticket{id=447, name='Vanity Fair', price=522}
+2024-12-11 18:25:08 [Consumer-8] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Clorinda Lueilwitz | consumed ticket: Vanity Fair
+2024-12-11 18:25:09 [Producer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:25:09 [Consumer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:25:09 [Producer-11] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Braun, Weissnat and Ernser | produced ticket: Ticket{id=477, name='I Know Why the Caged Bird Sings', price=493}
+2024-12-11 18:25:09 [Consumer-0] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Rodney Sauer IV | consumed ticket: I Know Why the Caged Bird Sings
+2024-12-11 18:25:12 [Consumer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:25:13 [Consumer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:25:16 [Producer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:25:16 [Consumer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:25:16 [Producer-6] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Abshire-Wiegand | produced ticket: Ticket{id=450, name='The Little Foxes', price=848}
+2024-12-11 18:25:16 [Consumer-12] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Tyra Turcotte V | consumed ticket: The Little Foxes
+2024-12-11 18:25:20 [Consumer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:25:21 [Producer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:25:21 [Consumer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:25:21 [Producer-14] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Reichel and Sons | produced ticket: Ticket{id=500, name='Behold the Man', price=594}
+2024-12-11 18:25:21 [Producer-18] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:25:21 [Consumer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:25:21 [Consumer-9] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jami Sauer | consumed ticket: Behold the Man
+2024-12-11 18:25:21 [Producer-18] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Feeney Group | produced ticket: Ticket{id=461, name='Recalled to Life', price=907}
+2024-12-11 18:25:21 [Consumer-5] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Kecia Sauer | consumed ticket: Recalled to Life
+2024-12-11 18:25:24 [Producer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:25:24 [Producer-0] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Feil LLC | produced ticket: Ticket{id=484, name='Such, Such Were the Joys', price=116}
+2024-12-11 18:25:24 [Consumer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:25:24 [Producer-15] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:25:24 [Consumer-6] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Katherine Hammes IV | consumed ticket: Such, Such Were the Joys
+2024-12-11 18:25:24 [Producer-15] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Greenholt, Strosin and Mayer | produced ticket: Ticket{id=467, name='Little Hands Clapping', price=587}
+2024-12-11 18:25:30 [Producer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 2
+2024-12-11 18:25:30 [Producer-5] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=483, name='Now Sleeps the Crimson Petal', price=835}
+2024-12-11 18:25:31 [Producer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 3
+2024-12-11 18:25:31 [Producer-2] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Koepp, Barrows and Nitzsche | produced ticket: Ticket{id=495, name='Brandy of the Damned', price=229}
+2024-12-11 18:25:32 [Producer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 4
+2024-12-11 18:25:32 [Producer-7] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=483, name='Now Sleeps the Crimson Petal', price=835}
+2024-12-11 18:25:39 [Producer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 5
+2024-12-11 18:25:39 [Producer-3] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=486, name='A Swiftly Tilting Planet', price=242}
+2024-12-11 18:25:39 [Consumer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 4
+2024-12-11 18:25:39 [Consumer-2] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Dr. Brett Kub | consumed ticket: Little Hands Clapping
+2024-12-11 18:25:41 [Consumer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 3
+2024-12-11 18:25:41 [Consumer-1] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Ms. Toney O'Connell | consumed ticket: Now Sleeps the Crimson Petal
+2024-12-11 18:25:45 [Consumer-10] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 2
+2024-12-11 18:25:45 [Consumer-10] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jeffry Kautzer | consumed ticket: Brandy of the Damned
+2024-12-11 18:25:46 [Producer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 3
+2024-12-11 18:25:46 [Producer-3] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=486, name='A Swiftly Tilting Planet', price=242}
+2024-12-11 18:25:46 [Consumer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 2
+2024-12-11 18:25:46 [Consumer-11] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Alex Kshlerin III | consumed ticket: Now Sleeps the Crimson Petal
+2024-12-11 18:25:47 [Producer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 3
+2024-12-11 18:25:47 [Producer-0] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Feil LLC | produced ticket: Ticket{id=484, name='Such, Such Were the Joys', price=116}
+2024-12-11 18:25:48 [Producer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 4
+2024-12-11 18:25:48 [Producer-13] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gulgowski, D'Amore and Hayes | produced ticket: Ticket{id=447, name='Vanity Fair', price=522}
+2024-12-11 18:25:48 [Consumer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 3
+2024-12-11 18:25:48 [Consumer-9] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jami Sauer | consumed ticket: A Swiftly Tilting Planet
+2024-12-11 18:25:50 [Consumer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 2
+2024-12-11 18:25:50 [Consumer-4] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Miss Earle Wisoky | consumed ticket: A Swiftly Tilting Planet
+2024-12-11 18:25:54 [Producer-16] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 3
+2024-12-11 18:25:54 [Producer-16] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Kassulke-Doyle | produced ticket: Ticket{id=468, name='Françoise Sagan', price=925}
+2024-12-11 18:25:55 [Producer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 4
+2024-12-11 18:25:55 [Producer-9] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Hackett-Kunde | produced ticket: Ticket{id=488, name='A Passage to India', price=206}
+2024-12-11 18:25:56 [Producer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 5
+2024-12-11 18:25:56 [Producer-2] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Koepp, Barrows and Nitzsche | produced ticket: Ticket{id=495, name='Brandy of the Damned', price=229}
+2024-12-11 18:26:03 [Producer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:26:03 [Producer-14] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Reichel and Sons | produced ticket: Ticket{id=500, name='Behold the Man', price=594}
+2024-12-11 18:26:03 [Consumer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:26:03 [Consumer-13] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Mauro Senger | consumed ticket: Such, Such Were the Joys
+2024-12-11 18:26:06 [Producer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:26:06 [Producer-12] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gaylord Group | produced ticket: Ticket{id=499, name='The World, the Flesh and the Devil', price=632}
+2024-12-11 18:26:08 [Consumer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:26:08 [Consumer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 4
+2024-12-11 18:26:08 [Consumer-0] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Rodney Sauer IV | consumed ticket: Vanity Fair
+2024-12-11 18:26:08 [Consumer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 3
+2024-12-11 18:26:08 [Consumer-5] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Kecia Sauer | consumed ticket: Françoise Sagan
+2024-12-11 18:26:08 [Consumer-12] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Tyra Turcotte V | consumed ticket: A Passage to India
+2024-12-11 18:26:11 [Producer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 4
+2024-12-11 18:26:11 [Producer-5] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=483, name='Now Sleeps the Crimson Petal', price=835}
+2024-12-11 18:26:11 [Consumer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 3
+2024-12-11 18:26:11 [Consumer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 2
+2024-12-11 18:26:11 [Consumer-8] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Clorinda Lueilwitz | consumed ticket: Brandy of the Damned
+2024-12-11 18:26:11 [Consumer-7] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Sigrid Howe | consumed ticket: Behold the Man
+2024-12-11 18:26:13 [Producer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 3
+2024-12-11 18:26:13 [Producer-7] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=483, name='Now Sleeps the Crimson Petal', price=835}
+2024-12-11 18:26:13 [Producer-15] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 4
+2024-12-11 18:26:13 [Producer-15] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Greenholt, Strosin and Mayer | produced ticket: Ticket{id=467, name='Little Hands Clapping', price=587}
+2024-12-11 18:26:16 [Producer-18] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 5
+2024-12-11 18:26:16 [Producer-17] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:26:16 [Producer-18] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Feeney Group | produced ticket: Ticket{id=461, name='Recalled to Life', price=907}
+2024-12-11 18:26:16 [Producer-17] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gottlieb LLC | produced ticket: Ticket{id=496, name='Butter In a Lordly Dish', price=118}
+2024-12-11 18:26:16 [Consumer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:26:16 [Consumer-14] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Royce Mohr | consumed ticket: The World, the Flesh and the Devil
+2024-12-11 18:26:18 [Consumer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 4
+2024-12-11 18:26:18 [Consumer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 3
+2024-12-11 18:26:18 [Consumer-6] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Katherine Hammes IV | consumed ticket: Now Sleeps the Crimson Petal
+2024-12-11 18:26:18 [Consumer-3] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Annabell Hane | consumed ticket: Now Sleeps the Crimson Petal
+2024-12-11 18:26:19 [Producer-19] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 4
+2024-12-11 18:26:19 [Producer-19] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Spinka-Bergstrom | produced ticket: Ticket{id=451, name='An Acceptable Time', price=369}
+2024-12-11 18:26:20 [Producer-10] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 5
+2024-12-11 18:26:20 [Producer-10] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Breitenberg, Reilly and Krajcik | produced ticket: Ticket{id=458, name='Beyond the Mexique Bay', price=831}
+2024-12-11 18:26:23 [Producer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:26:23 [Producer-1] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Greenholt, Strosin and Mayer | produced ticket: Ticket{id=485, name='Specimen Days', price=856}
+2024-12-11 18:26:23 [Producer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 7
+2024-12-11 18:26:23 [Producer-11] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Braun, Weissnat and Ernser | produced ticket: Ticket{id=477, name='I Know Why the Caged Bird Sings', price=493}
+2024-12-11 18:26:25 [Consumer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 6
+2024-12-11 18:26:25 [Consumer-14] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Royce Mohr | consumed ticket: Little Hands Clapping
+2024-12-11 18:26:26 [Consumer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:26:26 [Consumer-0] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Rodney Sauer IV | consumed ticket: Recalled to Life
+2024-12-11 18:26:27 [Consumer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 4
+2024-12-11 18:26:27 [Consumer-7] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Sigrid Howe | consumed ticket: Butter In a Lordly Dish
+2024-12-11 18:26:28 [Consumer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 3
+2024-12-11 18:26:28 [Consumer-12] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Tyra Turcotte V | consumed ticket: An Acceptable Time
+2024-12-11 18:26:30 [Consumer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 2
+2024-12-11 18:26:30 [Consumer-2] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Dr. Brett Kub | consumed ticket: Beyond the Mexique Bay
+2024-12-11 18:26:31 [Consumer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 1
+2024-12-11 18:26:31 [Consumer-9] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jami Sauer | consumed ticket: Specimen Days
+2024-12-11 18:26:33 [Producer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 2
+2024-12-11 18:26:33 [Producer-6] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Abshire-Wiegand | produced ticket: Ticket{id=450, name='The Little Foxes', price=848}
+2024-12-11 18:26:35 [Producer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 3
+2024-12-11 18:26:35 [Producer-4] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Abshire-Wiegand | produced ticket: Ticket{id=459, name='Edna O'Brien', price=599}
+2024-12-11 18:26:40 [Producer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 4
+2024-12-11 18:26:40 [Producer-8] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gaylord Group | produced ticket: Ticket{id=473, name='The Last Temptation', price=617}
+2024-12-11 18:26:41 [Consumer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 3
+2024-12-11 18:26:41 [Consumer-5] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Kecia Sauer | consumed ticket: I Know Why the Caged Bird Sings
+2024-12-11 18:26:43 [Producer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 4
+2024-12-11 18:26:43 [Producer-3] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=486, name='A Swiftly Tilting Planet', price=242}
+2024-12-11 18:26:44 [Producer-15] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 5
+2024-12-11 18:26:44 [Producer-15] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Greenholt, Strosin and Mayer | produced ticket: Ticket{id=467, name='Little Hands Clapping', price=587}
+2024-12-11 18:26:46 [Producer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:26:46 [Producer-5] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=483, name='Now Sleeps the Crimson Petal', price=835}
+2024-12-11 18:26:46 [Consumer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:26:46 [Consumer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 4
+2024-12-11 18:26:46 [Consumer-3] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Annabell Hane | consumed ticket: The Little Foxes
+2024-12-11 18:26:46 [Consumer-13] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Mauro Senger | consumed ticket: Edna O'Brien
+2024-12-11 18:26:47 [Producer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 5
+2024-12-11 18:26:47 [Producer-12] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gaylord Group | produced ticket: Ticket{id=499, name='The World, the Flesh and the Devil', price=632}
+2024-12-11 18:26:50 [Producer-17] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:26:50 [Producer-17] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gottlieb LLC | produced ticket: Ticket{id=496, name='Butter In a Lordly Dish', price=118}
+2024-12-11 18:26:53 [Producer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 7
+2024-12-11 18:26:53 [Producer-1] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Greenholt, Strosin and Mayer | produced ticket: Ticket{id=485, name='Specimen Days', price=856}
+2024-12-11 18:26:53 [Consumer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 6
+2024-12-11 18:26:53 [Consumer-1] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Ms. Toney O'Connell | consumed ticket: The Last Temptation
+2024-12-11 18:26:58 [Producer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 7
+2024-12-11 18:26:58 [Producer-8] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gaylord Group | produced ticket: Ticket{id=473, name='The Last Temptation', price=617}
+2024-12-11 18:26:59 [Consumer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 6
+2024-12-11 18:26:59 [Consumer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:26:59 [Consumer-4] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Miss Earle Wisoky | consumed ticket: A Swiftly Tilting Planet
+2024-12-11 18:26:59 [Consumer-11] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Alex Kshlerin III | consumed ticket: Little Hands Clapping
+2024-12-11 18:27:00 [Producer-18] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:27:00 [Producer-18] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Feeney Group | produced ticket: Ticket{id=461, name='Recalled to Life', price=907}
+2024-12-11 18:27:03 [Consumer-10] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:27:03 [Consumer-10] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jeffry Kautzer | consumed ticket: Now Sleeps the Crimson Petal
+2024-12-11 18:27:04 [Consumer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 4
+2024-12-11 18:27:04 [Consumer-8] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Clorinda Lueilwitz | consumed ticket: The World, the Flesh and the Devil
+2024-12-11 18:27:09 [Producer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 5
+2024-12-11 18:27:09 [Producer-0] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Feil LLC | produced ticket: Ticket{id=484, name='Such, Such Were the Joys', price=116}
+2024-12-11 18:27:10 [Consumer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 4
+2024-12-11 18:27:10 [Consumer-6] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Katherine Hammes IV | consumed ticket: Butter In a Lordly Dish
+2024-12-11 18:27:13 [Producer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 5
+2024-12-11 18:27:13 [Producer-9] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Hackett-Kunde | produced ticket: Ticket{id=488, name='A Passage to India', price=206}
+2024-12-11 18:27:13 [Consumer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 4
+2024-12-11 18:27:13 [Consumer-6] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Katherine Hammes IV | consumed ticket: Specimen Days
+2024-12-11 18:27:16 [Consumer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 3
+2024-12-11 18:27:16 [Consumer-2] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Dr. Brett Kub | consumed ticket: The Last Temptation
+2024-12-11 18:27:17 [Producer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 4
+2024-12-11 18:27:17 [Producer-7] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=483, name='Now Sleeps the Crimson Petal', price=835}
+2024-12-11 18:27:17 [Consumer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 3
+2024-12-11 18:27:17 [Consumer-13] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Mauro Senger | consumed ticket: Recalled to Life
+2024-12-11 18:27:18 [Consumer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 2
+2024-12-11 18:27:18 [Consumer-8] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Clorinda Lueilwitz | consumed ticket: Such, Such Were the Joys
+2024-12-11 18:27:19 [Consumer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 1
+2024-12-11 18:27:19 [Consumer-3] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Annabell Hane | consumed ticket: A Passage to India
+2024-12-11 18:27:19 [Consumer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:27:19 [Consumer-5] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Kecia Sauer | consumed ticket: Now Sleeps the Crimson Petal
+2024-12-11 18:27:21 [Consumer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket pool is empty. Waiting to retrieve ticket.
+2024-12-11 18:27:22 [Producer-16] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:27:22 [Consumer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:27:22 [Producer-16] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Kassulke-Doyle | produced ticket: Ticket{id=468, name='Françoise Sagan', price=925}
+2024-12-11 18:27:22 [Consumer-4] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Miss Earle Wisoky | consumed ticket: Françoise Sagan
+2024-12-11 18:27:23 [Producer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:27:23 [Consumer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:27:23 [Producer-4] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Abshire-Wiegand | produced ticket: Ticket{id=459, name='Edna O'Brien', price=599}
+2024-12-11 18:27:23 [Consumer-7] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Sigrid Howe | consumed ticket: Edna O'Brien
+2024-12-11 18:27:26 [Producer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:27:26 [Producer-14] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Reichel and Sons | produced ticket: Ticket{id=500, name='Behold the Man', price=594}
+2024-12-11 18:27:29 [Consumer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 0
+2024-12-11 18:27:29 [Consumer-12] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Tyra Turcotte V | consumed ticket: Behold the Man
+2024-12-11 18:27:32 [Producer-10] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 1
+2024-12-11 18:27:32 [Producer-10] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Breitenberg, Reilly and Krajcik | produced ticket: Ticket{id=458, name='Beyond the Mexique Bay', price=831}
+2024-12-11 18:27:36 [Producer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 2
+2024-12-11 18:27:36 [Producer-6] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Abshire-Wiegand | produced ticket: Ticket{id=450, name='The Little Foxes', price=848}
+2024-12-11 18:27:39 [Producer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 3
+2024-12-11 18:27:39 [Producer-2] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Koepp, Barrows and Nitzsche | produced ticket: Ticket{id=495, name='Brandy of the Damned', price=229}
+2024-12-11 18:27:39 [Producer-19] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 4
+2024-12-11 18:27:39 [Producer-19] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Spinka-Bergstrom | produced ticket: Ticket{id=451, name='An Acceptable Time', price=369}
+2024-12-11 18:27:40 [Producer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 5
+2024-12-11 18:27:40 [Producer-11] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Braun, Weissnat and Ernser | produced ticket: Ticket{id=477, name='I Know Why the Caged Bird Sings', price=493}
+2024-12-11 18:27:41 [Producer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:27:41 [Producer-13] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gulgowski, D'Amore and Hayes | produced ticket: Ticket{id=447, name='Vanity Fair', price=522}
+2024-12-11 18:27:44 [Producer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 7
+2024-12-11 18:27:44 [Consumer-10] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 6
+2024-12-11 18:27:44 [Producer-13] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gulgowski, D'Amore and Hayes | produced ticket: Ticket{id=447, name='Vanity Fair', price=522}
+2024-12-11 18:27:44 [Consumer-10] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jeffry Kautzer | consumed ticket: Beyond the Mexique Bay
+2024-12-11 18:27:49 [Consumer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:27:49 [Consumer-11] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Alex Kshlerin III | consumed ticket: The Little Foxes
+2024-12-11 18:27:50 [Producer-19] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:27:50 [Consumer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:27:50 [Producer-19] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Spinka-Bergstrom | produced ticket: Ticket{id=451, name='An Acceptable Time', price=369}
+2024-12-11 18:27:50 [Consumer-1] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Ms. Toney O'Connell | consumed ticket: Brandy of the Damned
+2024-12-11 18:27:51 [Producer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:27:51 [Producer-12] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gaylord Group | produced ticket: Ticket{id=499, name='The World, the Flesh and the Devil', price=632}
+2024-12-11 18:27:54 [Producer-18] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 7
+2024-12-11 18:27:54 [Producer-18] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Feeney Group | produced ticket: Ticket{id=461, name='Recalled to Life', price=907}
+2024-12-11 18:27:54 [Consumer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 6
+2024-12-11 18:27:54 [Consumer-0] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Rodney Sauer IV | consumed ticket: An Acceptable Time
+2024-12-11 18:27:55 [Producer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 7
+2024-12-11 18:27:55 [Producer-8] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gaylord Group | produced ticket: Ticket{id=473, name='The Last Temptation', price=617}
+2024-12-11 18:27:55 [Consumer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 6
+2024-12-11 18:27:55 [Consumer-14] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Royce Mohr | consumed ticket: I Know Why the Caged Bird Sings
+2024-12-11 18:27:56 [Consumer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:27:56 [Consumer-9] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jami Sauer | consumed ticket: Vanity Fair
+2024-12-11 18:27:58 [Producer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:27:58 [Producer-6] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Abshire-Wiegand | produced ticket: Ticket{id=450, name='The Little Foxes', price=848}
+2024-12-11 18:28:03 [Producer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 7
+2024-12-11 18:28:03 [Producer-2] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Koepp, Barrows and Nitzsche | produced ticket: Ticket{id=495, name='Brandy of the Damned', price=229}
+2024-12-11 18:28:04 [Producer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 8
+2024-12-11 18:28:04 [Producer-4] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Abshire-Wiegand | produced ticket: Ticket{id=459, name='Edna O'Brien', price=599}
+2024-12-11 18:28:06 [Producer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 9
+2024-12-11 18:28:06 [Producer-10] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 10
+2024-12-11 18:28:06 [Producer-11] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Braun, Weissnat and Ernser | produced ticket: Ticket{id=477, name='I Know Why the Caged Bird Sings', price=493}
+2024-12-11 18:28:06 [Producer-10] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Breitenberg, Reilly and Krajcik | produced ticket: Ticket{id=458, name='Beyond the Mexique Bay', price=831}
+2024-12-11 18:28:06 [Consumer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 9
+2024-12-11 18:28:06 [Consumer-10] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 8
+2024-12-11 18:28:06 [Consumer-10] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jeffry Kautzer | consumed ticket: An Acceptable Time
+2024-12-11 18:28:06 [Consumer-2] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Dr. Brett Kub | consumed ticket: Vanity Fair
+2024-12-11 18:28:07 [Producer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 9
+2024-12-11 18:28:07 [Producer-0] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Feil LLC | produced ticket: Ticket{id=484, name='Such, Such Were the Joys', price=116}
+2024-12-11 18:28:08 [Producer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 10
+2024-12-11 18:28:08 [Producer-7] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=483, name='Now Sleeps the Crimson Petal', price=835}
+2024-12-11 18:28:08 [Producer-15] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 11
+2024-12-11 18:28:08 [Producer-15] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Greenholt, Strosin and Mayer | produced ticket: Ticket{id=467, name='Little Hands Clapping', price=587}
+2024-12-11 18:28:11 [Producer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 12
+2024-12-11 18:28:11 [Producer-5] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=483, name='Now Sleeps the Crimson Petal', price=835}
+2024-12-11 18:28:11 [Consumer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 11
+2024-12-11 18:28:11 [Consumer-4] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Miss Earle Wisoky | consumed ticket: The World, the Flesh and the Devil
+2024-12-11 18:28:13 [Producer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 12
+2024-12-11 18:28:13 [Producer-1] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Greenholt, Strosin and Mayer | produced ticket: Ticket{id=485, name='Specimen Days', price=856}
+2024-12-11 18:28:13 [Producer-17] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 13
+2024-12-11 18:28:13 [Producer-17] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gottlieb LLC | produced ticket: Ticket{id=496, name='Butter In a Lordly Dish', price=118}
+2024-12-11 18:28:14 [Consumer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 12
+2024-12-11 18:28:14 [Consumer-14] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Royce Mohr | consumed ticket: Recalled to Life
+2024-12-11 18:28:15 [Producer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 13
+2024-12-11 18:28:15 [Producer-14] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Reichel and Sons | produced ticket: Ticket{id=500, name='Behold the Man', price=594}
+2024-12-11 18:28:22 [Producer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 14
+2024-12-11 18:28:22 [Producer-3] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=486, name='A Swiftly Tilting Planet', price=242}
+2024-12-11 18:28:26 [Consumer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 13
+2024-12-11 18:28:26 [Consumer-7] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Sigrid Howe | consumed ticket: The Last Temptation
+2024-12-11 18:28:27 [Consumer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 12
+2024-12-11 18:28:27 [Consumer-6] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Katherine Hammes IV | consumed ticket: The Little Foxes
+2024-12-11 18:28:28 [Consumer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 11
+2024-12-11 18:28:28 [Consumer-13] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Mauro Senger | consumed ticket: Brandy of the Damned
+2024-12-11 18:28:29 [Producer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 12
+2024-12-11 18:28:29 [Producer-9] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Hackett-Kunde | produced ticket: Ticket{id=488, name='A Passage to India', price=206}
+2024-12-11 18:28:31 [Producer-16] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 13
+2024-12-11 18:28:31 [Producer-16] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Kassulke-Doyle | produced ticket: Ticket{id=468, name='Françoise Sagan', price=925}
+2024-12-11 18:28:32 [Consumer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 12
+2024-12-11 18:28:32 [Consumer-11] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Alex Kshlerin III | consumed ticket: Edna O'Brien
+2024-12-11 18:28:37 [Consumer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 11
+2024-12-11 18:28:37 [Consumer-12] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Tyra Turcotte V | consumed ticket: I Know Why the Caged Bird Sings
+2024-12-11 18:28:38 [Consumer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 10
+2024-12-11 18:28:38 [Consumer-5] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Kecia Sauer | consumed ticket: Beyond the Mexique Bay
+2024-12-11 18:28:40 [Consumer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 9
+2024-12-11 18:28:40 [Consumer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 8
+2024-12-11 18:28:40 [Consumer-0] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Rodney Sauer IV | consumed ticket: Such, Such Were the Joys
+2024-12-11 18:28:40 [Consumer-8] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Clorinda Lueilwitz | consumed ticket: Now Sleeps the Crimson Petal
+2024-12-11 18:28:45 [Consumer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 7
+2024-12-11 18:28:45 [Consumer-1] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Ms. Toney O'Connell | consumed ticket: Little Hands Clapping
+2024-12-11 18:28:48 [Consumer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 6
+2024-12-11 18:28:48 [Consumer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:28:48 [Consumer-3] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Annabell Hane | consumed ticket: Now Sleeps the Crimson Petal
+2024-12-11 18:28:48 [Consumer-9] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jami Sauer | consumed ticket: Specimen Days
+2024-12-11 18:28:49 [Producer-18] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:28:49 [Producer-18] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Feeney Group | produced ticket: Ticket{id=461, name='Recalled to Life', price=907}
+2024-12-11 18:28:53 [Consumer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 5
+2024-12-11 18:28:53 [Consumer-4] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Miss Earle Wisoky | consumed ticket: Butter In a Lordly Dish
+2024-12-11 18:28:55 [Consumer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 4
+2024-12-11 18:28:55 [Consumer-13] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Mauro Senger | consumed ticket: Behold the Man
+2024-12-11 18:28:57 [Producer-19] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 5
+2024-12-11 18:28:57 [Producer-19] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Spinka-Bergstrom | produced ticket: Ticket{id=451, name='An Acceptable Time', price=369}
+2024-12-11 18:28:58 [Producer-15] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 6
+2024-12-11 18:28:58 [Producer-15] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Greenholt, Strosin and Mayer | produced ticket: Ticket{id=467, name='Little Hands Clapping', price=587}
+2024-12-11 18:29:00 [Producer-16] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 7
+2024-12-11 18:29:00 [Producer-16] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Kassulke-Doyle | produced ticket: Ticket{id=468, name='Françoise Sagan', price=925}
+2024-12-11 18:29:02 [Consumer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 6
+2024-12-11 18:29:02 [Consumer-0] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Rodney Sauer IV | consumed ticket: A Swiftly Tilting Planet
+2024-12-11 18:29:03 [Producer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 7
+2024-12-11 18:29:03 [Producer-12] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gaylord Group | produced ticket: Ticket{id=499, name='The World, the Flesh and the Devil', price=632}
+2024-12-11 18:29:05 [Producer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 8
+2024-12-11 18:29:05 [Producer-6] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Abshire-Wiegand | produced ticket: Ticket{id=450, name='The Little Foxes', price=848}
+2024-12-11 18:29:07 [Producer-10] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 9
+2024-12-11 18:29:07 [Producer-10] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Breitenberg, Reilly and Krajcik | produced ticket: Ticket{id=458, name='Beyond the Mexique Bay', price=831}
+2024-12-11 18:29:08 [Producer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 10
+2024-12-11 18:29:08 [Producer-2] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Koepp, Barrows and Nitzsche | produced ticket: Ticket{id=495, name='Brandy of the Damned', price=229}
+2024-12-11 18:29:08 [Consumer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 9
+2024-12-11 18:29:08 [Consumer-9] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jami Sauer | consumed ticket: A Passage to India
+2024-12-11 18:29:09 [Consumer-6] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 8
+2024-12-11 18:29:09 [Consumer-6] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Katherine Hammes IV | consumed ticket: Françoise Sagan
+2024-12-11 18:29:10 [Producer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 9
+2024-12-11 18:29:10 [Producer-8] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gaylord Group | produced ticket: Ticket{id=473, name='The Last Temptation', price=617}
+2024-12-11 18:29:10 [Producer-13] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 10
+2024-12-11 18:29:10 [Producer-13] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gulgowski, D'Amore and Hayes | produced ticket: Ticket{id=447, name='Vanity Fair', price=522}
+2024-12-11 18:29:10 [Consumer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 9
+2024-12-11 18:29:10 [Consumer-5] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Kecia Sauer | consumed ticket: Recalled to Life
+2024-12-11 18:29:15 [Consumer-8] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 8
+2024-12-11 18:29:15 [Consumer-8] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Clorinda Lueilwitz | consumed ticket: An Acceptable Time
+2024-12-11 18:29:17 [Producer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 9
+2024-12-11 18:29:17 [Producer-3] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=486, name='A Swiftly Tilting Planet', price=242}
+2024-12-11 18:29:17 [Producer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 10
+2024-12-11 18:29:17 [Producer-11] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Braun, Weissnat and Ernser | produced ticket: Ticket{id=477, name='I Know Why the Caged Bird Sings', price=493}
+2024-12-11 18:29:18 [Consumer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 9
+2024-12-11 18:29:18 [Consumer-14] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Royce Mohr | consumed ticket: Little Hands Clapping
+2024-12-11 18:29:19 [Producer-0] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 10
+2024-12-11 18:29:19 [Producer-0] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Feil LLC | produced ticket: Ticket{id=484, name='Such, Such Were the Joys', price=116}
+2024-12-11 18:29:20 [Producer-17] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 11
+2024-12-11 18:29:20 [Producer-17] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Gottlieb LLC | produced ticket: Ticket{id=496, name='Butter In a Lordly Dish', price=118}
+2024-12-11 18:29:20 [Consumer-12] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 10
+2024-12-11 18:29:20 [Consumer-12] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Tyra Turcotte V | consumed ticket: Françoise Sagan
+2024-12-11 18:29:22 [Consumer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 9
+2024-12-11 18:29:22 [Consumer-10] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 8
+2024-12-11 18:29:22 [Consumer-1] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Ms. Toney O'Connell | consumed ticket: The World, the Flesh and the Devil
+2024-12-11 18:29:22 [Consumer-10] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Jeffry Kautzer | consumed ticket: The Little Foxes
+2024-12-11 18:29:24 [Consumer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 7
+2024-12-11 18:29:24 [Consumer-7] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Sigrid Howe | consumed ticket: Beyond the Mexique Bay
+2024-12-11 18:29:29 [Producer-5] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 8
+2024-12-11 18:29:29 [Producer-5] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=483, name='Now Sleeps the Crimson Petal', price=835}
+2024-12-11 18:29:29 [Producer-9] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 9
+2024-12-11 18:29:29 [Producer-9] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Hackett-Kunde | produced ticket: Ticket{id=488, name='A Passage to India', price=206}
+2024-12-11 18:29:33 [Producer-7] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 10
+2024-12-11 18:29:33 [Producer-7] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Ortiz and Sons | produced ticket: Ticket{id=483, name='Now Sleeps the Crimson Petal', price=835}
+2024-12-11 18:29:35 [Consumer-11] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 9
+2024-12-11 18:29:35 [Consumer-11] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Alex Kshlerin III | consumed ticket: Brandy of the Damned
+2024-12-11 18:29:37 [Producer-4] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 10
+2024-12-11 18:29:37 [Producer-4] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Abshire-Wiegand | produced ticket: Ticket{id=459, name='Edna O'Brien', price=599}
+2024-12-11 18:29:37 [Consumer-2] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 9
+2024-12-11 18:29:37 [Consumer-2] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Dr. Brett Kub | consumed ticket: The Last Temptation
+2024-12-11 18:29:38 [Producer-1] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 10
+2024-12-11 18:29:38 [Producer-1] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Greenholt, Strosin and Mayer | produced ticket: Ticket{id=485, name='Specimen Days', price=856}
+2024-12-11 18:29:39 [Producer-14] INFO  c.u.e.core.ticket.TicketPool - Ticket added to the pool. Current size: 11
+2024-12-11 18:29:39 [Producer-14] INFO  c.u.e.s.s.p.producer.TicketProducer - Vendor Reichel and Sons | produced ticket: Ticket{id=500, name='Behold the Man', price=594}
+2024-12-11 18:29:39 [Consumer-3] INFO  c.u.e.core.ticket.TicketPool - Ticket retrieved from the pool. Current size: 10
+2024-12-11 18:29:39 [Consumer-3] INFO  c.u.e.s.s.p.consumer.TicketConsumer - Customer Annabell Hane | consumed ticket: Vanity Fair
+2024-12-11 18:29:40 [TicketCountLimiter] WARN  c.u.e.s.limiter.TicketCountLimiter - Ticket count has reached the total limit
+2024-12-11 18:29:40 [TicketCountLimiter] INFO  c.u.e.s.s.p.ParticipantHandler - Stopping all producer consumer threads...
+2024-12-11 18:29:40 [TicketCountLimiter] INFO  c.u.e.core.ticket.TicketPool - Ticket pool reset with new configuration.
+2024-12-11 18:29:40 [TicketCountLimiter] INFO  c.u.e.s.s.p.ParticipantHandler - All producer consumer threads stopped.
+2024-12-11 18:54:44 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 1 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(1)-CONNECTED(1)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 9], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 191], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 2283]
+2024-12-11 19:24:44 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 60], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 199], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 4514]
+2024-12-11 19:54:44 [MessageBroker-2] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 60], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 199], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 6747]
+2024-12-11 20:24:44 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 60], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 199], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 8980]
+2024-12-11 20:54:44 [MessageBroker-2] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 60], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 199], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 11213]
+2024-12-11 21:24:44 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 60], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 199], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 13446]
+2024-12-11 21:54:44 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 60], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 199], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 15679]
+2024-12-11 22:24:44 [MessageBroker-4] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[1 current WS(1)-HttpStream(0)-HttpPoll(0), 5 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(5)-CONNECTED(5)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 60], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 199], sockJsScheduler[pool size = 4, active threads = 1, queued tasks = 3, completed tasks = 17912]
+2024-12-11 22:41:03 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopping...
+2024-12-11 22:41:03 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@521a3128]]
+2024-12-11 22:41:03 [SpringApplicationShutdownHook] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Stopped.
+2024-12-11 22:41:03 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-12-11 22:41:03 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-12-11 22:41:03 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

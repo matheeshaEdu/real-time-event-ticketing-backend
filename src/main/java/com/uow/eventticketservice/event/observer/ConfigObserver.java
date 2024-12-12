@@ -79,7 +79,7 @@ public class ConfigObserver implements DomainEventObserver<TicketConfig> {
      * @param config the TicketConfig object
      */
     private void resetTicketPool(TicketConfig config) {
-        TicketPool.getInstance().reset(config);
+        TicketPool.getInstance().reset(config.getMaxTicketCapacity());
     }
 
     /**
